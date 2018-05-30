@@ -1,0 +1,98 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@color/colorStatusBar</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:editTextBackground">@android:color/white</item>
+        <item name="lineColor">@color/lineColor</item>
+
+        <item name="android:editTextColor">@color/appEditTextColor</item>
+        <item name="android:textColor">@color/appTextColor</item>
+        <item name="textColorLarge">@color/appTextLargeColor</item>
+
+        <item name="android:textColorHint">@color/appTextHindColor</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.NoActionBar.Auth">
+        <item name="android:windowBackground">@color/appBackground</item>
+    </style>
+
+    <style name="AppThemeDark" parent="AppTheme">
+        <item name="colorPrimary">@color/colorStatusBarDark</item>
+        <item name="colorPrimaryDark">@color/appBackgroundDark</item>
+
+        <item name="android:windowBackground">@color/appBackgroundDark</item>
+        <item name="android:editTextBackground">@color/appEditTextBackgroundDark</item>
+        <item name="lineColor">@color/lineColorDark</item>
+
+        <item name="android:editTextColor">@color/appEditTextColorDark</item>
+        <item name="android:textColor">@color/appTextColorDark</item>
+        <item name="textColorLarge">@color/appTextLargeColorDark</item>
+    </style>
+    <style name="AppThemeDark.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppThemeDark.NoActionBar.Auth">
+        <item name="colorPrimaryDark">@color/colorStatusBarDark</item>
+    </style>
+
+
+
+    <style name="ToolBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">?textColorLarge</item>
+        <item name="android:textColorSecondary">?textColorLarge</item>
+        <item name="android:actionMenuTextColor">?textColorLarge</item>
+        <item name="android:background">?colorPrimary</item>
+    </style>
+    <style name="ProfileEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">?textColorLarge</item>
+        <item name="android:drawablePadding">@dimen/space</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">@dimen/space</item>
+        <item name="android:paddingEnd">@dimen/space</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+    <style name="LargeTextViewStyle">
+        <item name="android:textColor">?textColorLarge</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+    <style name="LargeTextViewStyle.Icon">
+        <item name="android:drawablePadding">@dimen/space</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">@dimen/space</item>
+        <item name="android:paddingEnd">@dimen/space</item>
+    </style>
+    <style name="RadioGroupStyle">
+        <item name="android:textColor">?textColorLarge</item>
+        <item name="android:drawablePadding">@dimen/space</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">@dimen/space</item>
+        <item name="android:paddingEnd">@dimen/space</item>
+    </style>
+    <style name="RadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textColor">@drawable/radio_text_color</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">@dimen/space</item>
+        <item name="android:paddingEnd">@dimen/space</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="PagerSlidingTabStrip">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

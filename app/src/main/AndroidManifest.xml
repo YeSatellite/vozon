@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yesat.vozon">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ui.auth.SendSmsActivity" />
+        <activity android:name=".ui.auth.XSignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar.Auth" />
+        <activity android:name=".ui.auth.XSignUpNextActivity"
+            android:theme="@style/AppTheme.NoActionBar.Auth"/>
+        <activity
+            android:name=".ui.client.XMainActivity"
+            android:label="@string/title_activity_xmain" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.auth.SettingActivity" />
+        <activity android:name=".ui.auth.SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar.Auth"/>
+        <activity android:name=".ui.info.InfoTmpActivity" />
+        <activity android:name=".ui.info.LocationActivity" />
+        <activity android:name=".ui.client.XOrderDetailActivity" />
+        <activity android:name=".ui.client.posted.XOfferListActivity" />
+        <activity android:name=".ui.client.OrderNewActivity"
+            android:theme="@style/AppTheme.NoActionBar.Auth"/>
+    </application>
+
+</manifest>

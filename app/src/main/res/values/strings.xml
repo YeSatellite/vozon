@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">vozon</string>
+    <string name="upload_image">Загрузить фото</string>
+    <string name="personal_information">ПЕРСОНАЛЬНЫЕ ДАННЫЕ</string>
+    <string name="phone_number_">Номер телефона*</string>
+    <string name="date_of_birth">Дата рождения</string>
+    <string name="username">Имя пользователя*</string>
+    <string name="city">Город</string>
+    <string name="next">Далее</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_xmain">XMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="enter">ВОЙТИ</string>
+    <string name="do_not_have_an_account">У вас нет аккаунта?</string>
+    <string name="sign_up">Создать аккаунт</string>
+    <string name="done">Готово</string>
+</resources>

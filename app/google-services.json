@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "124803108169",
+    "firebase_url": "https://vozon-37.firebaseio.com",
+    "project_id": "vozon-37",
+    "storage_bucket": "vozon-37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124803108169:android:02c3042f6fa37dd1",
+        "android_client_info": {
+          "package_name": "com.yesat.car"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124803108169-ttohtrpojlrmd7s5btru78utaue2rphq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yesat.car",
+            "certificate_hash": "422c169c91b1e32583e7475aac95cc97bb7d0259"
+          }
+        },
+        {
+          "client_id": "124803108169-svfriaiejlktt9cejkdpiaq4011fvug4.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "124803108169-svfriaiejlktt9cejkdpiaq4011fvug4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBliHyqBpf9q4D4jvMmVov6aLJERPJPfiA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124803108169-svfriaiejlktt9cejkdpiaq4011fvug4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124803108169:android:23250d4f2e540f86",
+        "android_client_info": {
+          "package_name": "com.yesat.vozon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124803108169-t6buduf7g8vbp0vfq8ulpfh4imel7omt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yesat.vozon",
+            "certificate_hash": "198ef88e7cffd5e1336931d863ed7631ff6733cb"
+          }
+        },
+        {
+          "client_id": "124803108169-svfriaiejlktt9cejkdpiaq4011fvug4.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "124803108169-svfriaiejlktt9cejkdpiaq4011fvug4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBliHyqBpf9q4D4jvMmVov6aLJERPJPfiA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124803108169-svfriaiejlktt9cejkdpiaq4011fvug4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
