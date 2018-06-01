@@ -4,7 +4,8 @@
         <item name="colorPrimaryDark">@color/colorStatusBar</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@color/appWindowBackground</item>
+        <item name="appBackground">@color/appBackground</item>
         <item name="android:editTextBackground">@android:color/white</item>
         <item name="lineColor">@color/lineColor</item>
 
@@ -13,20 +14,22 @@
         <item name="textColorLarge">@color/appTextLargeColor</item>
 
         <item name="android:textColorHint">@color/appTextHindColor</item>
+
+        <item name="actionBarStyle">@style/AppActionBar</item>
+        <item name="actionMenuTextColor">?textColorLarge</item>
+        <item name="android:homeAsUpIndicator">@drawable/left_</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="AppTheme.NoActionBar.Auth">
-        <item name="android:windowBackground">@color/appBackground</item>
-    </style>
 
     <style name="AppThemeDark" parent="AppTheme">
         <item name="colorPrimary">@color/colorStatusBarDark</item>
-        <item name="colorPrimaryDark">@color/appBackgroundDark</item>
+        <item name="colorPrimaryDark">@color/colorStatusBarDark</item>
 
-        <item name="android:windowBackground">@color/appBackgroundDark</item>
+        <item name="android:windowBackground">@color/appWindowBackgroundDark</item>
+        <item name="appBackground">@color/appBackgroundDark</item>
         <item name="android:editTextBackground">@color/appEditTextBackgroundDark</item>
         <item name="lineColor">@color/lineColorDark</item>
 
@@ -38,17 +41,19 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="AppThemeDark.NoActionBar.Auth">
-        <item name="colorPrimaryDark">@color/colorStatusBarDark</item>
+
+
+    <style name="AppActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="titleTextStyle">@style/AppTitleTextStyle</item>
     </style>
-
-
-
-    <style name="ToolBarStyle" parent="Widget.AppCompat.ActionBar">
-        <item name="android:textColorPrimary">?textColorLarge</item>
-        <item name="android:textColorSecondary">?textColorLarge</item>
-        <item name="android:actionMenuTextColor">?textColorLarge</item>
+    <style name="AppTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">?textColorLarge</item>
+    </style>
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
         <item name="android:background">?colorPrimary</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
     </style>
     <style name="ProfileEditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">?textColorLarge</item>

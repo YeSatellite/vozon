@@ -13,34 +13,32 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ui.auth.SendSmsActivity" />
-        <activity android:name=".ui.auth.XSignUpActivity"
-            android:theme="@style/AppTheme.NoActionBar.Auth" />
-        <activity android:name=".ui.auth.XSignUpNextActivity"
-            android:theme="@style/AppTheme.NoActionBar.Auth"/>
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.client.XMainActivity"
-            android:label="@string/title_activity_xmain" />
+            android:label="@string/title_activity_xmain"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.auth.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.auth.SendSmsActivity" />
+        <activity android:name=".ui.auth.XSignUpActivity" />
+        <activity android:name=".ui.auth.XSignUpNextActivity" />
         <activity android:name=".ui.auth.SettingActivity" />
-        <activity android:name=".ui.auth.SignUpActivity"
-            android:theme="@style/AppTheme.NoActionBar.Auth"/>
+        <activity android:name=".ui.auth.SignUpActivity" />
         <activity android:name=".ui.info.InfoTmpActivity" />
         <activity android:name=".ui.info.LocationActivity" />
-        <activity android:name=".ui.client.XOrderDetailActivity" />
+        <activity android:name=".ui.client.posted.XOrderPDetailActivity" />
         <activity android:name=".ui.client.posted.XOfferListActivity" />
-        <activity android:name=".ui.client.OrderNewActivity"
-            android:theme="@style/AppTheme.NoActionBar.Auth"/>
+        <activity android:name=".ui.client.OrderNewActivity" />
+        <activity android:name=".ui.client.CategoryActivity" />
+        <activity android:name=".ui.client.active.XOrderADetailActivity" />
     </application>
 
 </manifest>

@@ -6,10 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".ui.auth.XSignUpActivity">
-    <include
-        layout="@layout/include_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -38,7 +34,7 @@
 
                 <ImageView
                     android:id="@+id/v_image1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
@@ -47,7 +43,7 @@
 
                 <ImageView
                     android:id="@+id/v_image2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
@@ -95,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Длина"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <include
                 layout="@layout/include_line"
@@ -108,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ширина"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <include
                 layout="@layout/include_line"
@@ -121,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Высота"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <include
                 layout="@layout/include_line"
@@ -135,10 +131,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:hint="Вес"
-                android:inputType="textPersonName" />
+                android:inputType="numberDecimal" />
 
             <EditText
-                android:id="@+id/v_start"
+                android:id="@+id/v_start_point"
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,7 +149,7 @@
                 android:layout_height="1dp" />
 
             <EditText
-                android:id="@+id/v_end"
+                android:id="@+id/v_end_point"
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,6 +173,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="Дата"
                 android:inputType="textPersonName" />
 
@@ -190,6 +187,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="false"
                 android:hint="Время"
                 android:inputType="textPersonName" />
 

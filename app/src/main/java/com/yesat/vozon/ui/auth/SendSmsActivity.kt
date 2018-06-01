@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.vozon.*
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_send_sms.*
 
 class SendSmsActivity : AppCompatActivity() {

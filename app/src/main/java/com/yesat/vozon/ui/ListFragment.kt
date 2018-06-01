@@ -1,4 +1,4 @@
-package com.yesat.car.utility.ui
+package com.yesat.vozon.ui
 
 import android.graphics.Color
 import android.os.Bundle

@@ -3,7 +3,7 @@ package com.yesat.vozon.ui.client
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.vozon.R
-import com.yesat.vozon.norm
+import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.activity_xmain.*
 
 class XMainActivity : AppCompatActivity() {
@@ -18,9 +18,9 @@ class XMainActivity : AppCompatActivity() {
 
         v_navigation.setOnNavigationItemSelectedListener {item ->
             val selectedFragment = when (item.itemId) {
-                R.id.navigation_home -> XProfileFragment()
-                R.id.navigation_dashboard -> XOrderFragment()
-                R.id.navigation_notifications -> XProfileFragment()
+                R.id.m_route -> XRouteListFragment()
+                R.id.m_order -> XOrderFragment()
+                R.id.m_profile -> XProfileFragment()
                 else -> XProfileFragment()
             }
             val transaction = supportFragmentManager.beginTransaction()

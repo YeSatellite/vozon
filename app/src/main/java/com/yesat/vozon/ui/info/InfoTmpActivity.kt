@@ -6,23 +6,24 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.car.utility.ui.ListFragment
+import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
-import com.yesat.vozon.Shared
+import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.models.InfoTmp
-import com.yesat.vozon.run2
+import com.yesat.vozon.utility.run2
 import com.yesat.vozon.ui.ListActivity
-import com.yesat.vozon.norm
-import com.yesat.vozon.put
-import com.yesat.vozon.snack
+import com.yesat.vozon.utility.norm
+import com.yesat.vozon.utility.put
+import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
 
 
 class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>() {
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        norm(Shared.call.toString())
-        Shared.call?.run2(srRefresh,{ body ->
+        norm("START")
+        Shared.call?.clone()?.run2(srRefresh,{ body ->
+            norm("END")
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->

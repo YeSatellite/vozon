@@ -7,12 +7,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.car.utility.ui.ListFragment
 import com.yesat.vozon.R
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import kotlinx.android.synthetic.main.fragment_list_toolbar.view.*
 
-abstract class ListToolbarFragment<T,V : ListFragment.ViewHolder> : ListFragment<T,V>() {
+abstract class ListToolbarFragment<T,V : ListFragment.ViewHolder> : ListFragment<T, V>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val v =  inflater.inflate(R.layout.fragment_list_toolbar, container, false)

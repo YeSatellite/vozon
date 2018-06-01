@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
+import com.yesat.vozon.ui.client.active.XOrderAListFragment
 import com.yesat.vozon.ui.client.posted.XOrderPListFragment
 import kotlinx.android.synthetic.main.tmp_pager.view.*
 
@@ -41,7 +42,7 @@ class XOrderFragment : Fragment() {
         override fun getItem(position: Int): Fragment? {
             return when (position) {
                 0 -> XOrderPListFragment()
-                1 -> XOrderPListFragment()
+                1 -> XOrderAListFragment()
                 else -> null
             }
         }

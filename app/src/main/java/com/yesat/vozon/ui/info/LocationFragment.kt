@@ -5,11 +5,11 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.car.utility.ui.ListFragment
+import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
-import com.yesat.vozon.run2
-import com.yesat.vozon.snack
+import com.yesat.vozon.utility.run2
+import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
 import retrofit2.Call
 
@@ -18,7 +18,7 @@ import retrofit2.Call
 class LocationFragment(val call: Call<List<InfoTmp>>) : ListFragment<InfoTmp, LocationFragment.ViewHolder>() {
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        call.run2(srRefresh,{body ->
+        call.clone().run2(srRefresh,{body ->
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->

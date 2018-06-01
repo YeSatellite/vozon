@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.support.v4.view.PagerAdapter
 import android.view.View
 import com.yesat.vozon.R
-import com.yesat.vozon.src
+import com.yesat.vozon.utility.src
 import kotlinx.android.synthetic.main.item_image_pager.view.*
 
 
 internal class ImagePagerAdapter(
-        private val context: Context,
+        context: Context,
         private val images: List<String?>
     ) : PagerAdapter() {
     private val inflater: LayoutInflater = context.

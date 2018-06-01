@@ -12,9 +12,9 @@ import com.yesat.vozon.*
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.info.LocationActivity
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_client_signup.*
 import kotlinx.android.synthetic.main.include_sign_up_main.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import java.io.File
 import java.util.*
 
@@ -33,7 +33,6 @@ class XSignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_signup)
-        setSupportActionBar(v_toolbar)
         addBackPress()
 
         user.type = User.CLIENT

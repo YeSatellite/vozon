@@ -7,21 +7,20 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.car.utility.ui.ListFragment
 import com.yesat.vozon.R
-import com.yesat.vozon.norm
-import kotlinx.android.synthetic.main.tmp_recycler_view.*
+import com.yesat.vozon.utility.norm
+import kotlinx.android.synthetic.main.fragment_list.*
 
 abstract class ListActivity<T,V : ListFragment.ViewHolder>: AppCompatActivity() {
     var refreshListener: SwipeRefreshLayout.OnRefreshListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.tmp_recycler_view)
+        setContentView(R.layout.fragment_list)
 
         val adapter = ListAdapter()
         v_list.adapter = adapter
-        val srRefresh = sr_refresh
+        val srRefresh = v_refresh
         norm(">>>>>>>>>>")
 
         refreshListener = SwipeRefreshLayout.OnRefreshListener({

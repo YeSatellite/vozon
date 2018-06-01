@@ -7,6 +7,10 @@ import android.preference.PreferenceManager
 import com.yesat.vozon.*
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.auth.SendSmsActivity
+import com.yesat.vozon.utility.Api
+import com.yesat.vozon.utility.Shared
+import com.yesat.vozon.utility.norm
+import com.yesat.vozon.utility.run2
 
 class StartActivity : AppCompatActivity() {
 

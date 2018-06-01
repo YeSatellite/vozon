@@ -1,19 +1,17 @@
-package com.yesat.car.ui.info
+package com.yesat.vozon.ui.info
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.car.utility.ui.ListFragment
+import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Location
-import com.yesat.vozon.run2
-import com.yesat.vozon.put
-import com.yesat.vozon.snack
-import kotlinx.android.synthetic.main.fragment_xprofile.view.*
+import com.yesat.vozon.utility.run2
+import com.yesat.vozon.utility.put
+import com.yesat.vozon.utility.snack
+import kotlinx.android.synthetic.main.item_info_tmp.view.*
 import retrofit2.Call
 
 
@@ -23,7 +21,7 @@ class CityFragment(val call: Call<List<Location>>) : ListFragment<Location, City
 
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        call.run2(srRefresh,{body ->
+        call.clone().run2(srRefresh,{body ->
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
@@ -46,9 +44,7 @@ class CityFragment(val call: Call<List<Location>>) : ListFragment<Location, City
     }
 
     override fun onItemClick(item: Location){
-        val i = Intent()
-        i.put(item)
-        activity!!.setResult(Activity.RESULT_OK,i)
-        activity!!.finish()
+        (activity as LocationActivity).i.put(item)
+        (activity as LocationActivity).next(item.id!!)
     }
 }

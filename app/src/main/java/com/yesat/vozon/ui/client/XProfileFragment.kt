@@ -9,10 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
-import com.yesat.vozon.Shared
+import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.ui.auth.SettingActivity
-import com.yesat.vozon.norm
-import com.yesat.vozon.src
+import com.yesat.vozon.utility.norm
+import com.yesat.vozon.utility.src
 import kotlinx.android.synthetic.main.fragment_xprofile.view.*
 
 class XProfileFragment : Fragment() {

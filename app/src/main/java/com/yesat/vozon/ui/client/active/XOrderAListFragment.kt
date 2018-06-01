@@ -1,4 +1,4 @@
-package com.yesat.vozon.ui.client.posted
+package com.yesat.vozon.ui.client.active
 
 import android.app.Activity
 import android.content.Intent
@@ -11,16 +11,16 @@ import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.client.CategoryActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.include_route.view.*
-import kotlinx.android.synthetic.main.item_posted_order.view.*
+import kotlinx.android.synthetic.main.item_active_order.view.*
 
 
-class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>() {
+class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>() {
     companion object {
         const val OFFER_LIST_ACTIVITY = 25
     }
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        Api.clientService.orders(Shared.posted).run2(srRefresh,{ body ->
+        Api.clientService.orders(Shared.action).run2(srRefresh,{ body ->
             norm(body.size.toString())
             adapter.list = body
             adapter.notifyDataSetChanged()
@@ -31,7 +31,7 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
 
     override fun onCreateViewHolder2(parent: ViewGroup): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_posted_order, parent, false)
+                .inflate(R.layout.item_active_order, parent, false)
         return ViewHolder(v)
     }
 
@@ -40,7 +40,7 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
         val hPosition = v.v_position!!
-        val hShowOffers = v.v_show_offers!!
+        val hYourCourier = v.v_your_courier!!
         val hImage= v.v_image!!
 
     }
@@ -50,8 +50,8 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         holder.hEndPoint.text = item.endPoint!!.getShortName()
         holder.hPosition.text = item.startPoint!!.getShortName()
         holder.hImage.src = item.image1
-        holder.hShowOffers.setOnClickListener({
-            val i = Intent(activity, XOfferListActivity::class.java)
+        holder.hYourCourier.setOnClickListener({
+            val i = Intent(activity, XOrderADetailActivity::class.java)
             i.put(item)
             startActivity(i)
         })
@@ -87,9 +87,9 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         }
     }
 
-    override fun onItemClick(item: Order) {
-        val i = Intent(activity, XOrderPDetailActivity::class.java)
-        i.put(item)
-        startActivity(i)
-    }
+//    override fun onItemClick(item: Order) {
+//        val i = Intent(activity, XOrderPDetailActivity::class.java)
+//        i.put(item)
+//        startActivity(i)
+//    }
 }

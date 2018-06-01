@@ -4,17 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
-import com.yesat.vozon.Api
+import com.yesat.vozon.utility.Api
 import com.yesat.vozon.R
 import com.yesat.vozon.models.User
-import com.yesat.vozon.run2
-import com.yesat.vozon.toMultiPartImage
-import com.yesat.vozon.addBackPress
-import com.yesat.vozon.get
-import com.yesat.vozon.put
-import com.yesat.vozon.snack
+import com.yesat.vozon.utility.run2
+import com.yesat.vozon.utility.toMultiPartImage
+import com.yesat.vozon.utility.addBackPress
+import com.yesat.vozon.utility.get
+import com.yesat.vozon.utility.put
+import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.activity_client_signup_next.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import java.io.File
@@ -28,7 +27,6 @@ class XSignUpNextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_signup_next)
-        setSupportActionBar(v_toolbar)
         addBackPress()
 
         user = intent.get(User::class.java)

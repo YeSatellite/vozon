@@ -17,6 +17,7 @@ class User : Serializable {
     @Expose var experience: Long? = null
     @Expose var courier_type: Long? = null
     @Expose var rating: String? = null
+        get() = if (field?.trim() != "-1") field else ""
     @Expose var token: String? = null
 
     fun toJson(): String {

@@ -8,11 +8,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.car.utility.ui.ListFragment
-import com.yesat.vozon.*
+import com.yesat.vozon.R
+import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
-import kotlinx.android.synthetic.main.include_toolbar.*
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_offer.view.*
 
 class XOfferListActivity : AppCompatActivity() {
@@ -20,7 +20,6 @@ class XOfferListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_offer_list)
-        setSupportActionBar(v_toolbar)
     }
 }
 class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() {
@@ -47,31 +46,31 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
         val hDate = v.v_date!!
         val hAbout = v.v_about!!
         val hTName = v.v_t_name!!
-        val hTType = v.v_t_type!!
+        val hTType = v.v_name!!
         val hPrice = v.v_price!!
         val hAccept = v.v_accept!!
         val hReject = v.v_reject!!
 
     }
-    override fun onBindViewHolder2(holder: ViewHolder, offer: Offer) {
-        holder.hAvatar.src = offer.transport?.owner?.avatar
-        holder.hName.text = offer.transport?.owner?.name
-        holder.hRating.text = offer.transport?.owner?.rating
+    override fun onBindViewHolder2(holder: ViewHolder, item: Offer) {
+        holder.hAvatar.src = item.transport?.owner?.avatar
+        holder.hName.text = item.transport?.owner?.name
+        holder.hRating.text = item.transport?.owner?.rating
         // TODO hDate
-        holder.hAbout.text = offer.transport?.owner?.about
-        holder.hTName.text = offer.transport?.modelName
+        holder.hAbout.text = item.transport?.owner?.about
+        holder.hTName.text = item.transport?.modelName
         // TODO hTType
-        holder.hPrice.text = "${offer.price} тг"
+        holder.hPrice.text = "${item.price} тг"
 
         holder.hAccept.setOnClickListener {
-            Api.clientService.offersAccept(offer.order!!, offer.id!!)
+            Api.clientService.offersAccept(item.order!!, item.id!!)
                     .run2(activity!!,{
                         activity!!.setResult(Activity.RESULT_OK, Intent())
                         activity!!.finish()
                     },{
                         _, error ->
                         activity!!.snack(error)
-                        norm(offer.order!!.toString() + " "+offer.id!!)
+                        norm(item.order!!.toString() + " "+item.id!!)
                     })
         }
         holder.hReject.setOnClickListener{

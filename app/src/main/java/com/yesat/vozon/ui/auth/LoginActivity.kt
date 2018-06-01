@@ -4,14 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.iid.FirebaseInstanceId
-import com.yesat.vozon.Api
+import com.yesat.vozon.utility.Api
 import com.yesat.vozon.R
-import com.yesat.vozon.Shared
-import com.yesat.vozon.run2
-import com.yesat.vozon.clientOrCourier
-import com.yesat.vozon.get
-import com.yesat.vozon.norm
-import com.yesat.vozon.snack
+import com.yesat.vozon.utility.Shared
+import com.yesat.vozon.utility.run2
+import com.yesat.vozon.utility.clientOrCourier
+import com.yesat.vozon.utility.get
+import com.yesat.vozon.utility.norm
+import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.activity_login.*
 
 

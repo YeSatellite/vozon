@@ -22,6 +22,9 @@ class Location : Serializable {
     fun getShortName(startDetail: String): String{
         return "$name, $countryName, $startDetail"
     }
+    fun getShortXName(startDetail: String): String{
+        return "$name, $startDetail"
+    }
 
     operator fun minus(other: Location): String{
         if (this.countryName != other.countryName) return "kasha"

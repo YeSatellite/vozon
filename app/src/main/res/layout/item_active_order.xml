@@ -76,12 +76,12 @@
         android:layout_marginStart="@dimen/space" />
 
     <Button
-        android:id="@+id/v_show_offers"
+        android:id="@+id/v_your_courier"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@android:color/transparent"
         android:gravity="center"
-        android:text="Список курьеров"
+        android:text="Ваш курьер"
         android:textAllCaps="false"
         android:textColor="@color/appBlue"
         android:textSize="20sp" />

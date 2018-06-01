@@ -1,27 +1,23 @@
-package com.yesat.vozon.ui.client
+package com.yesat.vozon.ui.client.posted
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.text.format.DateFormat
 import com.yesat.vozon.R
-import com.yesat.vozon.dateFormat
+import com.yesat.vozon.utility.dateFormat
 import com.yesat.vozon.models.Order
-import com.yesat.vozon.get
-import com.yesat.vozon.norm
+import com.yesat.vozon.utility.get
+import com.yesat.vozon.utility.norm
 import com.yesat.vozon.ui.ImagePagerAdapter
-import kotlinx.android.synthetic.main.activity_order_detail.*
-import kotlinx.android.synthetic.main.include_toolbar.*
-import java.util.stream.Collectors.toList
+import kotlinx.android.synthetic.main.activity_order_posted_detail.*
 
 
-class XOrderDetailActivity : AppCompatActivity() {
+class XOrderPDetailActivity : AppCompatActivity() {
 
     private var order: Order? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order_detail)
-        setSupportActionBar(v_toolbar)
+        setContentView(R.layout.activity_order_posted_detail)
 
         order = intent.get(Order::class.java)
         norm(order.toString())
