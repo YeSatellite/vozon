@@ -14,9 +14,7 @@ class Transport : Serializable {
 
     @Expose var owner: User? = null
 
-    @Expose var type: Long? = null
-    @SerializedName("type_name")
-    @Expose var typeName: String? = null
+    @Expose var type: Long? = 1
 
     @Expose var model: Long? = null
     @SerializedName("model_name")

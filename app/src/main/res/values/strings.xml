@@ -19,4 +19,5 @@
     <string name="do_not_have_an_account">У вас нет аккаунта?</string>
     <string name="sign_up">Создать аккаунт</string>
     <string name="done">Готово</string>
+    <string name="is_empty">%1$s is empty</string>
 </resources>

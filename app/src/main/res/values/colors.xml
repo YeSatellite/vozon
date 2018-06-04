@@ -9,13 +9,14 @@
     <!--backgrounds-->
     <color name="colorStatusBar">#b6b9bd</color>
     <color name="colorStatusBarDark">#1b1b1b</color>
-    <color name="appWindowBackground">#eef1f6</color>
+    <color name="appWindowBackground">@android:color/white</color>
     <color name="appWindowBackgroundDark">#282828</color>
-    <color name="appBackground">@android:color/white</color>
+    <color name="appTextBackground">@android:color/white</color>
+    <color name="appTextBackgroundDark">#333333</color>
+    <color name="appBackground">#eef1f6</color>
     <color name="appBackgroundDark">#282828</color>
-    <color name="appEditTextBackgroundDark">#5c5c5c</color>
     <color name="lineColor">#f1f1f1</color>
-    <color name="lineColorDark">#323232</color>
+    <color name="lineColorDark">#3d3d3d</color>
 
     <!--text-->
     <color name="appEditTextColor">#151515</color>

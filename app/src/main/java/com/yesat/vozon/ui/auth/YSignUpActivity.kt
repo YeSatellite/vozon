@@ -19,7 +19,7 @@ import java.io.File
 import java.util.*
 
 
-class XSignUpActivity : AppCompatActivity() {
+class YSignUpActivity : AppCompatActivity() {
 
     companion object {
         const val CITY_REQUEST_CODE = 86
@@ -35,11 +35,11 @@ class XSignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_client_signup)
         addBackPress()
 
-        user.type = User.CLIENT
+        user.type = User.COURIER
 
         v_dob.setOnClickListener{
             val calendar = Calendar.getInstance()
-            DatePickerDialog(this@XSignUpActivity,
+            DatePickerDialog(this@YSignUpActivity,
                     DatePickerDialog.OnDateSetListener {
                         _, year, month, dayOfMonth ->
                         v_dob.content = "$year-${month+1}-$dayOfMonth"
@@ -47,7 +47,7 @@ class XSignUpActivity : AppCompatActivity() {
                     calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
         v_city.setOnClickListener({
-            val i = Intent(this@XSignUpActivity, LocationActivity::class.java)
+            val i = Intent(this@YSignUpActivity, LocationActivity::class.java)
             startActivityForResult(i, CITY_REQUEST_CODE)
         })
         v_upload_image.setOnClickListener{
@@ -59,7 +59,7 @@ class XSignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun done(){
+    private fun next(){
         try{
             user.phone = v_phone.get("phone is empty")
             user.name = v_name.get("name is empty")
@@ -68,23 +68,10 @@ class XSignUpActivity : AppCompatActivity() {
             checkNotNull(user.city){"city is empty"}
             checkNotNull(image){"avatar is empty"}
 
-
-            val phone = user.phone!!.toMultiPart()
-            val name = user.name!!.toMultiPart()
-            val city = user.city!!.id.toString().toMultiPart()
-            val dob = user.dob!!.toMultiPart()
-            val about = user.about!!.toMultiPart()
-            val type = user.type!!.toMultiPart()
-            val image = image!!.toMultiPartImage("avatar")
-
-            Api.authService.register(phone,name,city,about,dob,type,image).run2(this,{
-                norm("hello")
-                val i = Intent(this, LoginActivity::class.java)
-                i.put(user.phone!!)
-                startActivityForResult(i,FINISH_REQUEST_CODE)
-            },{ _, error ->
-                snack(error)
-            })
+            val i = Intent(this,YSignUpNextActivity::class.java)
+            i.put(user)
+            i.put(image!!)
+            startActivity(i)
 
 
         }catch (ex: IllegalStateException){
@@ -114,14 +101,14 @@ class XSignUpActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_done, menu)
+        menuInflater.inflate(R.menu.menu_next, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.done -> {
-                done()
+            R.id.next -> {
+                next()
                 true
             }
             else -> super.onOptionsItemSelected(item)

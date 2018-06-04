@@ -16,7 +16,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.client.XMainActivity"
-            android:label="@string/title_activity_xmain"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.auth.LoginActivity"
@@ -29,7 +28,7 @@
         </activity>
         <activity android:name=".ui.auth.SendSmsActivity" />
         <activity android:name=".ui.auth.XSignUpActivity" />
-        <activity android:name=".ui.auth.XSignUpNextActivity" />
+        <activity android:name=".ui.auth.YSignUpNextActivity" />
         <activity android:name=".ui.auth.SettingActivity" />
         <activity android:name=".ui.auth.SignUpActivity" />
         <activity android:name=".ui.info.InfoTmpActivity" />
@@ -39,6 +38,18 @@
         <activity android:name=".ui.client.OrderNewActivity" />
         <activity android:name=".ui.client.CategoryActivity" />
         <activity android:name=".ui.client.active.XOrderADetailActivity" />
+
+        <activity android:name=".ui.courier.YMainActivity"
+            android:theme="@style/AppThemeDark.NoActionBar"/>
+        <activity android:name=".ui.courier.transport.TransportNewActivity"
+            android:theme="@style/AppThemeDark"/>
+        <activity android:name=".ui.courier.transport.TransportDetailActivity"
+            android:theme="@style/AppThemeDark"/>
+        <activity android:name=".ui.courier.order.YOrderPDetailActivity"
+            android:theme="@style/AppThemeDark"/>
+        <activity android:name=".ui.courier.order.OfferNewActivity"
+            android:theme="@style/AppThemeDark"/>
+        <activity android:name=".ui.auth.YSignUpActivity" />
     </application>
 
 </manifest>

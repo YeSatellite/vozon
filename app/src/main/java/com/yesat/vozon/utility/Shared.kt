@@ -1,6 +1,7 @@
 package com.yesat.vozon.utility
 
 import android.content.SharedPreferences
+import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.models.User
 import retrofit2.Call
@@ -34,6 +35,22 @@ object Shared {
     fun init(preferences: SharedPreferences) {
         Shared.preferences = preferences
         currentUser = User.fromJson(preferences.getString(user, "{}"))
+    }
+
+    var theme: Int = R.style.AppTheme
+    var themeNo: Int = R.style.AppTheme_NoActionBar
+
+    fun setTheme(){
+        when (currentUser.type){
+            User.CLIENT -> {
+                Shared.theme = R.style.AppTheme
+                Shared.themeNo = R.style.AppTheme_NoActionBar
+            }
+            User.COURIER -> {
+                Shared.theme = R.style.AppThemeDark
+                Shared.themeNo = R.style.AppThemeDark_NoActionBar
+            }
+        }
     }
 }
 

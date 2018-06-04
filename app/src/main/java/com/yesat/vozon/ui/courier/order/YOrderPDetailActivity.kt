@@ -1,22 +1,24 @@
-package com.yesat.vozon.ui.client.active
+package com.yesat.vozon.ui.courier.order
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.vozon.R
+import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.ImagePagerAdapter
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_order_detail_b.*
 
 
-class XOrderADetailActivity : AppCompatActivity() {
+class YOrderPDetailActivity : AppCompatActivity() {
 
     private var order: Order? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_detail_b)
+        addBackPress()
 
         order = intent.get(Order::class.java)
         norm(order.toString())
@@ -38,14 +40,24 @@ class XOrderADetailActivity : AppCompatActivity() {
 
         v_comment.text = order!!.comment
 
-        v_button.text = "Done"
+        v_button.text = "Предложить цену"
         v_button.setOnClickListener{
-            Api.clientService.orderDone(order!!.id!!,8)
-                    .run3(this){
-                        setResult(RESULT_OK, Intent())
-                        finish()
-                    }
+            val i = Intent(this,OfferNewActivity::class.java)
+            i.put(order!!)
+            startActivityForResult(i,45)
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK) {
+            setResult(RESULT_OK)
+            finish()
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

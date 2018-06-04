@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.vozon.utility.Api
 import com.yesat.vozon.R
+import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.utility.norm
 
 class LocationActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class LocationActivity : AppCompatActivity() {
     val i = Intent()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(Shared.theme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
 

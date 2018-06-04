@@ -51,9 +51,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         holder.hPosition.text = item.startPoint!!.getShortName()
         holder.hImage.src = item.image1
         holder.hYourCourier.setOnClickListener({
-            val i = Intent(activity, XOrderADetailActivity::class.java)
-            i.put(item)
-            startActivity(i)
+
         })
     }
 
@@ -87,9 +85,9 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         }
     }
 
-//    override fun onItemClick(item: Order) {
-//        val i = Intent(activity, XOrderPDetailActivity::class.java)
-//        i.put(item)
-//        startActivity(i)
-//    }
+    override fun onItemClick(item: Order) {
+        val i = Intent(activity, XOrderADetailActivity::class.java)
+        i.put(item)
+        startActivity(i)
+    }
 }

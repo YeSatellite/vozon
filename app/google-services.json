@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:124803108169:android:02c3042f6fa37dd1",
         "android_client_info": {
-          "package_name": "com.yesat.car"
+          "package_name": "com.yesat.vozon"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "124803108169-ttohtrpojlrmd7s5btru78utaue2rphq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.yesat.car",
+            "package_name": "com.yesat.vozon",
             "certificate_hash": "422c169c91b1e32583e7475aac95cc97bb7d0259"
           }
         },

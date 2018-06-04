@@ -1,40 +1,35 @@
-package com.yesat.vozon.ui.client
-
+package com.yesat.vozon.ui.courier
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.yesat.vozon.R
-import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.ui.auth.SettingActivity
-import com.yesat.vozon.utility.norm
-import com.yesat.vozon.utility.src
-import kotlinx.android.synthetic.main.fragment_client_profile.view.*
+import com.yesat.vozon.utility.*
+import kotlinx.android.synthetic.main.fragment_courier_profile.view.*
 
-class XProfileFragment : Fragment() {
+class YProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val v =  inflater.inflate(R.layout.fragment_client_profile, container, false)
+        val v =  inflater.inflate(R.layout.fragment_courier_profile, container, false)
 
         val user = Shared.currentUser
         norm(user.avatar)
 
         v.v_avatar.src = user.avatar
         v.v_name.text = user.name
+        v.v_courier_type.text = user.courierTypeName
         v.v_about.text = user.about
         v.v_city.text = user.city?.getShortName() ?: ""
         v.v_phone.text = user.phone
         v.v_dob.text = user.dob
-
+        v.v_experience.text = user.experience.toString()
         v.v_setting.setOnClickListener{
-            startActivityForResult(Intent(context,SettingActivity::class.java),26)
+            startActivityForResult(Intent(context, SettingActivity::class.java),26)
         }
-
         return v
     }
 

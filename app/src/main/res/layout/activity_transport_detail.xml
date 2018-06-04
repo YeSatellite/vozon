@@ -26,59 +26,111 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:padding="@dimen/space">
 
-                <TextView
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="@dimen/space"
+                        android:paddingStart="@dimen/space"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/v_length"
+                            style="@style/LargeTextViewStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            tools:text="3м" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Длина" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="@dimen/space"
+                        android:paddingStart="@dimen/space"
+                        android:paddingTop="10dp">
+
+                        <TextView
+                            android:id="@+id/v_width"
+                            style="@style/LargeTextViewStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            tools:text="1м" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ширина" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Дата и время"
-                    android:textSize="12sp" />
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/v_date"
-                    style="@style/LargeTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="4dp"
-                    tools:text="14, Май • 13:30" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingEnd="@dimen/space"
+                        android:paddingStart="@dimen/space"
+                        android:paddingTop="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Дата и время"
-                    android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/v_height"
+                            style="@style/LargeTextViewStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            tools:text="1.5м" />
 
-                <TextView
-                    android:id="@+id/v_start_point"
-                    style="@style/LargeTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="4dp"
-                    tools:text="Павлодар, Каза*стан, Алтынсарина 67" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Высота" />
+                    </LinearLayout>
+                </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Отгрузка"
-                    android:textSize="12sp" />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/v_end_point"
-                    style="@style/LargeTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="4dp"
-                    tools:text="Алматы, Каза*стан, Саина 65" />
-
-                <include
-                    layout="@layout/include_line"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/space"
+                android:paddingEnd="@dimen/space"
+                android:paddingStart="@dimen/space">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -90,11 +142,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Направления"
+                        android:text="Гос. номер"
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_position"
+                        android:id="@+id/v_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -113,11 +165,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Категория"
+                        android:text="Марка"
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_category"
+                        android:id="@+id/v_mark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -137,11 +189,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Способ оплаты"
+                        android:text="Модель"
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_transport"
+                        android:id="@+id/v_model"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -160,11 +212,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Обьем"
+                        android:text="Тип кузова"
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_volume"
+                        android:id="@+id/v_body"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -183,11 +235,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Вес"
+                        android:text="Способы погрузки"
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_mass"
+                        android:id="@+id/v_shipping_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

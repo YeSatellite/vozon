@@ -21,15 +21,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/c_image"
-                android:layout_width="@dimen/space"
-                android:layout_height="@dimen/space"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/explore" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/space"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="5dp"
+                tools:srcCompat="@drawable/tmp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -38,14 +39,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/v_transport"
+                    android:id="@+id/v_title"
                     style="@style/LargeTextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Volkswagen Polo" />
+                    tools:text="Доставить книги до дома" />
 
                 <TextView
-                    android:id="@+id/v_t_type"
+                    android:id="@+id/v_position"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -92,12 +93,6 @@
                 android:layout_height="wrap_content"
                 tools:text="Peter Quill" />
 
-            <TextView
-                android:id="@+id/v_rating"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                tools:text="4.3" />
         </LinearLayout>
 
         <TextView

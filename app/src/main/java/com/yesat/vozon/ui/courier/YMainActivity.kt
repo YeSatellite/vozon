@@ -1,17 +1,19 @@
-package com.yesat.vozon.ui.client
+package com.yesat.vozon.ui.courier
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.yesat.car.ui.courier.transport.TransportListFragment
 import com.yesat.vozon.R
+import com.yesat.vozon.ui.courier.order.YOrderFragment
 import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.utility.norm
-import kotlinx.android.synthetic.main.activity_client_main.*
+import kotlinx.android.synthetic.main.activity_courier_main.*
 
-class XMainActivity : AppCompatActivity() {
+class YMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Shared.setTheme()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_client_main)
+        setContentView(R.layout.activity_courier_main)
         v_navigation.itemIconTintList = null
         v_navigation.enableAnimation(false)
         v_navigation.enableShiftingMode(false)
@@ -20,10 +22,11 @@ class XMainActivity : AppCompatActivity() {
 
         v_navigation.setOnNavigationItemSelectedListener {item ->
             val selectedFragment = when (item.itemId) {
-                R.id.m_route -> XRouteListFragment()
-                R.id.m_order -> XOrderFragment()
-                R.id.m_profile -> XProfileFragment()
-                else -> XProfileFragment()
+                R.id.m_route -> YProfileFragment()
+                R.id.m_transport -> TransportListFragment()
+                R.id.m_order -> YOrderFragment()
+                R.id.m_profile -> YProfileFragment()
+                else -> YProfileFragment()
             }
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.v_container, selectedFragment)

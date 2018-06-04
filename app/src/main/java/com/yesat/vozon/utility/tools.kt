@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.client.XMainActivity
+import com.yesat.vozon.ui.courier.YMainActivity
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
@@ -127,7 +128,7 @@ fun locationFormat(location: Location, detail: String? = null): String{
 
 fun clientOrCourier() : Class<*>? = when (Shared.currentUser.type){
     User.CLIENT -> XMainActivity::class.java
-    User.COURIER -> XMainActivity::class.java
+    User.COURIER -> YMainActivity::class.java
     else -> {
         Shared.currentUser = User()
         null

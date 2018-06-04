@@ -63,7 +63,7 @@ class OrderNewActivity : AppCompatActivity() {
         })
         v_shipping_date.setOnClickListener(setDateListener(this))
         v_shipping_time.setOnClickListener(setTimeListener(this))
-        v_payment_type.setOnClickListener {
+        v_transport.setOnClickListener {
             val i = Intent(this@OrderNewActivity, InfoTmpActivity::class.java)
             Shared.call = Api.infoService.paymentType()
             startActivityForResult(i,PAYMENT_TYPE_REQUEST_CODE)
@@ -176,7 +176,7 @@ class OrderNewActivity : AppCompatActivity() {
                 PAYMENT_TYPE_REQUEST_CODE -> {
                     val paymentType =  data!!.get(InfoTmp::class.java)
                     order.paymentType = paymentType.id
-                    v_payment_type.setText(paymentType.name, TextView.BufferType.EDITABLE)
+                    v_transport.setText(paymentType.name, TextView.BufferType.EDITABLE)
                 }
             }
         }

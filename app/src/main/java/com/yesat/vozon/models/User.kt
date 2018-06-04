@@ -16,6 +16,18 @@ class User : Serializable {
     @Expose var avatar: String? = null
     @Expose var experience: Long? = null
     @Expose var courier_type: Long? = null
+    var courierTypeName: String?
+        get() = when (courier_type?.toInt()){
+                1 -> "Физическое лицо"
+                2 -> "Юридическое лицо"
+                else -> null
+            }
+        set(value) = when (value){
+            "Физическое лицо" -> courier_type = 1
+            "Юридическое лицо" -> courier_type = 2
+            else -> {}
+        }
+
     @Expose var rating: String? = null
         get() = if (field?.trim() != "-1") field else ""
     @Expose var token: String? = null

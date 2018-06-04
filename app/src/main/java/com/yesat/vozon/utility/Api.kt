@@ -71,7 +71,7 @@ object Api {
         fun city(@Query("region") regionId: Long): Call<List<Location>>
 
         @GET("$path/region/")
-        fun region(@Query("country/") countryId: Long): Call<List<InfoTmp>>
+        fun region(@Query("country") countryId: Long): Call<List<InfoTmp>>
 
         @GET("$path/country/")
         fun country(): Call<List<InfoTmp>>
@@ -115,6 +115,11 @@ object Api {
 
         @POST("$path/order/")
         fun orderAdd(@Body order: Order): Call<Order>
+
+        @POST("$path/order/{id}/done/")
+        @Multipart
+        fun orderDone(@Path("id") id: Long,
+                      @Part("rating") rating: Int): Call<Any>
 
         @Multipart
         @PATCH("$path/order/{id}/")
@@ -200,34 +205,47 @@ object Api {
 }
 
 fun <T> Call<T>.run3(context: Activity, ok: (body:T) -> Unit){
-    val pd = ProgressDialog(context)
-    pd.setTitle("Loading")
-    pd.show()
-    run586(this, ok, { _, _ -> }, { pd.dismiss() })
+    this.run2(context,
+            { body -> ok(body)},
+            { _, error -> context.snack(error)}
+    )
+}
+fun <T> Call<T>.run3(srRefresh: SwipeRefreshLayout, ok: (body:T) -> Unit){
+    this.run2(srRefresh,
+            { body -> ok(body)},
+            { _, error -> srRefresh.snack(error)}
+    )
 }
 
 fun <T> Call<T>.run2(context: Activity,
                      ok: (body:T) -> Unit,
-                     fail: (code: Int, error: String) -> Unit
-                     ){
+                     fail: (code: Int, error: String) ->
+                     Unit = { _, error ->
+                         context.snack(error)
+                     }){
     val pd = ProgressDialog(context)
     pd.show()
 
-    run586(this, ok, fail, { pd.dismiss() })
+    run1(this, ok, fail, { pd.dismiss() })
 }
 
 fun <T> Call<T>.run2(srRefresh: SwipeRefreshLayout,
                      ok: (body:T) -> Unit,
                      fail: (code: Int, error: String) -> Unit){
-    run586(this, ok, fail, { srRefresh.isRefreshing = false })
+    run1(this, ok, fail, { srRefresh.isRefreshing = false })
+}
+
+fun <T> Call<T>.run2(ok: (body:T) -> Unit,
+                     fail: (code: Int, error: String) -> Unit = {_,_ ->}){
+    run1(this, ok, fail, {})
 }
 
 
 
-private fun <T> run586(call: Call<T>,
-                ok: (body:T) -> Unit,
-                fail: (code: Int, error: String) -> Unit,
-                stop: () -> Unit){
+private fun <T> run1(call: Call<T>,
+                     ok: (body:T) -> Unit,
+                     fail: (code: Int, error: String) -> Unit,
+                     stop: () -> Unit){
     call.enqueue(object : Callback<T> {
         override fun onResponse(call: Call<T>?, response: Response<T>?) {
             val body = response!!.body()

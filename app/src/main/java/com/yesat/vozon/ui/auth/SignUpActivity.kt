@@ -18,7 +18,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         v_courier.setOnClickListener{
-            val i = Intent(this, XSignUpActivity::class.java)
+            val i = Intent(this, YSignUpActivity::class.java)
             startActivity(i)
         }
     }

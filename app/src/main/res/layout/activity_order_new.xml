@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="?appBackground"
     tools:context=".ui.auth.XSignUpActivity">
 
     <ScrollView
@@ -39,7 +40,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/call" />
+                    app:srcCompat="@drawable/add_image" />
 
                 <ImageView
                     android:id="@+id/v_image2"
@@ -48,7 +49,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/call" />
+                    app:srcCompat="@drawable/add_image" />
 
             </LinearLayout>
 
@@ -233,7 +234,7 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/v_payment_type"
+                android:id="@+id/v_transport"
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

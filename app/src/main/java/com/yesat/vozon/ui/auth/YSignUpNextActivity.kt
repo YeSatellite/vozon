@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import android.view.MenuItem
 import com.yesat.vozon.utility.Api
 import com.yesat.vozon.R
 import com.yesat.vozon.models.User
@@ -19,7 +20,7 @@ import okhttp3.RequestBody
 import java.io.File
 
 
-class XSignUpNextActivity : AppCompatActivity() {
+class YSignUpNextActivity : AppCompatActivity() {
 
     private var user: User? = null
     private var image: File? = null
@@ -34,7 +35,7 @@ class XSignUpNextActivity : AppCompatActivity() {
 
     }
 
-    private fun next(){
+    private fun done(){
         try{
             user!!.courier_type = when(v_courier_type.checkedRadioButtonId) {
                 R.id.v_natural_person -> 1
@@ -52,10 +53,12 @@ class XSignUpNextActivity : AppCompatActivity() {
             val type = RequestBody.create(formData, user!!.type!!)
             val image = image!!.toMultiPartImage("avatar")
             val courierType = RequestBody.create(formData, user!!.courier_type!!.toString())
-            Api.authService.register(phone,name,city,about,dob,type,image).run2(this,{
-                val i = Intent(this, LoginActivity::class.java)
-                i.put(user!!.phone!!)
-                startActivityForResult(i, XSignUpActivity.FINISH_REQUEST_CODE)
+            val experience = RequestBody.create(formData, user!!.experience!!.toString())
+            Api.authService.register(phone,name,city,about,dob,type,image,courierType,experience)
+                    .run2(this,{
+                        val i = Intent(this, LoginActivity::class.java)
+                        i.put(user!!.phone!!)
+                        startActivityForResult(i, XSignUpActivity.FINISH_REQUEST_CODE)
             },{ _, error ->
                 snack(error)
             })
@@ -67,8 +70,18 @@ class XSignUpNextActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_next, menu)
+        menuInflater.inflate(R.menu.menu_done, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.done -> {
+                done()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
+import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -15,6 +16,7 @@ abstract class ListActivity<T,V : ListFragment.ViewHolder>: AppCompatActivity() 
     var refreshListener: SwipeRefreshLayout.OnRefreshListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(Shared.theme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_list)
 
