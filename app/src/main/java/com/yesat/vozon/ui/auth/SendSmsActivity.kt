@@ -31,6 +31,10 @@ class SendSmsActivity : AppCompatActivity() {
     }
 
     private fun sendSms(phone: String){
+        val token = Shared.token
+        if (token.isEmpty()){
+            snack("Try later")
+        }
         val map = hashMapOf("phone" to phone)
         Api.authService.sentSms(map).run2(this,{
             val i = Intent(this, LoginActivity::class.java)

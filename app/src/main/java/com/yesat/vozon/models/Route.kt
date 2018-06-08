@@ -43,11 +43,12 @@ class Route : Serializable {
     @SerializedName("shipping_time")
     @Expose var shippingTime: String? = null
 
+    @Expose var comment: String? = null
 
     class FilterRoute(
-            var type: Long? = null,
-            var startPoint: Long? = null,
-            var endPoint: Long? = null,
+            var type: InfoTmp? = null,
+            var startPoint: Location? = null,
+            var endPoint: Location? = null,
             var startDate: String? = null,
             var endDate: String? = null
     ) : Serializable

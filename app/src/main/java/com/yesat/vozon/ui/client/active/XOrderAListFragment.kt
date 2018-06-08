@@ -20,7 +20,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
     }
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        Api.clientService.orders(Shared.action).run2(srRefresh,{ body ->
+        Api.clientService.orders(Shared.active).run2(srRefresh,{ body ->
             norm(body.size.toString())
             adapter.list = body
             adapter.notifyDataSetChanged()
@@ -39,7 +39,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         val hTitle = v.v_title!!
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
-        val hPosition = v.v_position!!
+        val hPosition = v.v_t_type!!
         val hYourCourier = v.v_your_courier!!
         val hImage= v.v_image!!
 
@@ -49,7 +49,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         holder.hStartPoint.text = item.startPoint!!.getShortName()
         holder.hEndPoint.text = item.endPoint!!.getShortName()
         holder.hPosition.text = item.startPoint!!.getShortName()
-        holder.hImage.src = item.image1
+        holder.hImage.src(item.image1,R.drawable.tmp)
         holder.hYourCourier.setOnClickListener({
 
         })

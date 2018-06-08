@@ -2,6 +2,8 @@ package com.yesat.car.ui.courier.transport
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.*
@@ -11,10 +13,7 @@ import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.ui.ListToolbarFragment
 import com.yesat.vozon.ui.courier.transport.TransportDetailActivity
 import com.yesat.vozon.ui.courier.transport.TransportNewActivity
-import com.yesat.vozon.utility.Api
-import com.yesat.vozon.utility.put
-import com.yesat.vozon.utility.run2
-import com.yesat.vozon.utility.snack
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_transport.view.*
 
 
@@ -39,12 +38,14 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
     }
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
-//        val hImage = v.v_image!!
-        val hName = v.v_name!!
+        val hImage = v.v_image!!
+        val hName = v.v_transport!!
         val hNumber= v.v_number!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Transport) {
+        holder.hImage.src(item.typeIcon,R.drawable.tmp_truck)
+        holder.hImage.addFilter()
         holder.hName.text = item.fullName
         holder.hNumber.text = item.number
     }

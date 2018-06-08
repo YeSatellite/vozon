@@ -3,6 +3,10 @@ package com.yesat.vozon.models
 import com.google.gson.Gson
 import com.google.gson.annotations.Expose
 import java.io.Serializable
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent
+import android.net.Uri
+
 
 class User : Serializable {
 
@@ -10,7 +14,6 @@ class User : Serializable {
     @Expose var phone: String? = null
     @Expose var name: String? = null
     @Expose var about: String? = null
-    @Expose var dob: String? = null
     @Expose var type: String? = null
     @Expose var city: Location? = null
     @Expose var avatar: String? = null
@@ -43,7 +46,6 @@ class User : Serializable {
             |   phone=$phone,
             |   name=$name,
             |   about=$about,
-            |   dob=$dob,
             |   type=$type,
             |   avatar=$avatar,
             |   experience=$experience,
@@ -51,6 +53,10 @@ class User : Serializable {
             |   rating=$rating,
             |   token=$token
             |)""".trimMargin()
+    }
+
+    fun callIntent(): Intent{
+        return Intent(Intent.ACTION_CALL, Uri.parse("tel:$phone"))
     }
 
 

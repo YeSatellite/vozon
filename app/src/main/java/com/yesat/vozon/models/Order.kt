@@ -1,12 +1,13 @@
 package com.yesat.vozon.models
 
+import android.content.Intent
+import android.net.Uri
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 import java.io.Serializable
 
 class Order : Serializable {
-
     @Expose var id: Long? = null
 
     @Expose var owner: User? = null
@@ -73,6 +74,11 @@ class Order : Serializable {
     @Expose var shippingTime: String? = null
 
     @Expose var offer: Offer? = null
+
+    fun callIntent(): Intent {
+        return Intent(Intent.ACTION_CALL, Uri.parse("tel:$acceptPersonContact"))
+    }
+
 
 
 }

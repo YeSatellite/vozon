@@ -41,7 +41,7 @@ class StartActivity : AppCompatActivity() {
                     next()
                 },
                 { code, _ ->
-                    if (code == 200) {
+                    if (code == 99 || code == 404) {
                         Shared.currentUser = User()
                         next()
                     }
@@ -54,6 +54,7 @@ class StartActivity : AppCompatActivity() {
         norm(action)
         i.putExtra(Shared.action, action)
         startActivityForResult(i, 45)
+        this.overridePendingTransition(0, 0)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

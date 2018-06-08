@@ -17,6 +17,7 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/v_image"
+            android:padding="10dp"
             android:background="?editTextBackground"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -34,7 +35,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/v_name"
+                android:id="@+id/v_transport"
                 style="@style/LargeTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

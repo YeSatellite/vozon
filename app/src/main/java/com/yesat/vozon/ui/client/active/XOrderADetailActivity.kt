@@ -7,7 +7,7 @@ import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.ImagePagerAdapter
 import com.yesat.vozon.utility.*
-import kotlinx.android.synthetic.main.activity_order_detail_b.*
+import kotlinx.android.synthetic.main.activity_order_a_detail.*
 
 
 class XOrderADetailActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class XOrderADetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order_detail_b)
+        setContentView(R.layout.activity_order_a_detail)
 
         order = intent.get(Order::class.java)
         norm(order.toString())
@@ -32,7 +32,7 @@ class XOrderADetailActivity : AppCompatActivity() {
         v_volume.text = (order!!.width!! * order!!.height!!*order!!.length!!).toString()
         v_mass.text = order!!.mass.toString()
 
-        v_position.text = order!!.startPoint!! - order!!.endPoint!!
+        v_t_type.text = order!!.startPoint!! - order!!.endPoint!!
         v_category.text = order!!.categoryName
         v_transport.text = order!!.paymentTypeName
 

@@ -23,6 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="5dp"
+            android:scaleType="centerCrop"
             tools:srcCompat="@drawable/tmp" />
 
         <LinearLayout
@@ -41,7 +42,7 @@
                 tools:text="Доставить книги до дома" />
 
             <TextView
-                android:id="@+id/v_position"
+                android:id="@+id/v_t_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -66,7 +67,7 @@
         layout="@layout/include_route"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/v_name" />
+        app:layout_constraintTop_toBottomOf="@+id/v_transport" />
 
     <include
         layout="@layout/include_line"

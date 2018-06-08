@@ -20,4 +20,7 @@
     <string name="sign_up">Создать аккаунт</string>
     <string name="done">Готово</string>
     <string name="is_empty">%1$s is empty</string>
+    <string name="_o_">%1$s ● %2$s</string>
+    <string name="meter">%1$.0fм</string>
+    <string name="loading">Погрузка</string>
 </resources>

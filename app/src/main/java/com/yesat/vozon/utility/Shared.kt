@@ -27,6 +27,9 @@ object Shared {
     var currentUser = User()
         set(value) {
             field = value
+
+
+
             val editor = preferences!!.edit()
             editor.putString(user, field.toJson())
             editor.apply()
@@ -35,6 +38,7 @@ object Shared {
     fun init(preferences: SharedPreferences) {
         Shared.preferences = preferences
         currentUser = User.fromJson(preferences.getString(user, "{}"))
+        token = preferences.getString("token", "")
     }
 
     var theme: Int = R.style.AppTheme
@@ -52,5 +56,14 @@ object Shared {
             }
         }
     }
+
+    var token: String = ""
+        set(value) {
+            field = value
+
+            val editor = preferences!!.edit()
+            editor.putString("token", field)
+            editor.apply()
+        }
 }
 

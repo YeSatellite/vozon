@@ -46,7 +46,6 @@ object Api {
                 @Part("name") name:RequestBody,
                 @Part("city") city:RequestBody,
                 @Part("about") about:RequestBody,
-                @Part("dob") dob:RequestBody,
                 @Part("type") type:RequestBody,
                 @Part image: MultipartBody.Part,
                 @Part("courier_type") courier_type:RequestBody? =null,
@@ -95,9 +94,6 @@ object Api {
         @GET("$path/$transport/mark/")
         fun tMark(): Call<List<InfoTmp>>
 
-        @GET("$path/$transport/body/")
-        fun tBody(): Call<List<InfoTmp>>
-
         @GET("$path/$transport/model/")
         fun tModel(@Query("mark/") markId: Long): Call<List<InfoTmp>>
     }
@@ -136,11 +132,11 @@ object Api {
                          @Part("offer") offerId: Long): Call<Any>
 
         @GET("$path/routes/")
-        fun routes(@Query("type") type: Long,
-                   @Query("start_point") startPoint: Long,
-                   @Query("end_point") endPoint: Long,
-                   @Query("start_date") startDate: String,
-                   @Query("end_date") endDate: String): Call<List<Route>>
+        fun routes(@Query("type") type: Long?,
+                   @Query("start_point") startPoint: Long?,
+                   @Query("end_point") endPoint: Long?,
+                   @Query("start_date") startDate: String?,
+                   @Query("end_date") endDate: String?): Call<List<Route>>
     }
 
     var courierService = retrofit.create(CourierService::class.java)!!
@@ -257,12 +253,12 @@ private fun <T> run1(call: Call<T>,
                 }
             } else {
                 if( response.code() == 401){
-                    fail(200, "fatal")
+                    fail(99, "fatal")
                 }
                 val bodyString = response.errorBody()?.string()
                 norm("error body: $bodyString\n" +
                         "error status: ${response.code()}")
-                val code = response.headers()["Error-Code"]?.toIntOrNull() ?: 0
+                val code = response.headers()["Error-Code"]?.toIntOrNull() ?: response.code()
                 fail(code, Api.ERROR_CODE[code] ?: "Something went wrong")
             }
             stop()

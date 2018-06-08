@@ -14,6 +14,7 @@
         android:layout_marginTop="@dimen/space"
         android:background="@drawable/rounded_grey"
         android:orientation="vertical"
+        android:paddingTop="@dimen/space"
         tools:ignore="UselessParent">
 
         <LinearLayout
@@ -72,8 +73,9 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginEnd="@dimen/space"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
             app:riv_corner_radius="5dp"
             tools:srcCompat="@drawable/tmp" />
 

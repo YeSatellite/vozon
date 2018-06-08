@@ -20,7 +20,7 @@
             app:srcCompat="@drawable/car" />
 
         <TextView
-            android:id="@+id/v_name"
+            android:id="@+id/v_transport"
             style="@style/LargeTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

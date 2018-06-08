@@ -113,32 +113,6 @@
                 android:textSize="15sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/v_body_"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/ProfileEditTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Тип кузова" />
-
-            <EditText
-                android:id="@+id/v_body"
-                style="@style/ProfileEditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:drawableEnd="@drawable/next_"
-                android:focusable="false"
-                android:gravity="end"
-                android:hint="Выберите тип кузова"
-                android:inputType="text"
-                android:textSize="15sp"
-                tools:text="Седан" />
-        </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

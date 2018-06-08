@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
 class SettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(Shared.theme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
         addBackPress()

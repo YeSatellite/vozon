@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/next_"
                 android:focusable="false"
-                android:hint="Подгрузка"
+                android:hint="@string/loading"
                 android:inputType="text" />
 
             <include
@@ -169,6 +169,11 @@
                 android:text="ДАТА"
                 android:textSize="12sp" />
 
+            <include
+                layout="@layout/include_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
             <EditText
                 android:id="@+id/v_shipping_date"
                 style="@style/ProfileEditTextStyle"
@@ -177,11 +182,6 @@
                 android:focusable="false"
                 android:hint="Дата"
                 android:inputType="textPersonName" />
-
-            <include
-                layout="@layout/include_line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp" />
 
             <EditText
                 android:id="@+id/v_shipping_time"

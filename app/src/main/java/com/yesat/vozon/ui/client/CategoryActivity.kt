@@ -37,11 +37,11 @@ class CategoryActivity: ListActivity<Category, CategoryActivity.ViewHolder>() {
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
         val hIcon = v.v_icon!!
-        val hName = v.v_name!!
+        val hName = v.v_transport!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Category) {
-        holder.hIcon.src = item.icon
+        holder.hIcon.src(item.icon,R.drawable.tmp_truck)
         holder.hName.text = item.name
     }
 

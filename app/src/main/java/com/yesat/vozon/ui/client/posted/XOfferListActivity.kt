@@ -41,19 +41,19 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
         val hAvatar = v.v_avatar!!
-        val hName = v.v_name!!
+        val hName = v.v_transport!!
         val hRating = v.v_rating!!
         val hDate = v.v_date!!
         val hAbout = v.v_about!!
         val hTName = v.v_t_name!!
-        val hTType = v.v_name!!
+        val hTType = v.v_transport!!
         val hPrice = v.v_price!!
         val hAccept = v.v_accept!!
         val hReject = v.v_reject!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Offer) {
-        holder.hAvatar.src = item.transport?.owner?.avatar
+        holder.hAvatar.src(item.transport?.owner?.avatar,R.drawable.tmp)
         holder.hName.text = item.transport?.owner?.name
         holder.hRating.text = item.transport?.owner?.rating
         // TODO hDate

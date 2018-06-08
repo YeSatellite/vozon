@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,12 @@ abstract class ListToolbarFragment<T,V : ListFragment.ViewHolder> : ListFragment
                               savedInstanceState: Bundle?): View? {
         val v =  inflater.inflate(R.layout.fragment_list_toolbar, container, false)
         (activity as AppCompatActivity).setSupportActionBar(v.v_toolbar)
+
+        val typedValue = TypedValue()
+        context!!.theme.resolveAttribute(R.attr.textColorLarge, typedValue, true)
+        val color = typedValue.data
+        v.v_toolbar.setTitleTextColor(color)
+        v.v_toolbar.setSubtitleTextColor(color)
 
         val adapter = ListAdapter()
         v.v_list.adapter = adapter

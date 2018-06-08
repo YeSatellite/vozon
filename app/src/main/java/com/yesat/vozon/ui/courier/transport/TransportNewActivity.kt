@@ -20,7 +20,6 @@ class TransportNewActivity : AppCompatActivity() {
     companion object {
         const val MARK_REQUEST_CODE = 57
         const val MODEL_REQUEST_CODE = 84
-        const val BODY_REQUEST_CODE = 86
         const val SHIPPING_TYPE_REQUEST_CODE = 89
         const val IMAGE1_REQUEST_CODE = 12
         const val IMAGE2_REQUEST_CODE = 13
@@ -46,11 +45,6 @@ class TransportNewActivity : AppCompatActivity() {
             })
             startActivityForResult(i, MODEL_REQUEST_CODE)
         }
-        v_body.setOnClickListener {
-            val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
-            Shared.call= Api.infoService.tBody()
-            startActivityForResult(i, BODY_REQUEST_CODE)
-        }
 
         v_shipping_type.setOnClickListener {
             val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
@@ -75,7 +69,6 @@ class TransportNewActivity : AppCompatActivity() {
             checkNotNull(images[1]){"image2  is empty"}
             transport.number = v_number.get("number is empty")
             checkNotNull(transport.model){"model is empty"}
-            checkNotNull(transport.body){"body id empty"}
             transport.height = v_height.get("height is empty").toFloat()
             transport.width = v_width.get("width is empty").toFloat()
             transport.length = v_length.get("length is empty").toFloat()
@@ -114,11 +107,6 @@ class TransportNewActivity : AppCompatActivity() {
                     val model =  data!!.get(InfoTmp::class.java)
                     transport.model = model.id
                     v_model.content = model.name ?: ""
-                }
-                BODY_REQUEST_CODE -> {
-                    val body =  data!!.get(InfoTmp::class.java)
-                    transport.body = body.id
-                    v_body.content = body.name ?: ""
                 }
                 SHIPPING_TYPE_REQUEST_CODE -> {
                     val shippingType =  data!!.get(InfoTmp::class.java)

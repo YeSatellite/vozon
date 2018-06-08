@@ -7,7 +7,7 @@
         <item name="android:windowBackground">@color/appWindowBackground</item>
         <item name="appBackground">@color/appBackground</item>
         <item name="appBackgroundCard">@color/appBackground</item>
-        <item name="android:editTextBackground">@android:color/white</item>
+        <item name="android:editTextBackground">@android:color/white</item>d
         <item name="lineColor">@color/lineColor</item>
 
         <item name="android:editTextColor">@color/appEditTextColor</item>
@@ -19,6 +19,10 @@
         <item name="actionBarStyle">@style/AppActionBar</item>
         <item name="actionMenuTextColor">?textColorLarge</item>
         <item name="android:homeAsUpIndicator">@drawable/left_</item>
+        <item name="appIconColor">@color/appTextLargeColor</item>
+
+        <item name="iconAdd">@drawable/add</item>
+
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -38,6 +42,10 @@
         <item name="android:editTextColor">@color/appEditTextColorDark</item>
         <item name="android:textColor">@color/appTextColorDark</item>
         <item name="textColorLarge">@color/appTextLargeColorDark</item>
+        <item name="android:homeAsUpIndicator">@drawable/left_white_</item>
+        <item name="appIconColor">@color/appTextColorDark</item>
+
+        <item name="iconAdd">@drawable/add_white</item>
     </style>
     <style name="AppThemeDark.NoActionBar">
         <item name="windowActionBar">false</item>

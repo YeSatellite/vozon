@@ -3,8 +3,8 @@ package com.yesat.vozon.ui.client
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.vozon.R
+import com.yesat.vozon.ui.client.route.XRouteListFragment
 import com.yesat.vozon.utility.Shared
-import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.activity_client_main.*
 
 class XMainActivity : AppCompatActivity() {
@@ -30,6 +30,6 @@ class XMainActivity : AppCompatActivity() {
             transaction.commit()
             true}
 
-        norm("hello")
+        v_navigation.selectedItemId = R.id.m_route
     }
 }

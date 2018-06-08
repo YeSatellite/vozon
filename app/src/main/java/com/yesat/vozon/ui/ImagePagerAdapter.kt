@@ -29,7 +29,7 @@ internal class ImagePagerAdapter(
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val v = inflater.inflate(R.layout.item_image_pager, container, false)
 
-        v.v_image.src = images[position]
+        v.v_image.src(images[position],R.drawable.tmp)
 
         container.addView(v)
         return v

@@ -17,7 +17,7 @@
         android:layout_marginStart="4.5dp"
         android:layout_marginTop="4dp"
         android:layout_weight="1"
-        android:background="@android:color/black" />
+        android:background="?appIconColor" />
 
     <ImageView
         android:layout_width="6dp"

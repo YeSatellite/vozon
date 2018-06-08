@@ -5,5 +5,9 @@
         <attr name="lineColor" format="color" />
         <attr name="appBackground" format="color" />
         <attr name="appBackgroundCard" format="color" />
+        <attr name="appIconColor" format="color" />
+
+
+        <attr name="iconAdd" format="reference" />
     </declare-styleable>
 </resources>

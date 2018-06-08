@@ -36,7 +36,7 @@ class CityFragment(val call: Call<List<Location>>) : ListFragment<Location, City
     }
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
-        val hName = v.v_name!!
+        val hName = v.v_transport!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Location) {

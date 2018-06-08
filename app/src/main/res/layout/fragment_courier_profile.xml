@@ -16,12 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/space">
+            android:paddingBottom="@dimen/space"
+            android:paddingStart="@dimen/space">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/v_avatar"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginTop="@dimen/space"
                 android:src="@drawable/user_placeholder" />
 
             <LinearLayout
@@ -29,11 +31,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
-                    android:id="@+id/v_name"
+                    android:id="@+id/v_transport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/space"
+                    android:layout_marginTop="@dimen/space"
                     android:textColor="?attr/textColorLarge"
                     android:textSize="18sp"
                     tools:text="Zharkyn Yernar" />
@@ -48,13 +52,11 @@
             </LinearLayout>
 
 
-
             <ImageView
                 android:id="@+id/v_setting"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:paddingBottom="@dimen/space"
-                android:paddingStart="@dimen/space"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="@dimen/space"
                 app:srcCompat="@drawable/setting" />
 
         </LinearLayout>
@@ -75,21 +77,6 @@
             layout="@layout/include_line"
             android:layout_width="match_parent"
             android:layout_height="1dp" />
-
-        <TextView
-            android:id="@+id/v_dob"
-            style="@style/LargeTextViewStyle.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/calendar_"
-            tools:text="3 February, 1984" />
-
-        <include
-            layout="@layout/include_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="@dimen/space"
-            android:layout_marginStart="@dimen/space" />
 
         <TextView
             android:id="@+id/v_phone"

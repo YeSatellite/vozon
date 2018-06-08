@@ -24,12 +24,11 @@ class XProfileFragment : Fragment() {
         val user = Shared.currentUser
         norm(user.avatar)
 
-        v.v_avatar.src = user.avatar
-        v.v_name.text = user.name
+        v.v_avatar.src(user.avatar,R.drawable.user_placeholder)
+        v.v_transport.text = user.name
         v.v_about.text = user.about
         v.v_city.text = user.city?.getShortName() ?: ""
         v.v_phone.text = user.phone
-        v.v_dob.text = user.dob
 
         v.v_setting.setOnClickListener{
             startActivityForResult(Intent(context,SettingActivity::class.java),26)

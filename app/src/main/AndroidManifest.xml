@@ -14,42 +14,71 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.client.XMainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.auth.LoginActivity"
-            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.info.InfoTmpActivity" />
+        <activity android:name=".ui.info.LocationActivity" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.auth.SendSmsActivity" />
         <activity android:name=".ui.auth.XSignUpActivity" />
         <activity android:name=".ui.auth.YSignUpNextActivity" />
         <activity android:name=".ui.auth.SettingActivity" />
         <activity android:name=".ui.auth.SignUpActivity" />
-        <activity android:name=".ui.info.InfoTmpActivity" />
-        <activity android:name=".ui.info.LocationActivity" />
+        <activity android:name=".ui.auth.YSignUpActivity" />
+        <activity
+            android:name=".ui.client.XMainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.client.posted.XOrderPDetailActivity" />
         <activity android:name=".ui.client.posted.XOfferListActivity" />
         <activity android:name=".ui.client.OrderNewActivity" />
         <activity android:name=".ui.client.CategoryActivity" />
         <activity android:name=".ui.client.active.XOrderADetailActivity" />
+        <activity android:name=".ui.client.route.RouteFilterActivity" />
+        <activity android:name=".ui.client.route.XRouteDetailActivity" />
+        <activity
+            android:name=".ui.courier.YMainActivity"
+            android:theme="@style/AppThemeDark.NoActionBar" />
+        <activity
+            android:name=".ui.courier.transport.TransportNewActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.transport.TransportDetailActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.order.YOrderPDetailActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.order.OfferNewActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.transport.TransportListActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.route.RouteNewActivity"
+            android:label="Добавить объявление"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.route.YRouteDetailActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity android:name=".ui.courier.order.YOrderWDetailActivity"
+            android:theme="@style/AppThemeDark"/>
+        <activity android:name=".ui.courier.order.YOrderADetailActivity"
+            android:theme="@style/AppThemeDark"/>
 
-        <activity android:name=".ui.courier.YMainActivity"
-            android:theme="@style/AppThemeDark.NoActionBar"/>
-        <activity android:name=".ui.courier.transport.TransportNewActivity"
-            android:theme="@style/AppThemeDark"/>
-        <activity android:name=".ui.courier.transport.TransportDetailActivity"
-            android:theme="@style/AppThemeDark"/>
-        <activity android:name=".ui.courier.order.YOrderPDetailActivity"
-            android:theme="@style/AppThemeDark"/>
-        <activity android:name=".ui.courier.order.OfferNewActivity"
-            android:theme="@style/AppThemeDark"/>
-        <activity android:name=".ui.auth.YSignUpActivity" />
+        <service
+            android:name=".services.MyFirebaseInstanceIDService"
+            android:permission="android.permission.INTERNET">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

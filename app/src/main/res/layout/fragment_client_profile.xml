@@ -25,7 +25,7 @@
                 android:src="@drawable/user_placeholder" />
 
             <TextView
-                android:id="@+id/v_name"
+                android:id="@+id/v_transport"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space"
@@ -60,21 +60,6 @@
             layout="@layout/include_line"
             android:layout_width="match_parent"
             android:layout_height="1dp" />
-
-        <TextView
-            android:id="@+id/v_dob"
-            style="@style/LargeTextViewStyle.Icon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/calendar_"
-            tools:text="3 February, 1984" />
-
-        <include
-            layout="@layout/include_line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginEnd="@dimen/space"
-            android:layout_marginStart="@dimen/space" />
 
         <TextView
             android:id="@+id/v_phone"

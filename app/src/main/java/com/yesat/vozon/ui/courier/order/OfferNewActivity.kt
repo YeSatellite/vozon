@@ -12,6 +12,7 @@ import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.models.Transport
+import com.yesat.vozon.ui.courier.transport.TransportListActivity
 import com.yesat.vozon.ui.info.InfoTmpActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_offer_new.*
@@ -34,11 +35,11 @@ class OfferNewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_offer_new)
 
         order = intent.get(Order::class.java)
-        v_date.text = "Предложение актуально до ${order!!.shippingDate}"
+        v_date.text = "Предложение актуально до ${order.shippingDate}"
 
         v_transport.setOnClickListener{
-//            val i = Intent(this@OfferNewActivity,TransportListActivity::class.java)
-//            startActivityForResult(i, TRANSPORT_REQUEST_CODE)
+            val i = Intent(this@OfferNewActivity, TransportListActivity::class.java)
+            startActivityForResult(i, TRANSPORT_REQUEST_CODE)
         }
         v_payment_type.setOnClickListener {
             val i = Intent(this@OfferNewActivity,InfoTmpActivity::class.java)
@@ -103,7 +104,7 @@ class OfferNewActivity : AppCompatActivity() {
             when (requestCode) {
                 TRANSPORT_REQUEST_CODE -> {
                     offer.transport = data!!.get(Transport::class.java)
-                    v_transport.text = "${offer.transport!!.markName}, ${offer.transport!!.modelName}"
+                    v_transport.text = offer.transport!!.fullName
                 }
                 PAYMENT_TYPE_REQUEST_CODE -> {
                     val paymentType =  data!!.get(InfoTmp::class.java)

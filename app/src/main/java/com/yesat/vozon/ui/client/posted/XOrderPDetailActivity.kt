@@ -33,7 +33,7 @@ class XOrderPDetailActivity : AppCompatActivity() {
         v_volume.text = (order.width!! * order.height!!*order.length!!).toString()
         v_mass.text = order.mass.toString()
 
-        v_position.text = order.startPoint!! - order.endPoint!!
+        v_t_type.text = order.startPoint!! - order.endPoint!!
         v_category.text = order.categoryName
         v_transport.text = order.paymentTypeName
 

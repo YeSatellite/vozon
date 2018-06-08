@@ -21,6 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:riv_corner_radius="30dp"
+            android:scaleType="centerCrop"
             tools:srcCompat="@drawable/tmp" />
 
         <LinearLayout
@@ -35,7 +36,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/v_name"
+                    android:id="@+id/v_transport"
                     style="@style/LargeTextViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -113,7 +114,7 @@
                 tools:text="Volkswagen Polo" />
 
             <TextView
-                android:id="@+id/v_name"
+                android:id="@+id/v_transport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"

@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v7.app.AppCompatActivity
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
-import com.yesat.vozon.ui.client.active.XOrderAListFragment
-import com.yesat.vozon.ui.client.posted.XOrderPListFragment
 import kotlinx.android.synthetic.main.tmp_pager.view.*
+
 
 class YOrderFragment : Fragment() {
 
@@ -21,12 +21,18 @@ class YOrderFragment : Fragment() {
 
         val v = inflater.inflate(R.layout.tmp_pager, container, false)
 
+        val typedValue = TypedValue()
+        context!!.theme.resolveAttribute(R.attr.textColorLarge, typedValue, true)
+        val color = typedValue.data
+        v.v_toolbar.setTitleTextColor(color)
+        v.v_toolbar.setSubtitleTextColor(color)
+
         v.pager.adapter = OrderPagesAdapter(childFragmentManager)
         val tabs = v.tab_layout
         tabs.shouldExpand = true
         tabs.setViewPager(v.pager)
 
-        (activity as AppCompatActivity).setSupportActionBar(v.toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(v.v_toolbar)
 
         return v
     }
@@ -42,8 +48,8 @@ class YOrderFragment : Fragment() {
         override fun getItem(position: Int): Fragment? {
             return when (position) {
                 0 -> YOrderPListFragment()
-                1 -> YOrderPListFragment()
-                2 -> YOrderPListFragment()
+                1 -> YOrderWListFragment()
+                2 -> YOrderAListFragment()
                 else -> null
             }
         }

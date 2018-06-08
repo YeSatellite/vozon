@@ -24,13 +24,12 @@ class TransportDetailActivity : AppCompatActivity() {
                 this,
                 listOf(transport.image1, transport.image2))
 
-        v_length.text = transport.length.toString()
-        v_width.text = transport.width.toString()
-        v_height.text = transport.height.toString()
+        v_length.text = getString(R.string.meter,transport.length)
+        v_width.text = getString(R.string.meter,transport.width)
+        v_height.text = getString(R.string.meter,transport.height)
         v_number.text = transport.number
         v_mark.text = transport.markName
         v_model.text = transport.modelName
-        v_body.text = transport.bodyName
         v_shipping_type.text = transport.shippingTypeName
         v_comment.text = transport.comment
 

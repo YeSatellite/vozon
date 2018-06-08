@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
@@ -16,11 +17,13 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
+import com.yesat.vozon.R
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.client.XMainActivity
@@ -69,17 +72,25 @@ fun EditText.get(error: String = ""): String{
     return text
 }
 
-var EditText.content : String
+var EditText.content : String?
     get() = text.toString()
     set(value) {
         setText(value, TextView.BufferType.EDITABLE)
     }
 
-var ImageView.src : String?
-    get() = ""
-    set(value){
-        Picasso.get().load(value).into(this)
+fun ImageView.src(src: String?, default: Int){
+        Picasso.get()
+                .load(src)
+                .placeholder(default)
+                .into(this)
     }
+
+fun ImageView.addFilter(res:Int = R.attr.appIconColor){
+    val typedValue = TypedValue()
+    context.theme.resolveAttribute(res, typedValue, true)
+    val color = typedValue.data
+    this.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+}
 
 
 fun SwipeRefreshLayout.setOnRefreshListenerAuto(listener: () -> Unit){
@@ -140,6 +151,13 @@ fun String.dateFormat(): String {
     return SimpleDateFormat("d, MMMM", Locale.getDefault()).format(date)
 }
 
+fun String.dateFormat(time: String): String {
+    val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(this)
+    return "${SimpleDateFormat("d, MMMM", Locale.getDefault()).format(date)} • $time"
+}
+
+
+
 fun setDateListener(activity: Activity) = View.OnClickListener {view ->
     val calendar = Calendar.getInstance()
     DatePickerDialog(activity,
@@ -158,13 +176,13 @@ fun setTimeListener(activity: Activity) = View.OnClickListener {view ->
             }, 0, 0, true).show()
 }
 
-fun Activity.askPermission(permission: String,requestCode: Int){
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        if (ContextCompat.checkSelfPermission(this, permission)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
-        }
-    }
+fun Activity.askPermission(permission: String,requestCode: Int): Boolean {
+    var isNeed = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+    isNeed = isNeed &&
+            ContextCompat.checkSelfPermission(this, permission) !=
+            PackageManager.PERMISSION_GRANTED
+    if (isNeed) ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+    return !isNeed
 }
 
 

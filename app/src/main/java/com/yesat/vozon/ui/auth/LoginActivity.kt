@@ -13,6 +13,9 @@ import com.yesat.vozon.utility.get
 import com.yesat.vozon.utility.norm
 import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.activity_login.*
+import com.yesat.vozon.services.MyFirebaseInstanceIDService
+
+
 
 
 class LoginActivity : AppCompatActivity() {
@@ -20,6 +23,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val token = Shared.token
+        if (token.isEmpty()){
+            val intent = Intent(this, MyFirebaseInstanceIDService::class.java)
+            startService(intent)
+        }
+
 
         val phone = intent.get(String::class.java)
         v_pin.setOnPinEnteredListener { str ->
@@ -31,9 +41,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(phone:String, smsCode:String){
-        val token = FirebaseInstanceId.getInstance().token
-        if (token == null){
-            snack("Try again")
+        val token = Shared.token
+        if (token.isEmpty()){
+            snack("Try later")
             return
         }
         norm("my token $token")

@@ -38,7 +38,7 @@ class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>() {
     }
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
-        val hName = v.v_name!!
+        val hName = v.v_transport!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: InfoTmp) {

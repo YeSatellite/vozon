@@ -40,7 +40,7 @@ class YSignUpNextActivity : AppCompatActivity() {
             user!!.courier_type = when(v_courier_type.checkedRadioButtonId) {
                 R.id.v_natural_person -> 1
                 R.id.v_juridical_person -> 2
-                else -> error("select courier type")
+                else -> error("select client type")
             }
             user!!.experience = v_experience.get("experience is empty").toLong()
 
@@ -48,13 +48,12 @@ class YSignUpNextActivity : AppCompatActivity() {
             val phone = RequestBody.create(formData, user!!.phone!!)
             val name = RequestBody.create(formData, user!!.name!!)
             val city = RequestBody.create(formData, user!!.city!!.id.toString())
-            val dob = RequestBody.create(formData, user!!.dob!!)
-            val about = RequestBody.create(formData, user!!.dob!!)
+            val about = RequestBody.create(formData, user!!.about!!)
             val type = RequestBody.create(formData, user!!.type!!)
             val image = image!!.toMultiPartImage("avatar")
             val courierType = RequestBody.create(formData, user!!.courier_type!!.toString())
             val experience = RequestBody.create(formData, user!!.experience!!.toString())
-            Api.authService.register(phone,name,city,about,dob,type,image,courierType,experience)
+            Api.authService.register(phone,name,city,about,type,image,courierType,experience)
                     .run2(this,{
                         val i = Intent(this, LoginActivity::class.java)
                         i.put(user!!.phone!!)

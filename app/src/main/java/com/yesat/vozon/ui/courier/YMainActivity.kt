@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.yesat.car.ui.courier.transport.TransportListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.ui.courier.order.YOrderFragment
+import com.yesat.vozon.ui.courier.route.YRouteListFragment
 import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.activity_courier_main.*
@@ -22,7 +23,7 @@ class YMainActivity : AppCompatActivity() {
 
         v_navigation.setOnNavigationItemSelectedListener {item ->
             val selectedFragment = when (item.itemId) {
-                R.id.m_route -> YProfileFragment()
+                R.id.m_route -> YRouteListFragment()
                 R.id.m_transport -> TransportListFragment()
                 R.id.m_order -> YOrderFragment()
                 R.id.m_profile -> YProfileFragment()
@@ -33,6 +34,6 @@ class YMainActivity : AppCompatActivity() {
             transaction.commit()
             true}
 
-        norm("hello")
+        v_navigation.selectedItemId = R.id.m_route
     }
 }

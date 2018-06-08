@@ -14,18 +14,19 @@ class Transport : Serializable {
 
     @Expose var owner: User? = null
 
-    @Expose var type: Long? = 1
-
     @Expose var model: Long? = null
     @SerializedName("model_name")
     @Expose var modelName: String? = null
+
+    var mark: Long? = null
     @SerializedName("mark_name")
     @Expose var markName: String? = null
-    var mark: Long? = null
 
-    @Expose var body: Long? = null
-    @SerializedName("body_name")
-    @Expose var bodyName: String? = null
+    @SerializedName("type_name")
+    @Expose var typeName: String? = null
+
+    @SerializedName("type_icon")
+    @Expose var typeIcon: String? = null
 
     @SerializedName("shipping_type")
     @Expose var shippingType: Long? = null
@@ -46,4 +47,5 @@ class Transport : Serializable {
     @Expose var comment: String? = null
 
     val fullName: String get() = "$modelName, $markName"
+
 }

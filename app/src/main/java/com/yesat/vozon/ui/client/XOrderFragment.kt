@@ -26,7 +26,7 @@ class XOrderFragment : Fragment() {
         tabs.shouldExpand = true
         tabs.setViewPager(v.pager)
 
-        (activity as AppCompatActivity).setSupportActionBar(v.toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(v.v_toolbar)
 
         return v
     }

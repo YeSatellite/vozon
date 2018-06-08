@@ -61,28 +61,13 @@
         android:layout_height="1dp" />
 
     <EditText
-        android:id="@+id/v_name"
+        android:id="@+id/v_transport"
         style="@style/ProfileEditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/male_"
         android:hint="@string/username"
         android:inputType="textPersonName" />
-
-    <include
-        layout="@layout/include_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
-
-    <EditText
-        android:id="@+id/v_dob"
-        style="@style/ProfileEditTextStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/calendar_"
-        android:focusable="false"
-        android:hint="@string/date_of_birth"
-        android:inputType="date" />
 
     <include
         layout="@layout/include_line"

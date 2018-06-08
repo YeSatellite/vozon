@@ -1,7 +1,6 @@
 package com.yesat.vozon.ui.auth
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -16,7 +15,6 @@ import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_client_signup.*
 import kotlinx.android.synthetic.main.include_sign_up_main.*
 import java.io.File
-import java.util.*
 
 
 class YSignUpActivity : AppCompatActivity() {
@@ -37,15 +35,6 @@ class YSignUpActivity : AppCompatActivity() {
 
         user.type = User.COURIER
 
-        v_dob.setOnClickListener{
-            val calendar = Calendar.getInstance()
-            DatePickerDialog(this@YSignUpActivity,
-                    DatePickerDialog.OnDateSetListener {
-                        _, year, month, dayOfMonth ->
-                        v_dob.content = "$year-${month+1}-$dayOfMonth"
-                    }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)).show()
-        }
         v_city.setOnClickListener({
             val i = Intent(this@YSignUpActivity, LocationActivity::class.java)
             startActivityForResult(i, CITY_REQUEST_CODE)
@@ -62,8 +51,7 @@ class YSignUpActivity : AppCompatActivity() {
     private fun next(){
         try{
             user.phone = v_phone.get("phone is empty")
-            user.name = v_name.get("name is empty")
-            user.dob = v_dob.get("dob is empty")
+            user.name = v_transport.get("name is empty")
             user.about = v_about.get("dob is empty")
             checkNotNull(user.city){"city is empty"}
             checkNotNull(image){"avatar is empty"}

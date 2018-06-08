@@ -11,7 +11,7 @@ import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.include_route.view.*
-import kotlinx.android.synthetic.main.item_courier_route.view.*
+import kotlinx.android.synthetic.main.item_courier_order.view.*
 
 
 class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>() {
@@ -27,7 +27,7 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
 
     override fun onCreateViewHolder2(parent: ViewGroup): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_courier_route, parent, false)
+                .inflate(R.layout.item_courier_order, parent, false)
         return ViewHolder(v)
     }
 
@@ -35,26 +35,28 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
         val hTitle = v.v_title!!
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
-        val hPosition = v.v_position!!
+        val hPosition = v.v_t_type!!
         val hImage= v.c_image!!
         val hAvatar= v.v_avatar!!
         val hDate= v.v_date!!
+        val hName= v.v_transport!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Order) {
         holder.hTitle.text = item.title
-        holder.hStartPoint.text = item.startPoint!!.getShortName()
-        holder.hEndPoint.text = item.endPoint!!.getShortName()
-        holder.hPosition.text = item.startPoint!!.getShortName()
-        holder.hImage.src = item.image1
-        holder.hAvatar.src = item.owner?.avatar
+        holder.hStartPoint.text = item.startPoint?.getShortName()
+        holder.hEndPoint.text = item.endPoint?.getShortName()
+        holder.hPosition.text = item.startPoint?.getShortName()
+        holder.hImage.src(item.image1,R.drawable.tmp)
+        holder.hAvatar.src(item.owner?.avatar,R.drawable.user_placeholder)
         holder.hDate.text = item.shippingDate
+        holder.hName.text = item.owner?.name
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
-            refreshListener!!.onRefresh()
+//            refreshListener.onRefresh()
         }
 
     }
