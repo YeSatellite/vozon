@@ -1,10 +1,11 @@
 package com.yesat.vozon.ui.info
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.SearchView
+import android.view.*
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
@@ -17,9 +18,15 @@ import retrofit2.Call
 
 @SuppressLint("ValidFragment")
 class LocationFragment(val call: Call<List<InfoTmp>>) : ListFragment<InfoTmp, LocationFragment.ViewHolder>() {
+    var adapter: ListFragment<InfoTmp, LocationFragment.ViewHolder>.ListAdapter? = null
+    var list: List<InfoTmp> = ArrayList()
+
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         call.clone().run2(srRefresh,{body ->
+            this.adapter = adapter
+            list = body
+
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
@@ -44,5 +51,34 @@ class LocationFragment(val call: Call<List<InfoTmp>>) : ListFragment<InfoTmp, Lo
     override fun onItemClick(item: InfoTmp){
         norm("id: ${item.id}")
         (activity as LocationActivity).next(item.id!!)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_search, menu)
+
+        val searchItem = menu.findItem(R.id.m_search)
+        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(text: String?): Boolean {
+                if (adapter != null){
+                    adapter!!.list = list.filter { infoTmp ->
+                        infoTmp.name!!.contains(text!!, true)
+                    }
+                    adapter!!.notifyDataSetChanged()
+                    return true
+                }
+                return false
+            }
+
+        })
     }
 }

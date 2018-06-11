@@ -2,31 +2,32 @@ package com.yesat.vozon.ui.info
 
 import android.app.Activity
 import android.content.Intent
+import android.icu.text.IDNA
+import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.SearchView
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import com.yesat.vozon.ui.ListFragment
+import android.widget.Toast
 import com.yesat.vozon.R
-import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.models.InfoTmp
-import com.yesat.vozon.utility.run2
 import com.yesat.vozon.ui.ListActivity
-import com.yesat.vozon.utility.norm
-import com.yesat.vozon.utility.put
-import com.yesat.vozon.utility.snack
+import com.yesat.vozon.ui.ListFragment
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
-import android.support.v4.view.MenuItemCompat
-import android.support.v7.util.SortedList
-import android.support.v7.widget.SearchView
-import android.view.Menu
 
 
-class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>(), SearchView.OnQueryTextListener {
+class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>(){
+    var adapter: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>.ListAdapter? = null
+    var list: List<InfoTmp> = ArrayList()
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
+        this.adapter = adapter
         norm("START")
         Shared.call?.clone()?.run2(srRefresh,{ body ->
+            list = body
             norm("END")
             adapter.list = body
             adapter.notifyDataSetChanged()
@@ -55,16 +56,29 @@ class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>(), Sear
         setResult(Activity.RESULT_OK,i)
         finish()
     }
-//
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.menu_search, menu)
-//
-//        val searchItem = menu.findItem(R.id.action_search)
-//        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
-//        searchView.setOnQueryTextListener(this)
-//
-//        return true
-//    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_search, menu)
+
+        val searchItem = menu.findItem(R.id.m_search)
+        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(text: String?): Boolean {
+                adapter!!.list = list.filter {
+                    infoTmp -> infoTmp.name!!.contains(text!!,true)
+                }
+                adapter!!.notifyDataSetChanged()
+                return true
+            }
+
+        })
+
+        return true
+    }
 }
 
 
