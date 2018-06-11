@@ -73,6 +73,8 @@ class Order : Serializable {
     @SerializedName("shipping_time")
     @Expose var shippingTime: String? = null
 
+    @Expose var price: Float? = null
+
     @Expose var offer: Offer? = null
 
     fun callIntent(): Intent {

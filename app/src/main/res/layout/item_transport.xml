@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,17 +15,20 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/v_image"
-            android:padding="10dp"
-            android:background="?editTextBackground"
+        <FrameLayout
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="8dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/car"
-            app:riv_mutate_background="true"
-            app:riv_corner_radius="30dp"/>
+            android:background="@drawable/circle_icon"
+            android:layout_marginEnd="8dp">
+
+            <ImageView
+                android:id="@+id/v_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/car" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"

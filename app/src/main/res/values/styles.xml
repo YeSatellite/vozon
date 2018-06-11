@@ -110,4 +110,8 @@
     <style name="PagerSlidingTabStrip">
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="colorAccent">@color/appBlue</item>
+    </style>
 </resources>

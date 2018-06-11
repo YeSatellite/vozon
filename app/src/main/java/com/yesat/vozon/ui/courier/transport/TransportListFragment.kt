@@ -1,9 +1,7 @@
-package com.yesat.car.ui.courier.transport
+package com.yesat.vozon.ui.courier.transport
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.*
@@ -11,8 +9,6 @@ import com.yesat.vozon.R
 import com.yesat.vozon.models.Transport
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.ui.ListToolbarFragment
-import com.yesat.vozon.ui.courier.transport.TransportDetailActivity
-import com.yesat.vozon.ui.courier.transport.TransportNewActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_transport.view.*
 
@@ -64,7 +60,7 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
         return when (item.itemId) {
             R.id.add -> {
                 val i = Intent(activity, TransportNewActivity::class.java)
-                startActivityForResult(i,TRANSPORT_NEW_ACTIVITY)
+                startActivityForResult(i, TRANSPORT_NEW_ACTIVITY)
                 true
             }
             else -> super.onOptionsItemSelected(item)

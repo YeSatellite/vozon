@@ -63,4 +63,6 @@ abstract class ListFragment<T,V : ListFragment.ViewHolder> : Fragment() {
     abstract fun onCreateViewHolder2(parent: ViewGroup): V
     abstract fun onBindViewHolder2(holder: V,item : T)
     open fun onItemClick(item: T){}
+
+
 }

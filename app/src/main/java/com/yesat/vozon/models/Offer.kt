@@ -35,6 +35,8 @@ class Offer : Serializable {
     @SerializedName("shipping_type_name")
     @Expose var shippingTypeName: String? = null
 
+    @Expose var created: String? = null
+
     @Expose var comment: String? = null
     override fun toString(): String {
         return """

@@ -38,8 +38,13 @@ class YOrderADetailActivity : AppCompatActivity() {
         v_start_point.text = order!!.startPoint!!.getShortName(order!!.startDetail!!)
         v_end_point.text = order!!.endPoint!!.getShortName(order!!.endDetail!!)
 
-        v_volume.text = (order!!.width!! * order!!.height!!*order!!.length!!).toString()
-        v_mass.text = order!!.mass.toString()
+        v_volume.text = getString(R.string.meter3,order!!.width!! * order!!.height!!*order!!.length!!)
+        v_mass.text = if(order!!.mass!!>1000){
+            getString(R.string.kg,order!!.mass!! / 1000)
+        }else{
+            getString(R.string.g,order!!.mass!!)
+        }
+        v_price.text = getString(R.string.tenge,order!!.price)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
         v_category.text = order!!.categoryName
@@ -48,11 +53,10 @@ class YOrderADetailActivity : AppCompatActivity() {
         v_comment.text = order!!.comment
 
         val offer = order!!.offer!!
-
         v_image.src(offer.transport?.typeIcon,R.drawable.tmp_truck)
         v_transport.text = offer.transport?.fullName
         v_t_type.text = offer.transport?.typeName
-        v_price.text = offer.price.toString()
+        v_price2.text = offer.price.toString()
         v_payment_type2.text = offer.paymentTypeName
         v_other_service.text = offer.otherServiceName
         v_shipping_type.text = offer.shippingTypeName

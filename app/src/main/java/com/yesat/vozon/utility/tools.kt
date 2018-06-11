@@ -78,12 +78,14 @@ var EditText.content : String?
         setText(value, TextView.BufferType.EDITABLE)
     }
 
-fun ImageView.src(src: String?, default: Int){
-        Picasso.get()
-                .load(src)
-                .placeholder(default)
-                .into(this)
+fun ImageView.src(src: String?, res: Int){
+
+    var picasso = Picasso.get().load(src)
+    if (res == R.drawable.tmp_truck){
+        picasso = picasso.resize(100,100)
     }
+    picasso.placeholder(res).into(this)
+}
 
 fun ImageView.addFilter(res:Int = R.attr.appIconColor){
     val typedValue = TypedValue()
@@ -153,7 +155,8 @@ fun String.dateFormat(): String {
 
 fun String.dateFormat(time: String): String {
     val date = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(this)
-    return "${SimpleDateFormat("d, MMMM", Locale.getDefault()).format(date)} • $time"
+    val month = SimpleDateFormat("d, MMMM", Locale.getDefault()).format(date)
+    return "${time.substring(0,time.length-3)} ● $month"
 }
 
 

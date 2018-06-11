@@ -36,7 +36,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/v_transport"
+                    android:id="@+id/v_name"
                     style="@style/LargeTextViewStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 tools:text="Volkswagen Polo" />
 
             <TextView
-                android:id="@+id/v_transport"
+                android:id="@+id/v_t_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"

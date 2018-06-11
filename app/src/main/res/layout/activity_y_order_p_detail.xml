@@ -47,6 +47,8 @@
                         app:riv_corner_radius="5dp"
                         tools:srcCompat="@drawable/tmp" />
 
+
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -121,7 +123,7 @@
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_t_type"
+                        android:id="@+id/v_position"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -168,7 +170,7 @@
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_transport"
+                        android:id="@+id/v_payment_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -215,6 +217,29 @@
 
                     <TextView
                         android:id="@+id/v_mass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="17sp"
+                        android:theme="@style/LargeTextViewStyle"
+                        tools:text="1 гр" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/space"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/v_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

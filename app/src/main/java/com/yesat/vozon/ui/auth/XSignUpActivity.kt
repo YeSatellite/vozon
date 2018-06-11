@@ -11,6 +11,7 @@ import com.yesat.vozon.*
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.info.LocationActivity
+import com.yesat.vozon.ui.info.TermsActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_client_signup.*
 import kotlinx.android.synthetic.main.include_sign_up_main.*
@@ -49,6 +50,7 @@ class XSignUpActivity : AppCompatActivity() {
     }
 
     private fun done(){
+
         try{
             user.phone = v_phone.get("phone is empty")
             user.name = v_transport.get("name is empty")

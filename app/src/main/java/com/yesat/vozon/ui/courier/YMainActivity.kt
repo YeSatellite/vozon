@@ -2,12 +2,11 @@ package com.yesat.vozon.ui.courier
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.yesat.car.ui.courier.transport.TransportListFragment
+import com.yesat.vozon.ui.courier.transport.TransportListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.ui.courier.order.YOrderFragment
 import com.yesat.vozon.ui.courier.route.YRouteListFragment
 import com.yesat.vozon.utility.Shared
-import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.activity_courier_main.*
 
 class YMainActivity : AppCompatActivity() {

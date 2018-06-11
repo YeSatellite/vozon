@@ -16,9 +16,13 @@ import com.yesat.vozon.utility.norm
 import com.yesat.vozon.utility.put
 import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
+import android.support.v4.view.MenuItemCompat
+import android.support.v7.util.SortedList
+import android.support.v7.widget.SearchView
+import android.view.Menu
 
 
-class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>() {
+class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>(), SearchView.OnQueryTextListener {
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         norm("START")
@@ -51,6 +55,16 @@ class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>() {
         setResult(Activity.RESULT_OK,i)
         finish()
     }
+//
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.menu_search, menu)
+//
+//        val searchItem = menu.findItem(R.id.action_search)
+//        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+//        searchView.setOnQueryTextListener(this)
+//
+//        return true
+//    }
 }
 
 

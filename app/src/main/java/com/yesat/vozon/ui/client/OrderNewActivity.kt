@@ -82,6 +82,7 @@ class OrderNewActivity : AppCompatActivity() {
             check(order.endPoint != null){"end point is empty"}
             order.shippingDate = v_shipping_date.get("shipping date is empty")
             order.shippingTime = v_shipping_time.get("shipping time is empty")
+            order.price = v_price.get(getString(R.string.is_empty,"цена")).toFloat()
             order.acceptPerson = v_accept_person.get("acceptPerson is empty")
             order.acceptPersonContact = v_accept_person.get("acceptPersonContact is empty")
 

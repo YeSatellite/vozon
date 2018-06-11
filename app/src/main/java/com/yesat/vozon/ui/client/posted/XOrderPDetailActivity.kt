@@ -30,8 +30,13 @@ class XOrderPDetailActivity : AppCompatActivity() {
         v_start_point.text = order.startPoint!!.getShortName(order.startDetail!!)
         v_end_point.text = order.endPoint!!.getShortName(order.endDetail!!)
 
-        v_volume.text = (order.width!! * order.height!!*order.length!!).toString()
-        v_mass.text = order.mass.toString()
+        v_volume.text = getString(R.string.meter3,order.width!! * order.height!!*order.length!!)
+        v_mass.text = if(order.mass!!>1000){
+            getString(R.string.kg, order.mass!! / 1000)
+        }else{
+            getString(R.string.g, order.mass!!)
+        }
+        v_price.text = getString(R.string.tenge,order.price)
 
         v_t_type.text = order.startPoint!! - order.endPoint!!
         v_category.text = order.categoryName

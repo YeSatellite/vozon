@@ -51,7 +51,9 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         holder.hPosition.text = item.startPoint!!.getShortName()
         holder.hImage.src(item.image1,R.drawable.tmp)
         holder.hYourCourier.setOnClickListener({
-
+            val i = Intent(activity,CourierProfileActivity::class.java)
+            i.put(item.offer!!.transport!!.owner!!)
+            startActivity(i)
         })
     }
 

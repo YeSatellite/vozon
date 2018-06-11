@@ -41,26 +41,27 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
         val hAvatar = v.v_avatar!!
-        val hName = v.v_transport!!
+        val hName = v.v_name!!
         val hRating = v.v_rating!!
         val hDate = v.v_date!!
         val hAbout = v.v_about!!
         val hTName = v.v_t_name!!
-        val hTType = v.v_transport!!
+        val hTType = v.v_t_type!!
         val hPrice = v.v_price!!
         val hAccept = v.v_accept!!
         val hReject = v.v_reject!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Offer) {
-        holder.hAvatar.src(item.transport?.owner?.avatar,R.drawable.tmp)
-        holder.hName.text = item.transport?.owner?.name
-        holder.hRating.text = item.transport?.owner?.rating
-        // TODO hDate
+        val user = item.transport?.owner!!
+        holder.hAvatar.src(user.avatar,R.drawable.user_placeholder)
+        holder.hName.text = user.name
+        holder.hRating.text = getString(R.string._o_,user.courierTypeName,user.rating)
+        holder.hDate.text = item.created!!.dateFormat()
         holder.hAbout.text = item.transport?.owner?.about
         holder.hTName.text = item.transport?.modelName
-        // TODO hTType
-        holder.hPrice.text = "${item.price} тг"
+        holder.hTType.text = item.paymentTypeName
+        holder.hPrice.text = getString(R.string.tenge, item.price!!.toFloat())
 
         holder.hAccept.setOnClickListener {
             Api.clientService.offersAccept(item.order!!, item.id!!)

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.yesat.vozon.*
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.auth.SendSmsActivity
@@ -18,6 +19,7 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
         Shared.init(PreferenceManager.getDefaultSharedPreferences(applicationContext))
+        Fresco.initialize(this)
 
         if (Shared.currentUser.token == null) {
             next()

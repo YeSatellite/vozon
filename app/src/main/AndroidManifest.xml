@@ -67,18 +67,23 @@
         <activity
             android:name=".ui.courier.route.YRouteDetailActivity"
             android:theme="@style/AppThemeDark" />
-        <activity android:name=".ui.courier.order.YOrderWDetailActivity"
-            android:theme="@style/AppThemeDark"/>
-        <activity android:name=".ui.courier.order.YOrderADetailActivity"
-            android:theme="@style/AppThemeDark"/>
+        <activity
+            android:name=".ui.courier.order.YOrderWDetailActivity"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name=".ui.courier.order.YOrderADetailActivity"
+            android:theme="@style/AppThemeDark" />
 
         <service
             android:name=".services.MyFirebaseInstanceIDService"
             android:permission="android.permission.INTERNET">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".ui.info.TermsActivity"></activity>
+        <activity android:name=".ui.client.active.CourierProfileActivity" />
     </application>
 
 </manifest>
