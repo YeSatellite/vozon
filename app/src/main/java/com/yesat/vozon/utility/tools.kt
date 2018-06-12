@@ -22,6 +22,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Location
@@ -57,6 +58,10 @@ fun AppCompatActivity.addBackPress(){
 fun Activity.snack(text: String){
     val rootView = window.decorView.findViewById<View>(android.R.id.content)
     Snackbar.make(rootView,text, Snackbar.LENGTH_LONG).show()
+}
+
+fun Activity.toast(text: String){
+    Toast.makeText(this,text, Toast.LENGTH_LONG).show()
 }
 
 fun View.snack(text: String){

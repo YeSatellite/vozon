@@ -3,6 +3,7 @@ package com.yesat.vozon.utility
 import android.content.SharedPreferences
 import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
+import com.yesat.vozon.models.MultiInfo
 import com.yesat.vozon.models.User
 import retrofit2.Call
 
@@ -21,6 +22,7 @@ object Shared {
     const val active = "active"
 
     var call: Call<List<InfoTmp>>? = null
+    var list: List<MultiInfo> = java.util.ArrayList()
 
     var preferences: SharedPreferences? = null
         private set

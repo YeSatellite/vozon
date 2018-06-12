@@ -75,6 +75,9 @@ object Api {
         @GET("$path/country/")
         fun country(): Call<List<InfoTmp>>
 
+        @GET("$path/country-phone/")
+        fun countryPhone(): Call<List<Country>>
+
         @GET("$path/payment-type/")
         fun paymentType(): Call<List<InfoTmp>>
 
@@ -132,7 +135,7 @@ object Api {
                          @Part("offer") offerId: Long): Call<Any>
 
         @GET("$path/routes/")
-        fun routes(@Query("type") type: Long?,
+        fun routes(@Query("type") type: String?,
                    @Query("start_point") startPoint: Long?,
                    @Query("end_point") endPoint: Long?,
                    @Query("start_date") startDate: String?,

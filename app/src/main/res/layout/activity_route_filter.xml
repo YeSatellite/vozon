@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,8 +30,10 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="30dp"
                 android:drawableEnd="@drawable/next_"
+                android:ellipsize="end"
                 android:focusable="false"
-                android:hint="Тип" />
+                android:hint="Тип"
+                android:singleLine="true" />
 
             <EditText
                 android:id="@+id/v_start_point"
@@ -87,7 +88,7 @@
                     android:focusable="false"
                     android:gravity="center"
                     android:hint="ОТ"
-                    android:inputType="textPersonName" />
+                    android:inputType="date" />
 
                 <include
                     layout="@layout/include_line"
@@ -103,7 +104,7 @@
                     android:focusable="false"
                     android:gravity="center"
                     android:hint="ДО"
-                    android:inputType="textPersonName" />
+                    android:inputType="date" />
             </LinearLayout>
 
             <TextView

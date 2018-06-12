@@ -25,7 +25,7 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         Api.clientService.routes(
-                filter.type?.id,
+                filter.type,
                 filter.startPoint?.id,
                 filter.endPoint?.id,
                 filter.startDate,

@@ -13,6 +13,7 @@ import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.Route
 import com.yesat.vozon.ui.info.InfoTmpActivity
 import com.yesat.vozon.ui.info.LocationActivity
+import com.yesat.vozon.ui.info.MultiInfoActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_route_filter.*
 import java.util.*
@@ -60,7 +61,7 @@ class RouteFilterActivity: AppCompatActivity() {
                     calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
         v_type.setOnClickListener {
-            val i = Intent(this@RouteFilterActivity, InfoTmpActivity::class.java)
+            val i = Intent(this@RouteFilterActivity, MultiInfoActivity::class.java)
             Shared.call = Api.infoService.tType()
             startActivityForResult(i,TYPE_REQUEST_CODE)
         }
@@ -69,7 +70,7 @@ class RouteFilterActivity: AppCompatActivity() {
     }
 
     private fun fill(){
-        v_type.content = filter!!.type?.name
+        v_type.content = filter!!.typeNames
         v_start_point.content = filter!!.startPoint?.getShortName()
         v_end_point.content = filter!!.endPoint?.getShortName()
         v_start_date.content = filter!!.startDate
@@ -122,8 +123,10 @@ class RouteFilterActivity: AppCompatActivity() {
                     v_end_point.content = filter!!.endPoint!!.getShortName()
                 }
                 TYPE_REQUEST_CODE -> {
-                    filter!!.type = data!!.get(InfoTmp::class.java)
-                    v_type.content = filter!!.type!!.name
+                    val filtered = Shared.list.filter { multiInfo -> multiInfo.isChecked }
+                    filter!!.type = filtered.joinToString(separator = ","){it.id.toString()}
+                    filter!!.typeNames = filtered.joinToString(separator = ","){it.name.toString()}
+                    v_type.content = filter!!.typeNames
                 }
             }
         }

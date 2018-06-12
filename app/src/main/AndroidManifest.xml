@@ -84,6 +84,7 @@
 
         <activity android:name=".ui.info.TermsActivity"></activity>
         <activity android:name=".ui.client.active.CourierProfileActivity" />
+        <activity android:name=".ui.info.MultiInfoActivity" />
     </application>
 
 </manifest>

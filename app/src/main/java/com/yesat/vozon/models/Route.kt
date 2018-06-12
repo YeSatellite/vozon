@@ -46,7 +46,8 @@ class Route : Serializable {
     @Expose var comment: String? = null
 
     class FilterRoute(
-            var type: InfoTmp? = null,
+            var type: String? = null,
+            var typeNames: String? = null,
             var startPoint: Location? = null,
             var endPoint: Location? = null,
             var startDate: String? = null,
