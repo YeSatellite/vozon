@@ -49,11 +49,11 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         holder.hStartPoint.text = item.startPoint!!.getShortName()
         holder.hEndPoint.text = item.endPoint!!.getShortName()
         holder.hPosition.text = item.startPoint!!.getShortName()
-        holder.hImage.src(item.image1,R.drawable.tmp)
+        holder.hImage.src(if(item.image1 != null) item.image1 else item.image2,R.drawable.tmp)
         holder.hShowOffers.setOnClickListener({
             val i = Intent(activity, XOfferListActivity::class.java)
             i.put(item)
-            startActivity(i)
+            startActivityForResult(i,OFFER_LIST_ACTIVITY)
         })
     }
 
@@ -82,7 +82,7 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == OFFER_LIST_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                refreshListener!!.onRefresh()
+                refresh!!.run()
             }
         }
     }
@@ -90,6 +90,6 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
     override fun onItemClick(item: Order) {
         val i = Intent(activity, XOrderPDetailActivity::class.java)
         i.put(item)
-        startActivity(i)
+        startActivityForResult(i, OFFER_LIST_ACTIVITY)
     }
 }

@@ -19,6 +19,7 @@ class Offer : Serializable {
     @Expose var order: Long? = null
 
     @Expose var price: Long? = null
+    @Expose var currency: String? = null
 
     @SerializedName("payment_type")
     @Expose var paymentType: Long? = null

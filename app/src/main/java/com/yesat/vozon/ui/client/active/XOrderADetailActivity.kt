@@ -33,7 +33,8 @@ class XOrderADetailActivity : BackPressCompatActivity() {
 
         supportActionBar!!.title = order!!.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2))
+        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2)
+                .filter { it != null })
 
         v_date.text = order!!.shippingDate!!.dateFormat()
         v_start_point.text = order!!.startPoint!!.getShortName(order!!.startDetail!!)
@@ -45,7 +46,7 @@ class XOrderADetailActivity : BackPressCompatActivity() {
         }else{
             getString(R.string.g,order!!.mass!!)
         }
-        v_price.text = getString(R.string.tenge,order!!.price)
+        v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
         v_category.text = order!!.categoryName
@@ -57,7 +58,7 @@ class XOrderADetailActivity : BackPressCompatActivity() {
         v_image.src(offer.transport?.typeIcon,R.drawable.tmp_truck)
         v_transport.text = offer.transport?.fullName
         v_t_type.text = offer.transport?.typeName
-        v_price2.text = getString(R.string.tenge, offer.price!!.toFloat())
+        v_price2.text = getString(R.string._s_, offer.price.toString(),offer.currency)
         v_payment_type2.text = offer.paymentTypeName
         v_other_service.text = offer.otherServiceName
         v_shipping_type.text = offer.shippingTypeName

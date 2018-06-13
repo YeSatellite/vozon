@@ -30,13 +30,35 @@
                 android:text="Предложение актуально до"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/v_price"
-                style="@style/ProfileEditTextStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ваша цена в тенге"
-                android:inputType="numberDecimal" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?editTextBackground"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/v_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <include
+                    layout="@layout/include_line"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp" />
+
+                <EditText
+                    android:id="@+id/v_price"
+                    style="@style/ProfileEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Ваша цена в тенге"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
 
             <include
                 layout="@layout/include_line"

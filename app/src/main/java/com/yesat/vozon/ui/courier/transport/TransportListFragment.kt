@@ -71,7 +71,7 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == TRANSPORT_NEW_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                refreshListener!!.onRefresh()
+                refresh!!.run()
             }
         }
     }
@@ -79,6 +79,6 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
     override fun onItemClick(item: Transport) {
         val i = Intent(activity, TransportDetailActivity::class.java)
         i.put(item)
-        startActivity(i)
+        startActivityForResult(i,TRANSPORT_NEW_ACTIVITY)
     }
 }

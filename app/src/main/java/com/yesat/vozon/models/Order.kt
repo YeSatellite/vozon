@@ -75,6 +75,8 @@ class Order : Serializable {
 
     @Expose var price: Float? = null
 
+    @Expose var currency: String? = null
+
     @Expose var offer: Offer? = null
 
     fun callIntent(): Intent {

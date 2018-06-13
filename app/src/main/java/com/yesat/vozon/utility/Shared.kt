@@ -1,7 +1,9 @@
 package com.yesat.vozon.utility
 
+import android.app.Activity
 import android.content.SharedPreferences
 import com.yesat.vozon.R
+import com.yesat.vozon.models.Country
 import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.models.MultiInfo
 import com.yesat.vozon.models.User
@@ -67,5 +69,16 @@ object Shared {
             editor.putString("token", field)
             editor.apply()
         }
+
+    fun Activity.currencies(): ArrayList<Country> {
+        val n = resources.getStringArray(R.array.currency_n)
+        val s = resources.getStringArray(R.array.currency_s)
+        val list = ArrayList<Country>()
+        for (i in n.indices){
+            list.add(Country(n[i],s[i]))
+        }
+        return list
+    }
+
 }
 

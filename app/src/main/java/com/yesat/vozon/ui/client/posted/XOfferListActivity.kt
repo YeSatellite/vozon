@@ -61,7 +61,7 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
         holder.hAbout.text = item.transport?.owner?.about
         holder.hTName.text = item.transport?.modelName
         holder.hTType.text = item.paymentTypeName
-        holder.hPrice.text = getString(R.string.tenge, item.price!!.toFloat())
+        holder.hPrice.text = getString(R.string._s_, item.price.toString(),item.currency)
 
         holder.hAccept.setOnClickListener {
             Api.clientService.offersAccept(item.order!!, item.id!!)
@@ -75,7 +75,14 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
                     })
         }
         holder.hReject.setOnClickListener{
-            //TODO
+            val map = hashMapOf("offer" to item.id!!)
+            Api.clientService.offersReject(item.order!!, map)
+                    .run2(activity!!,{
+                    },{
+                        _, error ->
+                        activity!!.snack(error)
+                        norm(item.order!!.toString() + " "+item.id!!)
+                    })
         }
 
     }

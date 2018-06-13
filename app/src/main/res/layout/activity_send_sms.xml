@@ -28,8 +28,8 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="80dp"
+                    android:id="@+id/v_spinner"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
 
                 <include
@@ -61,6 +61,17 @@
             android:background="@drawable/rounded_blue"
             android:text="@string/enter"
             android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/v_terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="@dimen/space"
+            android:text="@string/terms_of_service"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

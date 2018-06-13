@@ -12,9 +12,7 @@ import com.yesat.vozon.R
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
 abstract class ListFragment<T,V : ListFragment.ViewHolder> : Fragment() {
-    var refreshListener: SwipeRefreshLayout.OnRefreshListener? = null
-
-
+    var refresh: Runnable? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -24,17 +22,19 @@ abstract class ListFragment<T,V : ListFragment.ViewHolder> : Fragment() {
         v.v_list.adapter = adapter
         val srRefresh = v.v_refresh
 
-        refreshListener = SwipeRefreshLayout.OnRefreshListener({
+        val refreshListener = SwipeRefreshLayout.OnRefreshListener({
             refreshListener(adapter,srRefresh)
         })
 
 
         srRefresh.setOnRefreshListener(refreshListener)
 
-        srRefresh.post({
-            refreshListener!!.onRefresh()
+        refresh = Runnable {
+            refreshListener.onRefresh()
             srRefresh.isRefreshing = true
-        })
+        }
+
+        srRefresh.post(refresh)
         srRefresh.setColorSchemeColors(Color.BLUE, Color.YELLOW, Color.BLUE)
         return v
     }

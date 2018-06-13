@@ -25,7 +25,8 @@ class YOrderWDetailActivity : AppCompatActivity() {
 
         supportActionBar!!.title = order!!.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2))
+        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2)
+                .filter { it != null })
 
         v_avatar.src(order?.owner?.avatar,R.drawable.user_placeholder)
         v_transport.text = order?.owner?.name
@@ -40,7 +41,7 @@ class YOrderWDetailActivity : AppCompatActivity() {
         }else{
             getString(R.string.g,order!!.mass!!)
         }
-        v_price.text = getString(R.string.tenge,order!!.price)
+        v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
         v_category.text = order!!.categoryName

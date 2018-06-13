@@ -21,12 +21,13 @@
     <string name="done">Готово</string>
     <string name="is_empty">%1$s не может быть пустым</string>
     <string name="_o_">%1$s ● %2$s</string>
+    <string name="_s_">%1$s %2$s</string>
     <string name="meter">%1$.0fм</string>
     <string name="meter3">%1$.0f m³</string>
     <string name="kg">%1$.0f кг</string>
     <string name="g">%1$.0f гр</string>
-    <string name="tenge">%1$.0f тг</string>
     <string name="loading">Погрузка</string>
     <string name="price">Цена</string>
     <string name="filter">Filter</string>
+    <string name="terms_of_service"><u>Условия использования</u></string>
 </resources>

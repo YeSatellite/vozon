@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.theartofdev.edmodo.cropper.CropImage
 import com.yesat.vozon.*
+import com.yesat.vozon.models.Country
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.User
+import com.yesat.vozon.ui.CodeAdapter
 import com.yesat.vozon.ui.info.LocationActivity
 import com.yesat.vozon.ui.info.TermsActivity
 import com.yesat.vozon.utility.*
@@ -29,6 +34,8 @@ class XSignUpActivity : AppCompatActivity() {
     private val user = User()
     private var image: File? = null
 
+    var phoneOk = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_signup)
@@ -46,15 +53,52 @@ class XSignUpActivity : AppCompatActivity() {
         }
 
 
+        var countries: List<Country>
+        Api.infoService.countryPhone().run3(this,{
+            countries = it
+            after(countries)
+        })
+    }
 
+
+    private fun after(countries: List<Country>){
+        var country: Country
+        val adapter = CodeAdapter(this, countries)
+        var listener: MaskedTextChangedListener? = null
+
+        v_spinner.adapter = adapter
+        v_spinner.setSelection(0)
+        v_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                v_phone_number.text.clear()
+                country = countries[position]
+                v_phone_number.removeTextChangedListener(listener)
+                listener = MaskedTextChangedListener(
+                        country.phoneMask!!,
+                        v_phone_number,
+                        object : MaskedTextChangedListener.ValueListener {
+                            override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
+                                user.phone =  country.phoneCode + extractedValue
+                                phoneOk = maskFilled
+                            }
+                        }
+                )
+                v_phone_number.addTextChangedListener(listener)
+                v_phone_number.onFocusChangeListener = listener
+            }
+
+        }
+        v_spinner.onItemSelectedListener
+                .onItemSelected(null,null,v_spinner.selectedItemPosition,0)
     }
 
     private fun done(){
 
         try{
-            user.phone = v_phone.get("phone is empty")
+            if(phoneOk.not()) error("phone not good")
             user.name = v_transport.get("name is empty")
-            user.about = v_about.get("dob is empty")
             checkNotNull(user.city){"city is empty"}
             checkNotNull(image){"avatar is empty"}
 
@@ -62,7 +106,7 @@ class XSignUpActivity : AppCompatActivity() {
             val phone = user.phone!!.toMultiPart()
             val name = user.name!!.toMultiPart()
             val city = user.city!!.id.toString().toMultiPart()
-            val about = user.about!!.toMultiPart()
+            val about = user.about.toMultiPart()
             val type = user.type!!.toMultiPart()
             val image = image!!.toMultiPartImage("avatar")
 

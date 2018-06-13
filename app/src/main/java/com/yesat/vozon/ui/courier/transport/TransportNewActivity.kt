@@ -73,7 +73,6 @@ class TransportNewActivity : AppCompatActivity() {
             transport.width = v_width.get("width is empty").toFloat()
             transport.length = v_length.get("length is empty").toFloat()
             checkNotNull(transport.shippingType){"shipping type id empty"}
-            transport.comment = v_comment.get("comment is empty")
             Api.courierService.transportsAdd(transport).run3(this){ body ->
                 updateImage(body.id!!)
             }

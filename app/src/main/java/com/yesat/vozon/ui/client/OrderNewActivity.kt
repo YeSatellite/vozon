@@ -8,16 +8,18 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.theartofdev.edmodo.cropper.CropImage
 import com.yesat.vozon.R
-import com.yesat.vozon.models.Category
-import com.yesat.vozon.models.InfoTmp
-import com.yesat.vozon.models.Location
-import com.yesat.vozon.models.Order
+import com.yesat.vozon.models.*
+import com.yesat.vozon.ui.CodeAdapter
 import com.yesat.vozon.ui.info.InfoTmpActivity
 import com.yesat.vozon.ui.info.LocationActivity
 import com.yesat.vozon.utility.*
+import com.yesat.vozon.utility.Shared.currencies
 import kotlinx.android.synthetic.main.activity_order_new.*
 import java.io.File
 
@@ -68,6 +70,23 @@ class OrderNewActivity : AppCompatActivity() {
             Shared.call = Api.infoService.paymentType()
             startActivityForResult(i,PAYMENT_TYPE_REQUEST_CODE)
         }
+
+        val currencies = currencies()
+
+        val adapter = CodeAdapter(this, currencies)
+
+        v_spinner.adapter = adapter
+        v_spinner.setSelection(0)
+        v_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                order.currency = currencies[position].phoneCode
+            }
+
+        }
+        v_spinner.onItemSelectedListener
+                .onItemSelected(null,null,v_spinner.selectedItemPosition,0)
     }
 
     private fun create(){
@@ -99,15 +118,20 @@ class OrderNewActivity : AppCompatActivity() {
     }
 
     private fun updateImage(id: Long) {
-        val image1 = image1!!.toMultiPartImage("image1")
-        val image2 = image2!!.toMultiPartImage("image2")
+        val image1 = image1.toMultiPartImage("image1")
+        val image2 = image2.toMultiPartImage("image2")
 
-        Api.clientService.orderUpdate(id,image1,image2).run2(this,{
+        if(image1!=null || image2!=null)
+            Api.clientService.orderUpdate(id,image1,image2).run2(this,{
+                setResult(Activity.RESULT_OK)
+                finish()
+            },{ _, error ->
+                snack(error)
+            })
+        else{
             setResult(Activity.RESULT_OK)
             finish()
-        },{ _, error ->
-            snack(error)
-        })
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

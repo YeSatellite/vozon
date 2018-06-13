@@ -82,7 +82,7 @@ class YRouteListFragment : ListToolbarFragment<Route, YRouteListFragment.ViewHol
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == ROUTE_NEW_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                refreshListener!!.onRefresh()
+                refresh!!.run()
             }
         }
     }

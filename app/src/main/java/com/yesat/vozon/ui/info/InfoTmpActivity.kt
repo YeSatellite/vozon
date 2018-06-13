@@ -60,8 +60,7 @@ class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>(){
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_search, menu)
 
-        val searchItem = menu.findItem(R.id.m_search)
-        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+        val searchView = menu.findItem(R.id.m_search).actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true

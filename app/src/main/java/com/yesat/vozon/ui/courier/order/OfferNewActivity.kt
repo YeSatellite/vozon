@@ -7,14 +7,18 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
 import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.models.Transport
+import com.yesat.vozon.ui.CodeAdapter
 import com.yesat.vozon.ui.courier.transport.TransportListActivity
 import com.yesat.vozon.ui.info.InfoTmpActivity
 import com.yesat.vozon.utility.*
+import com.yesat.vozon.utility.Shared.currencies
 import kotlinx.android.synthetic.main.activity_offer_new.*
 
 
@@ -56,6 +60,24 @@ class OfferNewActivity : AppCompatActivity() {
             Shared.call = Api.infoService.tShippingType()
             startActivityForResult(i, SHIPPING_TYPE_REQUEST_CODE)
         }
+
+        val currencies = currencies()
+
+        val adapter = CodeAdapter(this, currencies)
+
+        v_spinner.adapter = adapter
+        v_spinner.setSelection(0)
+        v_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                offer.currency = currencies[position].phoneCode
+            }
+
+        }
+        v_spinner.onItemSelectedListener
+                .onItemSelected(null,null,v_spinner.selectedItemPosition,0)
+
     }
 
     private fun create(){

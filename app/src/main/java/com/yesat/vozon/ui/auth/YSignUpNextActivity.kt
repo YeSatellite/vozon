@@ -5,15 +5,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.yesat.vozon.utility.Api
 import com.yesat.vozon.R
 import com.yesat.vozon.models.User
-import com.yesat.vozon.utility.run2
-import com.yesat.vozon.utility.toMultiPartImage
-import com.yesat.vozon.utility.addBackPress
-import com.yesat.vozon.utility.get
-import com.yesat.vozon.utility.put
-import com.yesat.vozon.utility.snack
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_client_signup_next.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -48,7 +42,7 @@ class YSignUpNextActivity : AppCompatActivity() {
             val phone = RequestBody.create(formData, user!!.phone!!)
             val name = RequestBody.create(formData, user!!.name!!)
             val city = RequestBody.create(formData, user!!.city!!.id.toString())
-            val about = RequestBody.create(formData, user!!.about!!)
+            val about = user!!.about.toMultiPart()
             val type = RequestBody.create(formData, user!!.type!!)
             val image = image!!.toMultiPartImage("avatar")
             val courierType = RequestBody.create(formData, user!!.courier_type!!.toString())

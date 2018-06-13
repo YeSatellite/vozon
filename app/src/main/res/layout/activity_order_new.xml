@@ -235,13 +235,34 @@
                 android:text="@string/price"
                 android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/v_price"
-                style="@style/ProfileEditTextStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Цена за услуги в тенге"
-                android:inputType="numberDecimal" />
+                android:layout_height="match_parent"
+                android:background="?android:windowBackground"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/v_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+
+                <include
+                    layout="@layout/include_line"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp" />
+
+                <EditText
+                    android:id="@+id/v_price"
+                    style="@style/ProfileEditTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Цена за услуги в тенге"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"

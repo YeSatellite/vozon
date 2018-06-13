@@ -47,7 +47,7 @@ class YOrderAListFragment : ListFragment<Order, YOrderAListFragment.ViewHolder>(
         holder.hStartPoint.text = item.startPoint?.getShortName()
         holder.hEndPoint.text = item.endPoint?.getShortName()
         holder.hPosition.text = item.startPoint?.getShortName()
-        holder.hImage.src(item.image1,R.drawable.tmp)
+        holder.hImage.src(if(item.image1 != null) item.image1 else item.image2,R.drawable.tmp)
         holder.hAvatar.src(item.owner?.avatar,R.drawable.user_placeholder)
         holder.hDate.text = item.shippingDate
         holder.hName.text = item.owner?.name

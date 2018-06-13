@@ -96,7 +96,7 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
         if (requestCode == ROUTE_FILTER_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
                 filter = data!!.get(Route.FilterRoute::class.java)
-                refreshListener!!.onRefresh()
+                refresh!!.run()
             }
         }
     }

@@ -49,7 +49,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         holder.hStartPoint.text = item.startPoint!!.getShortName()
         holder.hEndPoint.text = item.endPoint!!.getShortName()
         holder.hPosition.text = item.startPoint!!.getShortName()
-        holder.hImage.src(item.image1,R.drawable.tmp)
+        holder.hImage.src(if(item.image1 != null) item.image1 else item.image2,R.drawable.tmp)
         holder.hYourCourier.setOnClickListener({
             val i = Intent(activity,CourierProfileActivity::class.java)
             i.put(item.offer!!.transport!!.owner!!)
@@ -82,7 +82,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == OFFER_LIST_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                refreshListener!!.onRefresh()
+                refresh!!.run()
             }
         }
     }

@@ -42,12 +42,12 @@ object Api {
         @Multipart
         @POST("$path/register/")
         fun register(
-                @Part("phone") email:RequestBody,
+                @Part("phone") phone:RequestBody,
                 @Part("name") name:RequestBody,
                 @Part("city") city:RequestBody,
                 @Part("about") about:RequestBody,
                 @Part("type") type:RequestBody,
-                @Part image: MultipartBody.Part,
+                @Part image: MultipartBody.Part?,
                 @Part("courier_type") courier_type:RequestBody? =null,
                 @Part("experience") experience:RequestBody? = null
         ): Call<Any>
@@ -120,11 +120,16 @@ object Api {
         fun orderDone(@Path("id") id: Long,
                       @Part("rating") rating: Int): Call<Any>
 
+
+        @DELETE("$path/order/{id}/")
+        fun orderDelete(@Path("id") id: Long): Call<Any>
+
+
         @Multipart
         @PATCH("$path/order/{id}/")
         fun orderUpdate(@Path("id") id: Long,
-                        @Part image1: MultipartBody.Part,
-                        @Part image2: MultipartBody.Part): Call<Order>
+                        @Part image1: MultipartBody.Part?,
+                        @Part image2: MultipartBody.Part?): Call<Order>
 
         @GET("$path/order/{id}/offers/")
         fun offers(@Path("id") orderId: Long): Call<List<Offer>>
@@ -133,6 +138,10 @@ object Api {
         @POST("$path/order/{id}/offers/")
         fun offersAccept(@Path("id") orderId: Long,
                          @Part("offer") offerId: Long): Call<Any>
+
+        @HTTP(method = "DELETE", path = "$path/order/{id}/offers/", hasBody = true)
+        fun offersReject(@Path("id") orderId: Long,
+                         @Body offer: Map<String, Long>): Call<Any>
 
         @GET("$path/routes/")
         fun routes(@Query("type") type: String?,
@@ -154,11 +163,13 @@ object Api {
         fun transports(): Call<List<Transport>>
         @POST("$path/transports/")
         fun transportsAdd(@Body transport: Transport): Call<Transport>
+        @DELETE("$path/transports/{id}/")
+        fun transportDelete(@Path("id") id: Long): Call<Any>
         @Multipart
         @PATCH("$path/transports/{id}/")
         fun transportsUpdate(@Path("id") id: Long,
-                        @Part image1: MultipartBody.Part,
-                        @Part image2: MultipartBody.Part): Call<Transport>
+                        @Part image1: MultipartBody.Part?,
+                        @Part image2: MultipartBody.Part?): Call<Transport>
 
 
         @GET("$path/order/")
@@ -276,12 +287,13 @@ private fun <T> run1(call: Call<T>,
     })
 }
 
-fun File.toMultiPartImage(field: String): MultipartBody.Part {
+fun File?.toMultiPartImage(field: String): MultipartBody.Part? {
+    if (this == null) return null
     val body = RequestBody.create(MediaType.parse("image/*"), this)
     return MultipartBody.Part.createFormData(field, name, body)
 }
 
 private val formData = MediaType.parse("multipart/form-data")
-fun String.toMultiPart(): RequestBody {
-    return RequestBody.create(formData, this)
+fun String?.toMultiPart(): RequestBody {
+    return RequestBody.create(formData, this?: "")
 }
