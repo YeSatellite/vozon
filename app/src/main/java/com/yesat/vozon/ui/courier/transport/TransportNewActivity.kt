@@ -21,6 +21,7 @@ class TransportNewActivity : AppCompatActivity() {
         const val MARK_REQUEST_CODE = 57
         const val MODEL_REQUEST_CODE = 84
         const val SHIPPING_TYPE_REQUEST_CODE = 89
+        const val LOAD_TYPE_REQUEST_CODE = 96
         const val IMAGE1_REQUEST_CODE = 12
         const val IMAGE2_REQUEST_CODE = 13
     }
@@ -52,6 +53,12 @@ class TransportNewActivity : AppCompatActivity() {
             startActivityForResult(i, SHIPPING_TYPE_REQUEST_CODE)
         }
 
+        v_load_type.setOnClickListener {
+            val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
+            Shared.call= Api.infoService.tLoadType()
+            startActivityForResult(i, LOAD_TYPE_REQUEST_CODE)
+        }
+
         v_image1.setOnClickListener{
             startActivityForResult(CropImage.getPickImageChooserIntent(this),
                     IMAGE1_REQUEST_CODE)
@@ -73,12 +80,14 @@ class TransportNewActivity : AppCompatActivity() {
             transport.width = v_width.get("width is empty").toFloat()
             transport.length = v_length.get("length is empty").toFloat()
             checkNotNull(transport.shippingType){"shipping type id empty"}
+            checkNotNull(transport.loadType){getString(R.string.is_empty,getString(R.string.load_type))}
+            transport.comment = v_comment.get()
             Api.courierService.transportsAdd(transport).run3(this){ body ->
                 updateImage(body.id!!)
             }
 
         }catch (ex: IllegalStateException){
-            snack(ex.message ?: "Unknown error")
+            snack(ex.message ?: getString(R.string.something_went_wrong))
         }
     }
 
@@ -111,6 +120,11 @@ class TransportNewActivity : AppCompatActivity() {
                     val shippingType =  data!!.get(InfoTmp::class.java)
                     transport.shippingType = shippingType.id
                     v_shipping_type.content = shippingType.name ?: ""
+                }
+                LOAD_TYPE_REQUEST_CODE -> {
+                    val loadType =  data!!.get(InfoTmp::class.java)
+                    transport.loadType = loadType.id
+                    v_load_type.content = loadType.name ?: ""
                 }
                 IMAGE1_REQUEST_CODE -> {
                     val imageUri = CropImage.getPickImageResultUri(this, data)

@@ -29,7 +29,7 @@ class SendSmsActivity : AppCompatActivity() {
                 if(phoneOk.not()) error("phone not good")
                 sendSms(phoneNumber)
             }catch (ex: IllegalStateException){
-                snack(ex.message ?: "Unknown error")
+                snack(ex.message ?: getString(R.string.something_went_wrong))
             }
         }
 
@@ -39,10 +39,10 @@ class SendSmsActivity : AppCompatActivity() {
         }
 
         var countries: List<Country>
-        Api.infoService.countryPhone().run3(this,{
+        Api.infoService.countryPhone().run3(this) {
             countries = it
             after(countries)
-        })
+        }
 
         v_terms.setOnClickListener{
             startActivity(Intent(this, TermsActivity::class.java))

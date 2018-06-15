@@ -33,6 +33,11 @@ class Transport : Serializable {
     @SerializedName("shipping_type_name")
     @Expose var shippingTypeName: String? = null
 
+    @SerializedName("load_type")
+    @Expose var loadType: Long? = null
+    @SerializedName("load_type_name")
+    @Expose var loadTypeName: String? = null
+
     @Expose var image1: String? = null
     @Expose var image2: String? = null
 

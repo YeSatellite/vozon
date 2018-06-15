@@ -29,7 +29,6 @@ class XOrderADetailActivity : BackPressCompatActivity() {
         setContentView(R.layout.activity_order_a_detail)
 
         order = intent.get(Order::class.java)
-        norm(order.toString())
 
         supportActionBar!!.title = order!!.title
 
@@ -70,14 +69,14 @@ class XOrderADetailActivity : BackPressCompatActivity() {
             val popDialog = AlertDialog.Builder(this)
             popDialog.setTitle("Оцените работу курьера")
             popDialog.setView(v)
-            popDialog.setPositiveButton(android.R.string.ok, { dialog, _ ->
+            popDialog.setPositiveButton(android.R.string.ok) { dialog, _ ->
                 Api.clientService.orderDone(order!!.id!!,v.v_rating.progress)
                         .run3(this){
                             setResult(RESULT_OK)
                             finish()
                         }
-                        dialog.dismiss()
-            }).setNegativeButton(android.R.string.cancel, { dialog, _ -> dialog.cancel() })
+                dialog.dismiss()
+            }.setNegativeButton(android.R.string.cancel, { dialog, _ -> dialog.cancel() })
 
             popDialog.create()
             popDialog.show()

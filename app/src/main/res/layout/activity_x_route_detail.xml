@@ -71,8 +71,8 @@
 
                     <ImageView
                         android:id="@+id/v_call"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         app:srcCompat="@drawable/call_green" />
                 </LinearLayout>
 
@@ -274,7 +274,30 @@
 
                     <TextView
                         android:id="@+id/v_shipping_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="17sp"
+                        android:theme="@style/LargeTextViewStyle"
+                        tools:text="Грузчики" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/space"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/load_type"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/v_load_type"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"

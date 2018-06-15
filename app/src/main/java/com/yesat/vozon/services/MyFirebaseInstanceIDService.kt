@@ -10,6 +10,5 @@ class MyFirebaseInstanceIDService : FirebaseInstanceIdService() {
 
     override fun onTokenRefresh() {
         Shared.token = FirebaseInstanceId.getInstance().token ?: ""
-        norm(Shared.token)
     }
 }

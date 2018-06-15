@@ -12,14 +12,18 @@ import com.yesat.vozon.R
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_offer.view.*
 
-class XOfferListActivity : AppCompatActivity() {
+class XOfferListActivity : BackPressCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_offer_list)
+
+        supportActionBar!!.subtitle = "от водителей"
+
     }
 }
 class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() {
@@ -71,7 +75,6 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
                     },{
                         _, error ->
                         activity!!.snack(error)
-                        norm(item.order!!.toString() + " "+item.id!!)
                     })
         }
         holder.hReject.setOnClickListener{
@@ -81,7 +84,6 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
                     },{
                         _, error ->
                         activity!!.snack(error)
-                        norm(item.order!!.toString() + " "+item.id!!)
                     })
         }
 

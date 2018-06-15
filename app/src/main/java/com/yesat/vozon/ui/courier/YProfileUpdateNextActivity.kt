@@ -1,12 +1,13 @@
-package com.yesat.vozon.ui.auth
+package com.yesat.vozon.ui.courier
 
-import android.content.Intent
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.yesat.vozon.R
 import com.yesat.vozon.models.User
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_client_signup_next.*
 import okhttp3.MediaType
@@ -14,7 +15,7 @@ import okhttp3.RequestBody
 import java.io.File
 
 
-class YSignUpNextActivity : AppCompatActivity() {
+class YProfileUpdateNextActivity : BackPressCompatActivity() {
 
     private var user: User? = null
     private var image: File? = null
@@ -22,10 +23,16 @@ class YSignUpNextActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_signup_next)
-        addBackPress()
 
         user = intent.get(User::class.java)
-        image = intent.get(File::class.java)
+        try{
+            image = intent.get(File::class.java)
+        }catch (ex: kotlin.TypeCastException){
+
+        }
+
+
+        v_experience.content = user!!.experience.toString()
 
     }
 
@@ -34,23 +41,23 @@ class YSignUpNextActivity : AppCompatActivity() {
             user!!.courier_type = when(v_courier_type.checkedRadioButtonId) {
                 R.id.v_natural_person -> 1
                 R.id.v_juridical_person -> 2
-                else -> error(getString(R.string.something_went_wrong))
+                else -> error("select client type")
             }
-            user!!.experience = v_experience.get(getString(R.string.enter_experience)).toLong()
+            user!!.experience = v_experience.get("experience is empty").toLong()
 
-            val phone = user!!.phone!!.toMultiPart()
-            val name =  user!!.name!!.toMultiPart()
-            val city =  user!!.city!!.id.toString().toMultiPart()
+            val formData = MediaType.parse("multipart/form-data")
+            val name = RequestBody.create(formData, user!!.name!!)
+            val city = RequestBody.create(formData, user!!.city!!.id.toString())
             val about = user!!.about.toMultiPart()
-            val type =  user!!.type!!.toMultiPart()
-            val image = image!!.toMultiPartImage("avatar")
-            val courierType =  user!!.courier_type!!.toString().toMultiPart()
-            val experience =  user!!.experience!!.toString().toMultiPart()
-            Api.authService.register(phone,name,city,about,type,image,courierType,experience)
+            val image = image.toMultiPartImage("avatar")
+            val courierType = RequestBody.create(formData, user!!.courier_type!!.toString())
+            val experience = RequestBody.create(formData, user!!.experience!!.toString())
+            Api.courierService.profileUpdate(name,city,about,image,courierType,experience)
                     .run2(this,{
-                        val i = Intent(this, LoginActivity::class.java)
-                        i.put(user!!.phone!!)
-                        startActivityForResult(i, XSignUpActivity.FINISH_REQUEST_CODE)
+                        it.token = Shared.currentUser.token
+                        Shared.currentUser = it
+                        setResult(Activity.RESULT_OK)
+                        finish()
             },{ _, error ->
                 snack(error)
             })
@@ -74,10 +81,5 @@ class YSignUpNextActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

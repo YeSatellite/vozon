@@ -2,20 +2,20 @@ package com.yesat.vozon.ui.info
 
 import android.app.Activity
 import android.content.Intent
-import android.icu.text.IDNA
-import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.SearchView
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.ui.ListActivity
 import com.yesat.vozon.ui.ListFragment
-import com.yesat.vozon.utility.*
+import com.yesat.vozon.utility.Shared
+import com.yesat.vozon.utility.put
+import com.yesat.vozon.utility.run2
+import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
 
 
@@ -25,10 +25,8 @@ class InfoTmpActivity: ListActivity<InfoTmp, InfoTmpActivity.ViewHolder>(){
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         this.adapter = adapter
-        norm("START")
         Shared.call?.clone()?.run2(srRefresh,{ body ->
             list = body
-            norm("END")
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->

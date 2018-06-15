@@ -30,7 +30,7 @@ class LocationExtraFragment : Fragment() {
             (activity as LocationActivity).next(0)
 
         }catch (ex: IllegalStateException){
-            activity!!.snack(ex.message ?: "Unknown error")
+            activity!!.snack(ex.message ?: getString(R.string.something_went_wrong))
         }
     }
 

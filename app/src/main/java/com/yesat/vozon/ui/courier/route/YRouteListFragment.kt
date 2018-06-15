@@ -22,7 +22,6 @@ class YRouteListFragment : ListToolbarFragment<Route, YRouteListFragment.ViewHol
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         Api.courierService.routes().run2(srRefresh,{ body ->
-            norm("count ${body.size}")
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->

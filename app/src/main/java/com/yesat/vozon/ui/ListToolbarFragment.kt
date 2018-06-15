@@ -28,9 +28,9 @@ abstract class ListToolbarFragment<T,V : ListFragment.ViewHolder> : ListFragment
         v.v_list.adapter = adapter
         val srRefresh = v.v_refresh
 
-        val refreshListener = SwipeRefreshLayout.OnRefreshListener({
+        val refreshListener = SwipeRefreshLayout.OnRefreshListener {
             refreshListener(adapter,srRefresh)
-        })
+        }
 
 
         srRefresh.setOnRefreshListener(refreshListener)

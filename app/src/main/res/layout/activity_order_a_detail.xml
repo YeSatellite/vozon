@@ -353,18 +353,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Вес"
+                        android:text="Чемпионат"
                         android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/v_shipping_type"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="17sp"
                         android:theme="@style/LargeTextViewStyle"
-                        tools:text="1 гр" />
+                        tools:text="мира" />
                 </LinearLayout>
 
                 <include

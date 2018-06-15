@@ -9,7 +9,6 @@ import android.view.*
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
-import com.yesat.vozon.utility.norm
 import com.yesat.vozon.utility.run2
 import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
@@ -49,7 +48,6 @@ class LocationFragment(val call: Call<List<InfoTmp>>) : ListFragment<InfoTmp, Lo
     }
 
     override fun onItemClick(item: InfoTmp){
-        norm("id: ${item.id}")
         (activity as LocationActivity).next(item.id!!)
     }
 

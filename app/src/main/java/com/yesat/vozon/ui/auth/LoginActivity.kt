@@ -10,15 +10,13 @@ import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.utility.run2
 import com.yesat.vozon.utility.clientOrCourier
 import com.yesat.vozon.utility.get
-import com.yesat.vozon.utility.norm
 import com.yesat.vozon.utility.snack
 import kotlinx.android.synthetic.main.activity_login.*
 import com.yesat.vozon.services.MyFirebaseInstanceIDService
+import com.yesat.vozon.ui.BackPressCompatActivity
 
 
-
-
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BackPressCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
             snack("Try later")
             return
         }
-        norm("my token $token")
         val map = hashMapOf(
                 "phone" to phone,
                 "sms_code" to smsCode,

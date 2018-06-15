@@ -55,8 +55,12 @@
 
     <style name="AppActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
         <item name="titleTextStyle">@style/AppTitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/AppSubtitleTextStyle</item>
     </style>
     <style name="AppTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">?textColorLarge</item>
+    </style>
+    <style name="AppSubtitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
         <item name="android:textColor">?textColorLarge</item>
     </style>
     <style name="ToolBarStyle" parent="Theme.AppCompat">

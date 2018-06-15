@@ -7,6 +7,7 @@ import com.yesat.vozon.R
 import com.yesat.vozon.ui.courier.order.YOrderFragment
 import com.yesat.vozon.ui.courier.route.YRouteListFragment
 import com.yesat.vozon.utility.Shared
+import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.activity_courier_main.*
 
 class YMainActivity : AppCompatActivity() {
@@ -33,6 +34,11 @@ class YMainActivity : AppCompatActivity() {
             transaction.commit()
             true}
 
-        v_navigation.selectedItemId = R.id.m_route
+        v_navigation.selectedItemId = when(intent.getStringExtra(Shared.action)){
+            Shared.Action.newOrder,
+            Shared.Action.acceptOffer,
+            Shared.Action.done -> R.id.m_order
+            else -> R.id.m_route
+        }
     }
 }

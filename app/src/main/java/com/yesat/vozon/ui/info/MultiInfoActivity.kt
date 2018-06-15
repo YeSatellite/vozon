@@ -10,11 +10,12 @@ import android.support.v7.widget.SearchView
 import android.view.*
 import com.yesat.vozon.R
 import com.yesat.vozon.models.MultiInfo
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.item_multi_info.view.*
 
-class MultiInfoActivity: AppCompatActivity() {
+class MultiInfoActivity: BackPressCompatActivity() {
     var adapter: ListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,8 @@ class MultiInfoActivity: AppCompatActivity() {
         adapter = ListAdapter()
         v_list.adapter = adapter
         v_refresh.isEnabled = false
+
+        title = intent.getStringExtra(Shared.title)
 
         refreshListener()
     }

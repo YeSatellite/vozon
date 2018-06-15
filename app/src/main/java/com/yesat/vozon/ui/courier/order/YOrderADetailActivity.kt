@@ -24,7 +24,6 @@ class YOrderADetailActivity : AppCompatActivity() {
         addBackPress()
 
         order = intent.get(Order::class.java)
-        norm(order.toString())
 
         supportActionBar!!.title = order!!.title
 

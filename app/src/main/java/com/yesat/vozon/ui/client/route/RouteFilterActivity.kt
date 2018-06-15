@@ -11,6 +11,7 @@ import com.yesat.vozon.R
 import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.Route
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.ui.info.InfoTmpActivity
 import com.yesat.vozon.ui.info.LocationActivity
 import com.yesat.vozon.ui.info.MultiInfoActivity
@@ -18,7 +19,7 @@ import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_route_filter.*
 import java.util.*
 
-class RouteFilterActivity: AppCompatActivity() {
+class RouteFilterActivity: BackPressCompatActivity() {
 
     companion object {
         const val START_POINT_REQUEST_CODE = 54
@@ -34,14 +35,14 @@ class RouteFilterActivity: AppCompatActivity() {
 
         filter = intent.get(Route.FilterRoute::class.java)
 
-        v_start_point.setOnClickListener({
+        v_start_point.setOnClickListener {
             val i = Intent(this@RouteFilterActivity, LocationActivity::class.java)
             startActivityForResult(i, START_POINT_REQUEST_CODE)
-        })
-        v_end_point.setOnClickListener({
+        }
+        v_end_point.setOnClickListener {
             val i = Intent(this@RouteFilterActivity,LocationActivity::class.java)
             startActivityForResult(i, END_POINT_REQUEST_CODE)
-        })
+        }
         v_start_date.setOnClickListener{
             val calendar = Calendar.getInstance()
             DatePickerDialog(this@RouteFilterActivity,
@@ -62,6 +63,7 @@ class RouteFilterActivity: AppCompatActivity() {
         }
         v_type.setOnClickListener {
             val i = Intent(this@RouteFilterActivity, MultiInfoActivity::class.java)
+            i.putExtra(Shared.title,getString(R.string.t_type))
             Shared.call = Api.infoService.tType()
             startActivityForResult(i,TYPE_REQUEST_CODE)
         }
@@ -90,7 +92,7 @@ class RouteFilterActivity: AppCompatActivity() {
 
 
         }catch (ex: IllegalStateException){
-            snack(ex.message ?: "Unknown error")
+            snack(ex.message ?: getString(R.string.something_went_wrong))
         }
     }
 

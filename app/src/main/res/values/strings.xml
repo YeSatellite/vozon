@@ -4,7 +4,8 @@
     <string name="personal_information">ПЕРСОНАЛЬНЫЕ ДАННЫЕ</string>
     <string name="phone_number_">Номер телефона*</string>
     <string name="date_of_birth">Дата рождения</string>
-    <string name="username">Имя пользователя*</string>
+    <string name="username_">Имя пользователя*</string>
+    <string name="username">Имя пользователя</string>
     <string name="city">Город</string>
     <string name="next">Далее</string>
 
@@ -15,11 +16,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="phone_number">Номер телефона</string>
-    <string name="enter">ВОЙТИ</string>
+    <string name="login">ВОЙТИ</string>
     <string name="do_not_have_an_account">У вас нет аккаунта?</string>
     <string name="sign_up">Создать аккаунт</string>
     <string name="done">Готово</string>
+
     <string name="is_empty">%1$s не может быть пустым</string>
+
     <string name="_o_">%1$s ● %2$s</string>
     <string name="_s_">%1$s %2$s</string>
     <string name="meter">%1$.0fм</string>
@@ -30,4 +33,23 @@
     <string name="price">Цена</string>
     <string name="filter">Filter</string>
     <string name="terms_of_service"><u>Условия использования</u></string>
+    <string name="load_type">Вид погрузки</string>
+    <string name="extra">Дополнительно</string>
+    <string name="short_description">Краткое описание</string>
+    <string name="registration">Регистрация</string>
+    <!--<string name="photo">фото</string>-->
+    <string name="enter_photo">Выберите фото</string>
+    <string name="enter_name">Введите имя</string>
+    <string name="enter_city">Выберите город</string>
+    <string name="enter_phone">Введите номер телефона</string>
+    <string name="something_went_wrong">Что то пошло не так</string>
+    <string name="enter_experience">Укажите стаж вождения</string>
+    <string name="enter_sms">Введите код с СМС</string>
+    <string name="ads">Объявления</string>
+    <string name="orders">Заявки</string>
+    <string name="type">Тип кузова</string>
+    <string name="date_departure">дата отъезда</string>
+    <string name="t_type">Тип транспорта</string>
+    <string name="profile">Профиль</string>
+    <string name="image">image</string>
 </resources>

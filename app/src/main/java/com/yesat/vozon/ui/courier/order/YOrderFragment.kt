@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
+import com.yesat.vozon.utility.Shared
 import kotlinx.android.synthetic.main.tmp_pager.view.*
 
 
@@ -33,6 +34,16 @@ class YOrderFragment : Fragment() {
         tabs.setViewPager(v.pager)
 
         (activity as AppCompatActivity).setSupportActionBar(v.v_toolbar)
+
+        v.pager.currentItem = when(activity!!.intent.getStringExtra(Shared.action)){
+            Shared.Action.acceptOffer,
+            Shared.Action.done -> {
+                activity!!.intent.removeExtra(Shared.action)
+                2
+            }
+            else -> 0
+        }
+
 
         return v
     }

@@ -15,6 +15,7 @@ import android.widget.TextView
 import com.theartofdev.edmodo.cropper.CropImage
 import com.yesat.vozon.R
 import com.yesat.vozon.models.*
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.ui.CodeAdapter
 import com.yesat.vozon.ui.info.InfoTmpActivity
 import com.yesat.vozon.ui.info.LocationActivity
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_order_new.*
 import java.io.File
 
 
-class OrderNewActivity : AppCompatActivity() {
+class OrderNewActivity : BackPressCompatActivity() {
     companion object {
         const val START_POINT_REQUEST_CODE = 54
         const val END_POINT_REQUEST_CODE = 57
@@ -44,25 +45,25 @@ class OrderNewActivity : AppCompatActivity() {
 
         order.category = intent.get(Category::class.java).id
 
-        v_image1!!.setOnClickListener({
+        v_image1!!.setOnClickListener {
             imageCur = 1
             CropImage.startPickImageActivity(this)
-        })
-        v_image2!!.setOnClickListener({
+        }
+        v_image2!!.setOnClickListener {
             imageCur = 2
             CropImage.startPickImageActivity(this)
-        })
+        }
 
-        v_start_point.setOnClickListener({
+        v_start_point.setOnClickListener {
             val i = Intent(this@OrderNewActivity, LocationActivity::class.java)
             i.putExtra(LocationActivity.EXTRA,LocationActivity.EXTRA)
             startActivityForResult(i,START_POINT_REQUEST_CODE)
-        })
-        v_end_point.setOnClickListener({
+        }
+        v_end_point.setOnClickListener {
             val i = Intent(this@OrderNewActivity,LocationActivity::class.java)
             i.putExtra(LocationActivity.EXTRA,LocationActivity.EXTRA)
             startActivityForResult(i,END_POINT_REQUEST_CODE)
-        })
+        }
         v_shipping_date.setOnClickListener(setDateListener(this))
         v_shipping_time.setOnClickListener(setTimeListener(this))
         v_transport.setOnClickListener {
@@ -113,7 +114,7 @@ class OrderNewActivity : AppCompatActivity() {
             })
 
         }catch (ex: IllegalStateException){
-            snack(ex.message ?: "Unknown error")
+            snack(ex.message ?: getString(R.string.something_went_wrong))
         }
     }
 

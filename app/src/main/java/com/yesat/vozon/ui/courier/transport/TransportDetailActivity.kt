@@ -35,6 +35,7 @@ class TransportDetailActivity : BackPressCompatActivity() {
         v_mark.text = transport!!.markName
         v_model.text = transport!!.modelName
         v_shipping_type.text = transport!!.shippingTypeName
+        v_load_type.text = transport!!.loadTypeName
         v_comment.text = transport!!.comment
 
     }

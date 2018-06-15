@@ -1,15 +1,14 @@
 package com.yesat.vozon.models
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Parcel
 import com.google.gson.Gson
 import com.google.gson.annotations.Expose
 import java.io.Serializable
-import android.support.v4.content.ContextCompat.startActivity
-import android.content.Intent
-import android.net.Uri
 
 
-class User : Serializable {
-
+class User() : Serializable{
     @Expose var id: Long? = null
     @Expose var phone: String? = null
     @Expose var name: String? = null
@@ -34,6 +33,18 @@ class User : Serializable {
     @Expose var rating: String? = null
         get() = if (field?.trim() != "-1") field else ""
     @Expose var token: String? = null
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readValue(Long::class.java.classLoader) as? Long
+        phone = parcel.readString()
+        name = parcel.readString()
+        about = parcel.readString()
+        type = parcel.readString()
+        avatar = parcel.readString()
+        experience = parcel.readValue(Long::class.java.classLoader) as? Long
+        courier_type = parcel.readValue(Long::class.java.classLoader) as? Long
+        token = parcel.readString()
+    }
 
     fun toJson(): String {
         val gson = Gson()
@@ -67,6 +78,21 @@ class User : Serializable {
         fun fromJson(json: String): User {
             return Gson().fromJson(json, User::class.java)
         }
+    }
+
+    fun clone(): User {
+        val user = User()
+        user.id = id
+        user.phone = phone
+        user.name = name
+        user.about = about
+        user.type = type
+        user.city = city
+        user.avatar = avatar
+        user.experience = experience
+        user.courier_type = courier_type
+        user.courierTypeName = courierTypeName
+        return user
     }
 
 }

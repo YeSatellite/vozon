@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".ui.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,25 +24,40 @@
         </activity>
         <activity android:name=".ui.info.InfoTmpActivity" />
         <activity android:name=".ui.info.LocationActivity" />
+
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.auth.SendSmsActivity" />
-        <activity android:name=".ui.auth.XSignUpActivity" />
-        <activity android:name=".ui.auth.YSignUpNextActivity" />
-        <activity android:name=".ui.auth.SettingActivity" />
-        <activity android:name=".ui.auth.SignUpActivity" />
-        <activity android:name=".ui.auth.YSignUpActivity" />
-        <activity
-            android:name=".ui.client.XMainActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:label="@string/enter_sms"/>
+        <activity android:name=".ui.auth.SendSmsActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.auth.XSignUpActivity"
+            android:label="@string/registration"/>
+        <activity android:name=".ui.auth.YSignUpNextActivity"
+            android:label="@string/registration"/>
+        <activity android:name=".ui.auth.SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/registration"/>
+        <activity android:name=".ui.auth.YSignUpActivity"
+            android:label="@string/registration"/>
+
+        <activity android:name=".ui.client.XSettingActivity" />
+        <activity android:name=".ui.client.XMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.client.posted.XOrderPDetailActivity" />
-        <activity android:name=".ui.client.posted.XOfferListActivity" />
+        <activity android:name=".ui.client.posted.XOfferListActivity"
+            android:label="Список предложений"/>
         <activity android:name=".ui.client.OrderNewActivity" />
         <activity android:name=".ui.client.CategoryActivity" />
         <activity android:name=".ui.client.active.XOrderADetailActivity" />
-        <activity android:name=".ui.client.route.RouteFilterActivity" />
+        <activity android:name=".ui.client.route.RouteFilterActivity"
+            android:label="Найти"/>
         <activity android:name=".ui.client.route.XRouteDetailActivity" />
+        <activity android:name=".ui.client.active.CourierProfileActivity"
+            android:label="@string/profile"/>
+        <activity android:name=".ui.client.XProfileUpdateActivity" />
+
+
         <activity
             android:name=".ui.courier.YMainActivity"
             android:theme="@style/AppThemeDark.NoActionBar" />
@@ -74,6 +90,10 @@
             android:name=".ui.courier.order.YOrderADetailActivity"
             android:theme="@style/AppThemeDark" />
 
+        <activity android:name=".ui.courier.YProfileUpdateActivity" />
+        <activity android:name=".ui.courier.YProfileUpdateNextActivity" />
+        <activity android:name=".ui.courier.YSettingActivity" />
+
         <service
             android:name=".services.MyFirebaseInstanceIDService"
             android:permission="android.permission.INTERNET">
@@ -81,10 +101,9 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <activity android:name=".ui.info.TermsActivity"></activity>
-        <activity android:name=".ui.client.active.CourierProfileActivity" />
+        <activity android:name=".ui.info.TermsActivity" />
         <activity android:name=".ui.info.MultiInfoActivity" />
+        <activity android:name=".ui.courier.order.OrderFilterActivity" />
     </application>
 
 </manifest>

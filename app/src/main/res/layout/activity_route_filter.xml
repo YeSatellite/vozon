@@ -32,7 +32,7 @@
                 android:drawableEnd="@drawable/next_"
                 android:ellipsize="end"
                 android:focusable="false"
-                android:hint="Тип"
+                android:hint="@string/type"
                 android:singleLine="true" />
 
             <EditText
@@ -71,7 +71,8 @@
                 android:paddingEnd="@dimen/space"
                 android:paddingStart="@dimen/space"
                 android:paddingTop="40dp"
-                android:text="ДАТА"
+                android:text="@string/date_departure"
+                android:textAllCaps="true"
                 android:textSize="12sp" />
 
             <LinearLayout
@@ -115,7 +116,7 @@
                 android:paddingEnd="@dimen/space"
                 android:paddingStart="@dimen/space"
                 android:text="Укажите промежуток времени"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
     </ScrollView>

@@ -97,7 +97,7 @@ class OfferNewActivity : AppCompatActivity() {
             })
 
         }catch (ex: IllegalStateException){
-            snack(ex.message ?: "Unknown error")
+            snack(ex.message ?: getString(R.string.something_went_wrong))
         }
     }
 

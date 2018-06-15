@@ -21,7 +21,6 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         Api.clientService.orders(Shared.active).run2(srRefresh,{ body ->
-            norm(body.size.toString())
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->

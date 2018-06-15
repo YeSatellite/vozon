@@ -9,11 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
 import com.yesat.vozon.utility.Shared
-import com.yesat.vozon.utility.norm
 import kotlinx.android.synthetic.main.fragment_list.*
 
-abstract class ListActivity<T,V : ListFragment.ViewHolder>: AppCompatActivity() {
-    var refreshListener: SwipeRefreshLayout.OnRefreshListener? = null
+abstract class ListActivity<T,V : ListFragment.ViewHolder>: BackPressCompatActivity() {
+    var refresh: Runnable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(Shared.theme)
@@ -23,19 +22,20 @@ abstract class ListActivity<T,V : ListFragment.ViewHolder>: AppCompatActivity() 
         val adapter = ListAdapter()
         v_list.adapter = adapter
         val srRefresh = v_refresh
-        norm(">>>>>>>>>>")
 
-        refreshListener = SwipeRefreshLayout.OnRefreshListener({
+        val refreshListener = SwipeRefreshLayout.OnRefreshListener({
             refreshListener(adapter,srRefresh)
         })
 
 
         srRefresh.setOnRefreshListener(refreshListener)
 
-        srRefresh.post({
-            refreshListener!!.onRefresh()
+        refresh = Runnable {
+            refreshListener.onRefresh()
             srRefresh.isRefreshing = true
-        })
+        }
+
+        srRefresh.post(refresh)
         srRefresh.setColorSchemeColors(Color.BLUE, Color.YELLOW, Color.BLUE)
     }
 

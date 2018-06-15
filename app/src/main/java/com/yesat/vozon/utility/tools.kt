@@ -100,24 +100,12 @@ fun ImageView.addFilter(res:Int = R.attr.appIconColor){
 }
 
 
-fun SwipeRefreshLayout.setOnRefreshListenerAuto(listener: () -> Unit){
-    setOnRefreshListener(listener)
-    post({
-        listener()
-        isRefreshing = true
-    })
-    setColorSchemeColors(Color.BLUE, Color.YELLOW, Color.BLUE)
-}
-
-
 @Suppress("UNCHECKED_CAST")
 fun <T: Serializable> Intent.get(type : Class<T>): T{
-    norm(">>>get "+type.simpleName)
     return this.getSerializableExtra(type.simpleName) as T
 }
 
 fun Intent.put(data: Serializable){
-    norm(">>>put "+data::class.java.simpleName)
     this.putExtra(data::class.java.simpleName,data)
 }
 
@@ -133,16 +121,6 @@ fun Activity.compressImage(uri: Uri): File {
     return file
 }
 
-
-
-
-
-
-fun locationFormat(location: Location, detail: String? = null): String{
-    var str = "${location.countryName}, ${location.regionName}, ${location.name}"
-    if (!detail.isNullOrBlank()) str += ", $detail"
-    return str
-}
 
 fun clientOrCourier() : Class<*>? = when (Shared.currentUser.type){
     User.CLIENT -> XMainActivity::class.java

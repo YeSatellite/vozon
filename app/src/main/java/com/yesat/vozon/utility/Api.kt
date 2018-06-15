@@ -4,8 +4,10 @@ package com.yesat.vozon.utility
 
 import android.app.Activity
 import android.app.ProgressDialog
+import android.content.res.Resources
 import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
+import com.yesat.vozon.R
 import com.yesat.vozon.models.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -94,6 +96,9 @@ object Api {
         @GET("$path/$transport/shipping-type/")
         fun tShippingType(): Call<List<InfoTmp>>
 
+        @GET("$path/$transport/load-type/")
+        fun tLoadType(): Call<List<InfoTmp>>
+
         @GET("$path/$transport/mark/")
         fun tMark(): Call<List<InfoTmp>>
 
@@ -106,6 +111,17 @@ object Api {
         companion object {
             const val path = "client"
         }
+
+        @Multipart
+        @PATCH("$path/clients/current/")
+        fun profileUpdate(
+                @Part("name") name:RequestBody,
+                @Part("city_id") city:RequestBody,
+                @Part("about") about:RequestBody,
+                @Part image: MultipartBody.Part?
+        ): Call<User>
+
+
         @GET("$path/clients/current")
         fun test(): Call<User>
 
@@ -156,6 +172,19 @@ object Api {
         companion object {
             const val path = "courier"
         }
+
+        @Multipart
+        @PATCH("$path/couriers/current/")
+        fun profileUpdate(
+                @Part("name") name:RequestBody,
+                @Part("city_id") city:RequestBody,
+                @Part("about") about:RequestBody,
+                @Part image: MultipartBody.Part?,
+                @Part("courier_type") courier_type:RequestBody? =null,
+                @Part("experience") experience:RequestBody? = null
+        ): Call<User>
+
+
         @GET("$path/couriers/current")
         fun test(): Call<User>
 
@@ -173,10 +202,8 @@ object Api {
 
 
         @GET("$path/order/")
-        fun orders(@Query("status") status: String): Call<List<Order>>
-
-        @GET("$path/order/{id}/offer/")
-        fun offer(@Path("id") orderId: Long): Call<Offer>
+        fun orders(@Query("status") status: String,
+                   @Query("start_point") filter: String? = null): Call<List<Order>>
 
         @POST("$path/order/{id}/offer/")
         fun offerAdd(@Path("id") orderId: Long,@Body offer: Offer): Call<Offer>
@@ -204,12 +231,12 @@ object Api {
 
     // ---------TEST-START---------
 
-    val ERROR_CODE = mapOf(
-            100 to "Unknown error",
-            101 to "phone already exist",
-            102 to "phone number is not correct",
-            103 to "error 103",
-            104 to "error 104"
+    val ERROR_CODE : Map<Int,String> = mapOf(
+            100 to "Что то пошло не так",
+            101 to "Этот номер уже зарегистрирован",
+            102 to "Номер не зарегистрирован",
+            103 to "Не правильный код",
+            104 to "Данный номер не существует"
     )
 
 }
@@ -218,12 +245,6 @@ fun <T> Call<T>.run3(context: Activity, ok: (body:T) -> Unit){
     this.run2(context,
             { body -> ok(body)},
             { _, error -> context.snack(error)}
-    )
-}
-fun <T> Call<T>.run3(srRefresh: SwipeRefreshLayout, ok: (body:T) -> Unit){
-    this.run2(srRefresh,
-            { body -> ok(body)},
-            { _, error -> srRefresh.snack(error)}
     )
 }
 
@@ -236,13 +257,13 @@ fun <T> Call<T>.run2(context: Activity,
     val pd = ProgressDialog(context)
     pd.show()
 
-    run1(this, ok, fail, { pd.dismiss() })
+    run1(this, ok, fail) { pd.dismiss() }
 }
 
 fun <T> Call<T>.run2(srRefresh: SwipeRefreshLayout,
                      ok: (body:T) -> Unit,
                      fail: (code: Int, error: String) -> Unit){
-    run1(this, ok, fail, { srRefresh.isRefreshing = false })
+    run1(this, ok, fail) { srRefresh.isRefreshing = false }
 }
 
 fun <T> Call<T>.run2(ok: (body:T) -> Unit,
@@ -266,15 +287,12 @@ private fun <T> run1(call: Call<T>,
                     norm("body is null")
                 }
             } else {
-                if( response.code() == 401){
-                    fail(99, "fatal")
-                }
                 val bodyString = response.errorBody()?.string()
                 norm("error body: $bodyString\n" +
                         "error status: ${response.code()}")
                 val code = response.headers()["Error-Code"]?.toIntOrNull() ?: response.code()
                 fail(code, Api.ERROR_CODE[code] ?: "Something went wrong")
-            }
+                }
             stop()
         }
 

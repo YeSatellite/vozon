@@ -16,12 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/space">
+            android:paddingBottom="@dimen/space"
+            android:paddingStart="@dimen/space">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/v_avatar"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_marginTop="@dimen/space"
                 android:src="@drawable/user_placeholder" />
 
             <TextView
@@ -29,6 +31,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space"
+                android:layout_marginTop="@dimen/space"
                 android:layout_weight="1"
                 android:textColor="?attr/textColorLarge"
                 android:textSize="18sp"
@@ -36,10 +39,9 @@
 
             <ImageView
                 android:id="@+id/v_setting"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:paddingBottom="@dimen/space"
-                android:paddingStart="@dimen/space"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="@dimen/space"
                 app:srcCompat="@drawable/setting" />
 
         </LinearLayout>

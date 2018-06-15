@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import com.yesat.vozon.R
-import com.yesat.vozon.ui.auth.SettingActivity
+import com.yesat.vozon.ui.client.XSettingActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.fragment_courier_profile.view.*
 
@@ -17,7 +17,6 @@ class YProfileFragment : Fragment() {
         val v =  inflater.inflate(R.layout.fragment_courier_profile, container, false)
 
         val user = Shared.currentUser
-        norm(user.avatar)
 
         v.v_avatar.src(user.avatar,R.drawable.user_placeholder)
         v.v_transport.text = user.name
@@ -27,7 +26,7 @@ class YProfileFragment : Fragment() {
         v.v_phone.text = user.phone
         v.v_experience.text = user.experience.toString()
         v.v_setting.setOnClickListener{
-            startActivityForResult(Intent(context, SettingActivity::class.java),26)
+            startActivityForResult(Intent(context, YSettingActivity::class.java),26)
         }
         v.v_setting.addFilter(R.attr.textColorLarge)
         return v

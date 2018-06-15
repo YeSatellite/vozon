@@ -3,10 +3,7 @@ package com.yesat.vozon.utility
 import android.app.Activity
 import android.content.SharedPreferences
 import com.yesat.vozon.R
-import com.yesat.vozon.models.Country
-import com.yesat.vozon.models.InfoTmp
-import com.yesat.vozon.models.MultiInfo
-import com.yesat.vozon.models.User
+import com.yesat.vozon.models.*
 import retrofit2.Call
 
 object Shared {
@@ -14,10 +11,12 @@ object Shared {
         const val acceptOffer = "accept_offer"
         const val done = "done"
         const val newOrder= "new_order"
+        const val responseOrder= "response_order"
     }
 
     const val user = "user"
     const val action = "action"
+    const val title = "title"
 
     const val posted = "posted"
     const val waiting = "waiting"
@@ -25,14 +24,13 @@ object Shared {
 
     var call: Call<List<InfoTmp>>? = null
     var list: List<MultiInfo> = java.util.ArrayList()
+    val filter = arrayListOf<Location>()
 
     var preferences: SharedPreferences? = null
         private set
     var currentUser = User()
         set(value) {
             field = value
-
-
 
             val editor = preferences!!.edit()
             editor.putString(user, field.toJson())

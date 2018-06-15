@@ -35,7 +35,10 @@ class XRouteDetailActivity : AppCompatActivity() {
 
         v_avatar.src(route?.owner?.avatar,R.drawable.user_placeholder)
         v_name.text = route?.owner?.name
-        v_rationg.text = "${route?.owner?.courierTypeName} • ${route?.owner?.rating}"
+        v_rationg.text = if(route?.owner?.rating.isNullOrEmpty())
+            route?.owner?.courierTypeName
+        else
+            getString(R.string._o_,route?.owner?.courierTypeName,route?.owner?.rating)
         v_call.setOnClickListener{
             if(askPermission(Manifest.permission.CALL_PHONE, REQUEST_PHONE_CALL))
                 startActivity(route!!.owner!!.callIntent())
@@ -48,11 +51,11 @@ class XRouteDetailActivity : AppCompatActivity() {
         v_number.text = route?.transport?.number
         v_mark.text = route?.transport?.markName
         v_model.text = route?.transport?.modelName
-
-        v_length.text = route?.transport?.length.toString()
-        v_width.text = route?.transport?.width.toString()
-        v_height.text = route?.transport?.height.toString()
+        v_length.text = getString(R.string.meter,route?.transport?.length)
+        v_width.text = getString(R.string.meter,route?.transport?.width)
+        v_height.text = getString(R.string.meter,route?.transport?.height)
         v_shipping_type.text = route?.transport?.shippingTypeName
+        v_load_type.text = route?.transport?.loadTypeName
 
         v_comment.text = route!!.comment
     }

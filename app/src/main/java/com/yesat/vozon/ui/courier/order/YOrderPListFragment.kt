@@ -1,14 +1,16 @@
 package com.yesat.vozon.ui.courier.order
 
-import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.yesat.vozon.R
+import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.Order
+import com.yesat.vozon.models.Route
 import com.yesat.vozon.ui.ListFragment
+import com.yesat.vozon.ui.client.route.RouteFilterActivity
+import com.yesat.vozon.ui.client.route.XRouteListFragment
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_courier_order.view.*
@@ -16,8 +18,11 @@ import kotlinx.android.synthetic.main.item_courier_order.view.*
 
 class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>() {
 
+
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        Api.courierService.orders(Shared.posted).run2(srRefresh,{body ->
+        if(Shared.filter.isEmpty()) Shared.filter.add(Shared.currentUser.city!!)
+        val filter = Shared.filter.joinToString(separator = ",",transform = {it.id.toString()})
+        Api.courierService.orders(Shared.posted,filter).run2(srRefresh,{body ->
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
@@ -53,17 +58,34 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
         holder.hName.text = item.owner?.name
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK) {
-//            refreshListener.onRefresh()
-        }
-
-    }
-
     override fun onItemClick(item: Order) {
         val i = Intent(activity, YOrderPDetailActivity::class.java)
         i.put(item)
         startActivity(i)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_filter, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.filter -> {
+                val i = Intent(activity, OrderFilterActivity::class.java)
+                startActivityForResult(i, XRouteListFragment.ROUTE_FILTER_ACTIVITY)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        refresh!!.run()
     }
 }

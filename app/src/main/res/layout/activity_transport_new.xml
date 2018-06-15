@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?appBackground"
-    tools:context=".ui.auth.XSignUpActivity">
+    tools:context=".ui.courier.transport.TransportNewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -195,6 +195,16 @@
             android:drawableEnd="@drawable/next_"
             android:focusable="false"
             android:hint="Способы погрузки"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/v_load_type"
+            style="@style/ProfileEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/next_"
+            android:focusable="false"
+            android:hint="@string/load_type"
             android:inputType="text" />
 
         <EditText

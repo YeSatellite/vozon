@@ -10,34 +10,41 @@ import android.view.View
 import android.view.ViewGroup
 import com.yesat.vozon.R
 import com.yesat.vozon.utility.Shared
-import com.yesat.vozon.ui.auth.SettingActivity
-import com.yesat.vozon.utility.norm
 import com.yesat.vozon.utility.src
 import kotlinx.android.synthetic.main.fragment_client_profile.view.*
 
 class XProfileFragment : Fragment() {
+    var v: View? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val v =  inflater.inflate(R.layout.fragment_client_profile, container, false)
+        v =  inflater.inflate(R.layout.fragment_client_profile, container, false)
 
         val user = Shared.currentUser
-        norm(user.avatar)
 
-        v.v_avatar.src(user.avatar,R.drawable.user_placeholder)
-        v.v_transport.text = user.name
-        v.v_about.text = user.about
-        v.v_city.text = user.city?.getShortName() ?: ""
-        v.v_phone.text = user.phone
+        v?.v_avatar?.src(user.avatar,R.drawable.user_placeholder)
+        v?.v_transport?.text = user.name
+        v?.v_about?.text = user.about
+        v?.v_city?.text = user.city?.getShortName() ?: ""
+        v?.v_phone?.text = user.phone
 
-        v.v_setting.setOnClickListener{
-            startActivityForResult(Intent(context,SettingActivity::class.java),26)
+        v?.v_setting?.setOnClickListener{
+            startActivityForResult(Intent(context, XSettingActivity::class.java),26)
         }
 
         return v
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        val user = Shared.currentUser
+
+        v?.v_avatar?.src(user.avatar,R.drawable.user_placeholder)
+        v?.v_transport?.text = user.name
+        v?.v_about?.text = user.about
+        v?.v_city?.text = user.city?.getShortName() ?: ""
+        v?.v_phone?.text = user.phone
+
         if(requestCode == 26){
             if (resultCode == Activity.RESULT_OK){
                 activity?.finish()

@@ -47,6 +47,7 @@
         android:textSize="12sp" />
 
     <LinearLayout
+        android:id="@+id/v_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:windowBackground"
@@ -67,10 +68,10 @@
         <EditText
             android:id="@+id/v_phone_number"
             style="@style/ProfileEditTextStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/phone_number"
+            android:hint="@string/phone_number_"
             android:inputType="textNoSuggestions|phone" />
     </LinearLayout>
 
@@ -80,12 +81,12 @@
         android:layout_height="1dp" />
 
     <EditText
-        android:id="@+id/v_transport"
+        android:id="@+id/v_name"
         style="@style/ProfileEditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/male_"
-        android:hint="@string/username"
+        android:hint="@string/username_"
         android:inputType="textPersonName" />
 
     <include

@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import com.yesat.vozon.utility.Api
 import com.yesat.vozon.R
 import com.yesat.vozon.utility.Shared
-import com.yesat.vozon.utility.norm
 
 class LocationActivity : AppCompatActivity() {
     companion object {
@@ -27,7 +26,6 @@ class LocationActivity : AppCompatActivity() {
     }
 
     fun next(id: Long) {
-        norm(state.toString())
         val selectedFragment = when (state) {
             0 -> LocationFragment(Api.infoService.country())
             1 -> LocationFragment(Api.infoService.region(id))

@@ -12,6 +12,7 @@ import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.ui.ListToolbarFragment
 import com.yesat.vozon.ui.client.posted.XOrderPDetailActivity
 import com.yesat.vozon.utility.*
+import kotlinx.android.synthetic.main.fragment_list_toolbar.view.*
 import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_client_route.view.*
 
@@ -31,12 +32,17 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
                 filter.startDate,
                 filter.endDate
         ).run2(srRefresh,{body ->
-            norm("size: ${body.size}")
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
             srRefresh.snack(error)
         })
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val v = super.onCreateView(inflater, container, savedInstanceState)!!
+        v.v_toolbar.title = getString(R.string.ads)
+        return v
     }
 
     override fun onCreateViewHolder2(parent: ViewGroup): ViewHolder {
@@ -47,6 +53,7 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
         val hTransport = v.v_transport!!
+        val hIcon = v.c_image!!
         val hTType = v.v_t_type!!
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
@@ -60,14 +67,15 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
 
     override fun onBindViewHolder2(holder: ViewHolder, item: Route) {
         holder.hTransport.text = item.transport!!.fullName
-        holder.hTType.text = item .transport!!.typeName
+        holder.hIcon.src(item.transport!!.typeIcon,R.drawable.tmp_truck)
+        holder.hIcon.addFilter()
+        holder.hTType.text = getString(R.string._o_,item .transport!!.typeName, item.transport!!.shippingTypeName)
         holder.hStartPoint.text = item.startPoint!!.getShortName()
         holder.hEndPoint.text = item.endPoint!!.getShortName()
         holder.hName.text =item.owner?.name
         holder.hAvatar.src(item.owner?.avatar,R.drawable.user_placeholder)
         holder.hRating.text =item.owner?.rating
         holder.hDate.text = item.shippingDate?.dateFormat()
-        norm(item.owner?.rating)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,17 +5,17 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.yesat.vozon.R
 import com.yesat.vozon.models.User
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.utility.addBackPress
 import com.yesat.vozon.utility.get
 import com.yesat.vozon.utility.src
 import kotlinx.android.synthetic.main.fragment_courier_profile.*
 
-class CourierProfileActivity : AppCompatActivity() {
+class CourierProfileActivity : BackPressCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_courier_profile)
-        addBackPress()
 
         val user = intent.get(User::class.java)
 
@@ -28,10 +28,5 @@ class CourierProfileActivity : AppCompatActivity() {
         v_experience.text = user.experience.toString()
         v_setting.visibility = View.GONE
 
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
     }
 }

@@ -42,20 +42,20 @@ class YSignUpActivity : AppCompatActivity() {
 
         user.type = User.COURIER
 
-        v_city.setOnClickListener({
+        v_city.setOnClickListener {
             val i = Intent(this@YSignUpActivity, LocationActivity::class.java)
             startActivityForResult(i, CITY_REQUEST_CODE)
-        })
+        }
         v_upload_image.setOnClickListener{
             startActivityForResult(CropImage.getPickImageChooserIntent(this),
                     IMAGE_REQUEST_CODE)
         }
 
         var countries: List<Country>
-        Api.infoService.countryPhone().run3(this,{
+        Api.infoService.countryPhone().run3(this) {
             countries = it
             after(countries)
-        })
+        }
     }
 
 
@@ -94,10 +94,11 @@ class YSignUpActivity : AppCompatActivity() {
 
     private fun next(){
         try{
-            user.phone = v_phone_number.get("phone is empty")
-            user.name = v_transport.get("name is empty")
-            checkNotNull(user.city){"city is empty"}
-            checkNotNull(image){"avatar is empty"}
+            checkNotNull(image){getString(R.string.enter_photo)}
+            if(phoneOk.not()) error(getString(R.string.enter_phone))
+            user.name = v_name.get(getString(R.string.enter_name))
+            checkNotNull(user.city){getString(R.string.enter_city)}
+            user.about = v_about.get()
 
             val i = Intent(this,YSignUpNextActivity::class.java)
             i.put(user)
@@ -106,7 +107,7 @@ class YSignUpActivity : AppCompatActivity() {
 
 
         }catch (ex: IllegalStateException){
-            snack(ex.message ?: "Unknown error")
+            snack(ex.message ?: getString(R.string.something_went_wrong))
         }
     }
 

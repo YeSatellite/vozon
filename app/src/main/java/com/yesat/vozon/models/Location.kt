@@ -32,4 +32,14 @@ class Location : Serializable {
         if (this.name != other.name) return "Same Region"
         return "Same City"
     }
+    override fun toString(): String {
+        return """
+            |User(id=$id,
+            |   name=$name,
+            |   regionName=$regionName,
+            |   countryName=$countryName,
+            |)""".trimMargin()
+    }
+
+
 }

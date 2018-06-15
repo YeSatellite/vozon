@@ -21,7 +21,6 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         Api.clientService.orders(Shared.posted).run2(srRefresh,{ body ->
-            norm(body.size.toString())
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->

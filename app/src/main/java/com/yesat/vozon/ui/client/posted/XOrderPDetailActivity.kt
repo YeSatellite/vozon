@@ -23,7 +23,6 @@ class XOrderPDetailActivity : BackPressCompatActivity() {
 
         val order = intent.get(Order::class.java)
         this.order = order
-        norm(order.toString())
 
         supportActionBar!!.title = order.title
 

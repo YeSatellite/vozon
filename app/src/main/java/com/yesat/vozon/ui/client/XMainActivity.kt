@@ -30,6 +30,9 @@ class XMainActivity : AppCompatActivity() {
             transaction.commit()
             true}
 
-        v_navigation.selectedItemId = R.id.m_route
+        v_navigation.selectedItemId = when(intent.getStringExtra(Shared.action)){
+            Shared.Action.responseOrder -> R.id.m_order
+            else -> R.id.m_route
+        }
     }
 }
