@@ -57,9 +57,9 @@ class Order : Serializable {
     @SerializedName("payment_type_name")
     @Expose var paymentTypeName: String? = null
 
-    @Expose var category: Long? = null
-    @SerializedName("category_name")
-    @Expose var categoryName: String? = null
+    @Expose var type: Long? = null
+    @SerializedName("type_name")
+    @Expose var typeName: String? = null
 
     @SerializedName("accept_person")
     @Expose var acceptPerson: String? = null

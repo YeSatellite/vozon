@@ -5,10 +5,14 @@ import android.net.Uri
 import android.os.Parcel
 import com.google.gson.Gson
 import com.google.gson.annotations.Expose
+import com.yesat.vozon.R.string.type
 import java.io.Serializable
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 class User() : Serializable{
+
     @Expose var id: Long? = null
     @Expose var phone: String? = null
     @Expose var name: String? = null
@@ -31,7 +35,11 @@ class User() : Serializable{
         }
 
     @Expose var rating: String? = null
-        get() = if (field?.trim() != "-1") field else ""
+        get() {
+            field = df.format(field?.toFloat())
+            return if (field?.trim() != "-1") field
+            else ""
+        }
     @Expose var token: String? = null
 
     constructor(parcel: Parcel) : this() {
@@ -49,6 +57,14 @@ class User() : Serializable{
     fun toJson(): String {
         val gson = Gson()
         return gson.toJson(this)
+    }
+
+    fun experienceStr(): String{
+        return "$experience " + when {
+            experience!! in 10..20 -> "лет"
+            experience!!%10 in 1..4 -> "года"
+            else -> "лет"
+        }
     }
 
     override fun toString(): String {
@@ -77,6 +93,12 @@ class User() : Serializable{
 
         fun fromJson(json: String): User {
             return Gson().fromJson(json, User::class.java)
+        }
+
+        private val df = run{
+            val d = DecimalFormat("#.##")
+            d.roundingMode = RoundingMode.CEILING
+            return@run d
         }
     }
 

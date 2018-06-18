@@ -10,6 +10,7 @@ import com.yesat.vozon.models.Transport
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.ui.ListToolbarFragment
 import com.yesat.vozon.utility.*
+import kotlinx.android.synthetic.main.fragment_list_toolbar.view.*
 import kotlinx.android.synthetic.main.item_transport.view.*
 
 
@@ -27,6 +28,13 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
         })
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val v = super.onCreateView(inflater, container, savedInstanceState)!!
+        v.v_toolbar.title = getString(R.string.your_transports)
+        return v
+    }
+
+
     override fun onCreateViewHolder2(parent: ViewGroup): ViewHolder {
         val v = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_transport, parent, false)
@@ -40,7 +48,7 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Transport) {
-        holder.hImage.src(item.typeIcon,R.drawable.tmp_truck)
+        holder.hImage.src(item.type?.icon,R.drawable.tmp_truck)
         holder.hImage.addFilter()
         holder.hName.text = item.fullName
         holder.hNumber.text = item.number

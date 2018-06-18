@@ -31,10 +31,8 @@ class Offer : Serializable {
     @SerializedName("other_service_name")
     @Expose var otherServiceName: String? = null
 
-    @SerializedName("shipping_type")
-    @Expose var shippingType: Long? = null
-    @SerializedName("shipping_type_name")
-    @Expose var shippingTypeName: String? = null
+    @SerializedName("have_loaders")
+    @Expose var haveLoaders: Boolean? = null
 
     @Expose var created: String? = null
 
@@ -50,8 +48,6 @@ class Offer : Serializable {
             |   paymentTypeName=$paymentTypeName,
             |   otherService=$otherService,
             |   otherServiceName=$otherServiceName,
-            |   shippingType=$shippingType,
-            |   shippingTypeName=$shippingTypeName,
             |   comment=$comment
             |)""".trimMargin()
     }

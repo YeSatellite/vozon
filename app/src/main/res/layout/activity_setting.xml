@@ -11,8 +11,8 @@
         style="@style/LargeTextViewStyle.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/calendar_"
-        android:text="Редактировать профиль" />
+        android:drawableStart="@drawable/edit_"
+        android:text="@string/profile_edit" />
 
     <include
         layout="@layout/include_line"
@@ -26,7 +26,7 @@
         style="@style/LargeTextViewStyle.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/call_"
+        android:drawableStart="@drawable/question_"
         android:text="FAQ" />
 
     <include
@@ -41,7 +41,7 @@
         style="@style/LargeTextViewStyle.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/compass_"
+        android:drawableStart="@drawable/support_"
         android:text="Помощь" />
 
     <include
@@ -56,7 +56,7 @@
         style="@style/LargeTextViewStyle.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/compass_"
+        android:drawableStart="@drawable/letter_"
         android:text="Связаться с нами" />
 
     <include
@@ -65,6 +65,14 @@
         android:layout_height="1dp"
         android:layout_marginEnd="@dimen/space"
         android:layout_marginStart="@dimen/space" />
+
+    <TextView
+        android:id="@+id/v_remove_user"
+        style="@style/LargeTextViewStyle.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Удалить аккаунт"
+        android:textColor="@color/appRed" />
 
     <TextView
         android:id="@+id/v_logout"

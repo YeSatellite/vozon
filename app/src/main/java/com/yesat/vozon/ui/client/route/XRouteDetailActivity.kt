@@ -46,15 +46,15 @@ class XRouteDetailActivity : AppCompatActivity() {
 
         v_date.text = route?.shippingDate?.dateFormat(route?.shippingTime!!)
         v_start_point.text = route?.startPoint!!.getShortName()
-        v_end_point.text = route!!.endPoint!!.getShortName()
+        v_end_point.text = route!!.endPoint?.getShortName()
 
         v_number.text = route?.transport?.number
         v_mark.text = route?.transport?.markName
         v_model.text = route?.transport?.modelName
+        v_t_type.text = route?.transport?.type?.name
         v_length.text = getString(R.string.meter,route?.transport?.length)
         v_width.text = getString(R.string.meter,route?.transport?.width)
         v_height.text = getString(R.string.meter,route?.transport?.height)
-        v_shipping_type.text = route?.transport?.shippingTypeName
         v_load_type.text = route?.transport?.loadTypeName
 
         v_comment.text = route!!.comment

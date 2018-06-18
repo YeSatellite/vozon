@@ -14,6 +14,7 @@ import com.yesat.vozon.models.InfoTmp
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.models.Transport
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.ui.CodeAdapter
 import com.yesat.vozon.ui.courier.transport.TransportListActivity
 import com.yesat.vozon.ui.info.InfoTmpActivity
@@ -22,12 +23,11 @@ import com.yesat.vozon.utility.Shared.currencies
 import kotlinx.android.synthetic.main.activity_offer_new.*
 
 
-class OfferNewActivity : AppCompatActivity() {
+class OfferNewActivity : BackPressCompatActivity() {
     companion object {
         const val TRANSPORT_REQUEST_CODE = 68
         const val PAYMENT_TYPE_REQUEST_CODE = 86
         const val OTHER_SERVICE_REQUEST_CODE = 57
-        const val SHIPPING_TYPE_REQUEST_CODE = 54
     }
 
 
@@ -55,11 +55,6 @@ class OfferNewActivity : AppCompatActivity() {
             Shared.call = Api.infoService.otherType()
             startActivityForResult(i, OTHER_SERVICE_REQUEST_CODE)
         }
-        v_shipping_type.setOnClickListener{
-            val i = Intent(this@OfferNewActivity,InfoTmpActivity::class.java)
-            Shared.call = Api.infoService.tShippingType()
-            startActivityForResult(i, SHIPPING_TYPE_REQUEST_CODE)
-        }
 
         val currencies = currencies()
 
@@ -82,12 +77,12 @@ class OfferNewActivity : AppCompatActivity() {
 
     private fun create(){
         try{
-            offer.price = v_price.get(getString(R.string.is_empty,"price")).toLong()
-            checkNotNull(offer.transport){getString(R.string.is_empty,"transport")}
-            checkNotNull(offer.paymentType){getString(R.string.is_empty,"payment type")}
-            checkNotNull(offer.otherService){getString(R.string.is_empty,"other service")}
-            checkNotNull(offer.shippingType){getString(R.string.is_empty,"shipping type")}
-            offer.comment = v_comment.get(getString(R.string.is_empty,"comment"))
+            offer.price = v_price.get(getString(R.string.enter_price)).toLong()
+            checkNotNull(offer.transport){getString(R.string.enter_transport)}
+            checkNotNull(offer.paymentType){getString(R.string.enter_payment_type)}
+            checkNotNull(offer.otherService){getString(R.string.enter_other_service)}
+            offer.haveLoaders = v_have_loaders.isChecked
+            offer.comment = v_comment.get(getString(R.string.enter_comment))
 
             Api.courierService.offerAdd(order.id!!,offer).run2(this,{
                 setResult(Activity.RESULT_OK)
@@ -137,11 +132,6 @@ class OfferNewActivity : AppCompatActivity() {
                     val otherService =  data!!.get(InfoTmp::class.java)
                     offer.otherService = otherService.id
                     v_other_service.text = otherService.name!!
-                }
-                SHIPPING_TYPE_REQUEST_CODE -> {
-                    val shippingType =  data!!.get(InfoTmp::class.java)
-                    offer.shippingType = shippingType.id
-                    v_shipping_type.text = shippingType.name!!
                 }
             }
         }

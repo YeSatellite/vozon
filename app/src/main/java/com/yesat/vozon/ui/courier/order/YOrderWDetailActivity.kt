@@ -24,8 +24,9 @@ class YOrderWDetailActivity : AppCompatActivity() {
 
         supportActionBar!!.title = order!!.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2)
-                .filter { it != null })
+        val list = listOf(order!!.image1,order!!.image2).filter { it != null }
+        if(list.isNotEmpty()) v_images.adapter = ImagePagerAdapter(this,list)
+        else v_images.visibility = View.GONE
 
         v_avatar.src(order?.owner?.avatar,R.drawable.user_placeholder)
         v_transport.text = order?.owner?.name
@@ -43,7 +44,7 @@ class YOrderWDetailActivity : AppCompatActivity() {
         v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
-        v_category.text = order!!.categoryName
+        v_category.text = order!!.typeName
         v_payment_type.text = order!!.paymentTypeName
 
         v_comment.text = order!!.comment

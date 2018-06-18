@@ -5,9 +5,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.yesat.vozon.R
-import com.yesat.vozon.utility.Shared
 import com.yesat.vozon.models.User
-import com.yesat.vozon.utility.addBackPress
+import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class XSettingActivity : AppCompatActivity() {
@@ -19,15 +18,29 @@ class XSettingActivity : AppCompatActivity() {
         addBackPress()
 
         v_logout.setOnClickListener{
-            Shared.currentUser = User()
-            setResult(Activity.RESULT_OK)
-            this.finish()
+            ask {
+                Shared.currentUser = User()
+                setResult(Activity.RESULT_OK)
+                this.finish()
+            }
         }
 
         v_edit.setOnClickListener{
-            startActivity(Intent(this,XProfileUpdateActivity::class.java))
+            startActivity(Intent(this,XProfileEditActivity::class.java))
         }
 
+
+        v_remove_user.setOnClickListener {
+            ask {
+                Api.authService.remove_user().run3(this){
+                    alert("Аккаунт успешно удалено"){
+                        Shared.currentUser = User()
+                        setResult(Activity.RESULT_OK)
+                        this.finish()
+                    }
+                }
+            }
+        }
 
     }
 

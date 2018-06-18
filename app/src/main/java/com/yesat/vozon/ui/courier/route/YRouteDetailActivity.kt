@@ -3,12 +3,12 @@ package com.yesat.vozon.ui.courier.route
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Route
 import com.yesat.vozon.ui.ImagePagerAdapter
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_y_route_detail.*
-import kotlinx.android.synthetic.main.include_route.*
 
 
 class YRouteDetailActivity : AppCompatActivity() {
@@ -28,17 +28,18 @@ class YRouteDetailActivity : AppCompatActivity() {
                 this,
                 listOf(route?.transport?.image1, route?.transport?.image2))
 
-        v_image.src(route?.transport?.typeIcon,R.drawable.tmp_truck)
+        v_image.src(route?.transport?.type?.icon,R.drawable.tmp_truck)
         v_image.addFilter()
         v_transport.text = route?.transport?.fullName
-        v_t_type.text = getString(R.string._o_,route?.transport?.typeName,route?.transport?.shippingTypeName)
+        v_t_type.text = getString(R.string._o_,route?.transport?.type?.name,route?.transport?.loadTypeName)
 
 
         v_date.text = route?.shippingDate?.dateFormat()
         v_start_point.text = route?.startPoint!!.getShortName()
-        v_end_point.text = route!!.endPoint!!.getShortName()
+        if (route!!.endPoint != null) v_end_point.text = route!!.endPoint?.getShortName()
 
-        v_comment.text = route!!.comment
+        if (!route!!.comment.isNullOrEmpty()) v_comment.text = route!!.comment
+        else v_comment.visibility = View.GONE
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

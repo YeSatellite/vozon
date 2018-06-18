@@ -13,6 +13,7 @@ import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.BackPressCompatActivity
+import com.yesat.vozon.ui.courier.transport.TransportDetailActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_offer.view.*
 
@@ -54,15 +55,19 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
         val hPrice = v.v_price!!
         val hAccept = v.v_accept!!
         val hReject = v.v_reject!!
+        val hCourier = v.v_courier!!
+        val hTransport = v.v_transport!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Offer) {
         val user = item.transport?.owner!!
         holder.hAvatar.src(user.avatar,R.drawable.user_placeholder)
         holder.hName.text = user.name
-        holder.hRating.text = getString(R.string._o_,user.courierTypeName,user.rating)
+        holder.hRating.text = if(user.rating.isNullOrEmpty()) user.courierTypeName
+        else getString(R.string._o_,user.courierTypeName,user.rating)
         holder.hDate.text = item.created!!.dateFormat()
         holder.hAbout.text = item.transport?.owner?.about
+        if (holder.hAbout.text.isNullOrEmpty()) holder.hAbout.visibility = View.GONE
         holder.hTName.text = item.transport?.modelName
         holder.hTType.text = item.paymentTypeName
         holder.hPrice.text = getString(R.string._s_, item.price.toString(),item.currency)
@@ -85,6 +90,18 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
                         _, error ->
                         activity!!.snack(error)
                     })
+        }
+
+        holder.hCourier.setOnClickListener {
+            val i =Intent(activity,YProfileOActivity::class.java)
+            i.put(item.transport!!.owner!!)
+            startActivity(i)
+        }
+        holder.hTransport.setOnClickListener {
+            val i =Intent(activity,TransportDetailActivity::class.java)
+            i.putExtra("have",false)
+            i.put(item.transport!!)
+            startActivity(i)
         }
 
     }

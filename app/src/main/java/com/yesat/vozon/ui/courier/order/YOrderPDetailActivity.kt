@@ -3,6 +3,7 @@ package com.yesat.vozon.ui.courier.order
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.ImagePagerAdapter
@@ -23,8 +24,9 @@ class YOrderPDetailActivity : AppCompatActivity() {
 
         supportActionBar!!.title = order!!.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2)
-                .filter { it != null })
+        val list = listOf(order!!.image1,order!!.image2).filter { it != null }
+        if(list.isNotEmpty()) v_images.adapter = ImagePagerAdapter(this,list)
+        else v_images.visibility = View.GONE
 
         v_avatar.src(order?.owner?.avatar,R.drawable.user_placeholder)
         v_transport.text = order?.owner?.name
@@ -34,10 +36,14 @@ class YOrderPDetailActivity : AppCompatActivity() {
         v_end_point.text = order!!.endPoint!!.getShortName(order!!.endDetail!!)
 
         v_volume.text = getString(R.string.meter3,order!!.width!! * order!!.height!!*order!!.length!!)
-        v_mass.text = order!!.mass.toString()
+        v_mass.text = if(order!!.mass!!>1000){
+            getString(R.string.kg,order!!.mass!! / 1000)
+        }else{
+            getString(R.string.g,order!!.mass!!)
+        }
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
-        v_category.text = order!!.categoryName
+        v_category.text = order!!.typeName
         v_payment_type.text = order!!.paymentTypeName
 
         v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)

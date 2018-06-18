@@ -8,57 +8,76 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginEnd="@dimen/space"
         android:layout_marginStart="@dimen/space"
         android:layout_marginTop="@dimen/space"
         android:background="@drawable/rounded_grey"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/space"
-        tools:ignore="UselessParent">
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/v_image"
+            android:layout_width="120dp"
+            android:layout_height="110dp"
+            android:layout_margin="8dp"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="5dp"
+            app:srcCompat="@drawable/tmp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/c_image"
-                android:layout_width="@dimen/space"
-                android:layout_height="@dimen/space"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/explore" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/v_transport"
+                style="@style/LargeTextViewStyle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:textSize="14dp"
+                tools:text="Volkswagen Polo" />
 
-                <TextView
-                    android:id="@+id/v_transport"
-                    style="@style/LargeTextViewStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Volkswagen Polo" />
+            <TextView
+                android:id="@+id/v_t_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="10sp"
+                tools:text="Седан • Грузчики" />
 
-                <TextView
-                    android:id="@+id/v_t_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    tools:text="Седан • Грузчики" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Отгрузка"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/v_start_point"
+                style="@style/LargeTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                tools:text="Павлодар, Каза*стан" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Отгрузка"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/v_end_point"
+                style="@style/LargeTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ne vazhno"
+                android:textSize="12sp" />
+
         </LinearLayout>
-
-        <include
-            layout="@layout/include_route"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
 
     <LinearLayout

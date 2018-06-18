@@ -33,11 +33,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/space">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/v_avatar"
@@ -110,7 +106,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="@dimen/space"
                     android:orientation="horizontal">
 
@@ -131,11 +127,7 @@
                         tools:text="Меж. город" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -155,11 +147,7 @@
                         tools:text="ПереVOZка" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -178,11 +166,7 @@
                         tools:text="Наличный расчет" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -201,11 +185,7 @@
                         tools:text="0.000375 м^3" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -224,11 +204,7 @@
                         tools:text="1 гр" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,11 +247,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/space">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <FrameLayout
                         android:layout_width="50dp"
@@ -322,11 +294,7 @@
                         tools:text="2000 tg" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -345,11 +313,7 @@
                         tools:text="Наличный расчет" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -371,24 +335,23 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Вес"
+                        android:text="loader barma"
                         android:textSize="17sp" />
 
                     <TextView
-                        android:id="@+id/v_shipping_type"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/v_have_loaders"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="17sp"
                         android:theme="@style/LargeTextViewStyle"
-                        tools:text="1 гр" />
+                        tools:text="Yes" />
                 </LinearLayout>
 
                 <include

@@ -8,7 +8,7 @@ import android.view.*
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
-import com.yesat.vozon.ui.client.CategoryActivity
+import com.yesat.vozon.ui.client.TTypeActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_active_order.view.*
@@ -69,7 +69,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.add -> {
-                val i = Intent(activity, CategoryActivity::class.java)
+                val i = Intent(activity, TTypeActivity::class.java)
                 startActivityForResult(i,32)
                 true
             }

@@ -6,14 +6,11 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.*
 import com.yesat.vozon.R
-import com.yesat.vozon.models.Order
 import com.yesat.vozon.models.Route
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.ui.ListToolbarFragment
-import com.yesat.vozon.ui.client.posted.XOrderPDetailActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.fragment_list_toolbar.view.*
-import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_client_route.view.*
 
 
@@ -52,13 +49,13 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
     }
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
+        val hImage = v.v_image!!
         val hTransport = v.v_transport!!
-        val hIcon = v.c_image!!
         val hTType = v.v_t_type!!
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
-        val hName = v.v_name!!
         val hAvatar = v.v_avatar!!
+        val hName = v.v_name!!
         val hRating = v.v_rating!!
         val hDate = v.v_date!!
 
@@ -66,12 +63,11 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
     }
 
     override fun onBindViewHolder2(holder: ViewHolder, item: Route) {
-        holder.hTransport.text = item.transport!!.fullName
-        holder.hIcon.src(item.transport!!.typeIcon,R.drawable.tmp_truck)
-        holder.hIcon.addFilter()
-        holder.hTType.text = getString(R.string._o_,item .transport!!.typeName, item.transport!!.shippingTypeName)
-        holder.hStartPoint.text = item.startPoint!!.getShortName()
-        holder.hEndPoint.text = item.endPoint!!.getShortName()
+        holder.hImage.src(item.transport?.image1,R.drawable.tmp)
+        holder.hTransport.text = item.transport?.fullName
+        holder.hTType.text = getString(R.string._o_,item .transport?.type?.name, item.transport?.loadTypeName)
+        holder.hStartPoint.text = item.startPoint?.getShortName()
+        holder.hEndPoint.text = item.endPoint?.getShortName()
         holder.hName.text =item.owner?.name
         holder.hAvatar.src(item.owner?.avatar,R.drawable.user_placeholder)
         holder.hRating.text =item.owner?.rating

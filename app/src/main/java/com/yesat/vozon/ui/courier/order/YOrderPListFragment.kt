@@ -1,18 +1,14 @@
 package com.yesat.vozon.ui.courier.order
 
 import android.content.Intent
-import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.yesat.vozon.R
-import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.Order
-import com.yesat.vozon.models.Route
 import com.yesat.vozon.ui.ListFragment
-import com.yesat.vozon.ui.client.route.RouteFilterActivity
-import com.yesat.vozon.ui.client.route.XRouteListFragment
 import com.yesat.vozon.utility.*
-import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_courier_order.view.*
 
 
@@ -40,11 +36,11 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
         val hTitle = v.v_title!!
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
-        val hPosition = v.v_t_type!!
-        val hImage= v.c_image!!
+        val hPosition = v.v_position!!
+        val hImage= v.v_image!!
         val hAvatar= v.v_avatar!!
         val hDate= v.v_date!!
-        val hName= v.v_transport!!
+        val hName= v.v_name!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Order) {
@@ -62,27 +58,6 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
         val i = Intent(activity, YOrderPDetailActivity::class.java)
         i.put(item)
         startActivity(i)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_filter, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.filter -> {
-                val i = Intent(activity, OrderFilterActivity::class.java)
-                startActivityForResult(i, XRouteListFragment.ROUTE_FILTER_ACTIVITY)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

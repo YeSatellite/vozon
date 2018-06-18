@@ -5,12 +5,10 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.theartofdev.edmodo.cropper.CropImage
 import com.yesat.vozon.R
@@ -43,7 +41,7 @@ class OrderNewActivity : BackPressCompatActivity() {
         setContentView(R.layout.activity_order_new)
         askPermission(Manifest.permission.READ_EXTERNAL_STORAGE,750)
 
-        order.category = intent.get(Category::class.java).id
+        order.type = intent.get(TType::class.java).id
 
         v_image1!!.setOnClickListener {
             imageCur = 1
@@ -92,19 +90,19 @@ class OrderNewActivity : BackPressCompatActivity() {
 
     private fun create(){
         try{
-            order.title = v_title.get("title is empty")
-            order.comment = v_comment.get("comment is empty")
-            order.height = v_height.get("height is empty").toFloat()
-            order.width = v_width.get("width is empty").toFloat()
-            order.length = v_length.get("length is empty").toFloat()
-            order.mass = v_mass.get("mass is empty").toFloat()
-            check(order.startPoint != null){"start point is empty"}
-            check(order.endPoint != null){"end point is empty"}
-            order.shippingDate = v_shipping_date.get("shipping date is empty")
-            order.shippingTime = v_shipping_time.get("shipping time is empty")
-            order.price = v_price.get(getString(R.string.is_empty,"цена")).toFloat()
-            order.acceptPerson = v_accept_person.get("acceptPerson is empty")
-            order.acceptPersonContact = v_accept_person.get("acceptPersonContact is empty")
+            order.title = v_title.get(getString(R.string.enter_title))
+            order.comment = v_comment.get(getString(R.string.enter_cargo))
+            order.length = v_length.get(getString(R.string.enter_length)).toFloat()
+            order.width = v_width.get(getString(R.string.enter_width)).toFloat()
+            order.height = v_height.get(getString(R.string.enter_height)).toFloat()
+            order.mass = v_mass.get(getString(R.string.enter_mass)).toFloat()
+            check(order.startPoint != null){getString(R.string.enter_start_point)}
+            check(order.endPoint != null){getString(R.string.enter_end_point)}
+            order.shippingDate = v_shipping_date.get(getString(R.string.enter_date))
+            order.shippingTime = v_shipping_time.get(getString(R.string.enter_time))
+            order.acceptPerson = v_accept_person.get(getString(R.string.enter_accept_person))
+            order.acceptPersonContact = v_accept_person_contact.get(getString(R.string.enter_accept_person_contact))
+            order.price = v_price.get(getString(R.string.enter_price)).toFloat()
 
 
             Api.clientService.orderAdd(order).run2(this,{ body ->

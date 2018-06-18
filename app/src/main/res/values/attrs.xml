@@ -9,5 +9,6 @@
 
 
         <attr name="iconAdd" format="reference" />
+        <attr name="iconFilter" format="reference" />
     </declare-styleable>
 </resources>

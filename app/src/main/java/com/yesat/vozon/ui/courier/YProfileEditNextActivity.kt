@@ -15,7 +15,7 @@ import okhttp3.RequestBody
 import java.io.File
 
 
-class YProfileUpdateNextActivity : BackPressCompatActivity() {
+class YProfileEditNextActivity : BackPressCompatActivity() {
 
     private var user: User? = null
     private var image: File? = null
@@ -32,7 +32,7 @@ class YProfileUpdateNextActivity : BackPressCompatActivity() {
         }
 
 
-        v_experience.content = user!!.experience.toString()
+        v_experience.content = user!!.experienceStr()
 
     }
 
@@ -41,17 +41,16 @@ class YProfileUpdateNextActivity : BackPressCompatActivity() {
             user!!.courier_type = when(v_courier_type.checkedRadioButtonId) {
                 R.id.v_natural_person -> 1
                 R.id.v_juridical_person -> 2
-                else -> error("select client type")
+                else -> error(getString(R.string.something_went_wrong))
             }
-            user!!.experience = v_experience.get("experience is empty").toLong()
+            user!!.experience = v_experience.get(getString(R.string.enter_experience)).toLong()
 
-            val formData = MediaType.parse("multipart/form-data")
-            val name = RequestBody.create(formData, user!!.name!!)
-            val city = RequestBody.create(formData, user!!.city!!.id.toString())
+            val name =  user!!.name!!.toMultiPart()
+            val city =  user!!.city!!.id.toString().toMultiPart()
             val about = user!!.about.toMultiPart()
-            val image = image.toMultiPartImage("avatar")
-            val courierType = RequestBody.create(formData, user!!.courier_type!!.toString())
-            val experience = RequestBody.create(formData, user!!.experience!!.toString())
+            val image = image!!.toMultiPartImage("avatar")
+            val courierType =  user!!.courier_type!!.toString().toMultiPart()
+            val experience =  user!!.experience!!.toString().toMultiPart()
             Api.courierService.profileUpdate(name,city,about,image,courierType,experience)
                     .run2(this,{
                         it.token = Shared.currentUser.token

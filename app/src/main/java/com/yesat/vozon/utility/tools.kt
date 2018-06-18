@@ -15,6 +15,7 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.util.TypedValue
@@ -29,6 +30,7 @@ import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.User
 import com.yesat.vozon.ui.client.XMainActivity
 import com.yesat.vozon.ui.courier.YMainActivity
+import kotlinx.android.synthetic.main.item_offer.view.*
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
@@ -57,7 +59,23 @@ fun AppCompatActivity.addBackPress(){
 
 fun Activity.snack(text: String){
     val rootView = window.decorView.findViewById<View>(android.R.id.content)
-    Snackbar.make(rootView,text, Snackbar.LENGTH_LONG).show()
+    val snackBar = Snackbar.make(rootView,text, Snackbar.LENGTH_LONG)
+    snackBar.view.setBackgroundColor(Color.BLACK)
+    val id = android.support.design.R.id.snackbar_text
+    val textView = snackBar.view.findViewById(id) as TextView
+    textView.setTextColor(Color.LTGRAY)
+    snackBar.show()
+}
+
+fun Activity.ask(call:()->Unit){
+    val builder = AlertDialog.Builder(this)
+    builder.setMessage("Вы уверены?").setPositiveButton(getString(R.string.yes)) { _, _ ->  call()}
+            .setNegativeButton(getString(R.string.no)) { _, _ ->  }.show()
+}
+
+fun Activity.alert(message:String ,call:()->Unit){
+    val builder = AlertDialog.Builder(this)
+    builder.setMessage(message).setPositiveButton(getString(R.string.yes)) { _, _ ->  call()}.show()
 }
 
 fun Activity.toast(text: String){

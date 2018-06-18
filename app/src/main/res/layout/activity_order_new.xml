@@ -31,7 +31,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="dasda" />
+                    android:hint="@string/photo" />
 
                 <ImageView
                     android:id="@+id/v_image1"
@@ -58,7 +58,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Наименование"
+                android:hint="@string/title"
                 android:inputType="textPersonName" />
 
             <include
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
-                android:hint="Опишите груз"
+                android:hint="@string/enter_cargo"
                 android:inputType="textMultiLine"
                 android:minLines="4" />
 
@@ -91,7 +91,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Длина"
+                android:hint="@string/length_u"
                 android:inputType="numberDecimal" />
 
             <include
@@ -104,7 +104,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ширина"
+                android:hint="@string/width_u"
                 android:inputType="numberDecimal" />
 
             <include
@@ -117,7 +117,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Высота"
+                android:hint="@string/height_u"
                 android:inputType="numberDecimal" />
 
             <include
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
-                android:hint="Вес"
+                android:hint="@string/weight_u"
                 android:inputType="numberDecimal" />
 
             <EditText
@@ -199,7 +199,7 @@
                 android:paddingEnd="@dimen/space"
                 android:paddingStart="@dimen/space"
                 android:paddingTop="@dimen/space"
-                android:text="@string/personal_information"
+                android:text="@string/receiver_info"
                 android:textSize="12sp" />
 
             <EditText
@@ -221,7 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Контакты"
-                android:inputType="textPersonName" />
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/textView"
@@ -259,7 +259,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Цена за услуги в тенге"
+                    android:hint="@string/price_for_service"
                     android:inputType="numberDecimal" />
 
             </LinearLayout>

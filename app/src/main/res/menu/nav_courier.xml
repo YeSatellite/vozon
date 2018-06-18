@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/m_route"
-        android:icon="@drawable/explore_"
+        android:icon="@drawable/explore_d_"
         android:title="Route" />
 
     <item
         android:id="@+id/m_transport"
-        android:icon="@drawable/truck_"
+        android:icon="@drawable/wheel_"
         android:title="Transport" />
 
     <item
         android:id="@+id/m_order"
-        android:icon="@drawable/document_"
+        android:icon="@drawable/document_d_"
         android:title="Order" />
 
     <item
         android:id="@+id/m_profile"
-        android:icon="@drawable/user_"
+        android:icon="@drawable/user_d_"
         android:title="Profile" />
 
 </menu>

@@ -32,11 +32,7 @@
                 android:background="?android:attr/editTextBackground"
                 android:padding="@dimen/space">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <com.makeramen.roundedimageview.RoundedImageView
                         android:id="@+id/v_avatar"
@@ -133,11 +129,7 @@
                         tools:text="Меж. город" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -157,11 +149,7 @@
                         tools:text="ПереVOZка" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,11 +168,7 @@
                         tools:text="Наличный расчет" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -203,11 +187,7 @@
                         tools:text="0.000375 м^3" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -226,11 +206,7 @@
                         tools:text="1 гр" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/space"
-                    android:orientation="horizontal">
+                <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"

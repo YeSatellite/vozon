@@ -1,20 +1,12 @@
 package com.yesat.vozon.ui.client.active
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.view.Gravity
-import android.view.ViewGroup
-import android.widget.RatingBar
-import android.widget.Toast
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.ui.ImagePagerAdapter
 import kotlinx.android.synthetic.main.activity_order_a_detail.*
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.view.LayoutInflater
 import android.view.View
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_rating.view.*
@@ -32,8 +24,9 @@ class XOrderADetailActivity : BackPressCompatActivity() {
 
         supportActionBar!!.title = order!!.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2)
-                .filter { it != null })
+        val list = listOf(order!!.image1,order!!.image2).filter { it != null }
+        if(list.isNotEmpty()) v_images.adapter = ImagePagerAdapter(this,list)
+        else v_images.visibility = View.GONE
 
         v_date.text = order!!.shippingDate!!.dateFormat()
         v_start_point.text = order!!.startPoint!!.getShortName(order!!.startDetail!!)
@@ -48,19 +41,19 @@ class XOrderADetailActivity : BackPressCompatActivity() {
         v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
-        v_category.text = order!!.categoryName
+        v_category.text = order!!.typeName
         v_payment_type.text = order!!.paymentTypeName
 
         v_comment.text = order!!.comment
 
         val offer = order!!.offer!!
-        v_image.src(offer.transport?.typeIcon,R.drawable.tmp_truck)
+        v_image.src(offer.transport?.type?.icon,R.drawable.tmp_truck)
         v_transport.text = offer.transport?.fullName
-        v_t_type.text = offer.transport?.typeName
+        v_t_type.text = offer.transport?.type?.name
         v_price2.text = getString(R.string._s_, offer.price.toString(),offer.currency)
         v_payment_type2.text = offer.paymentTypeName
         v_other_service.text = offer.otherServiceName
-        v_shipping_type.text = offer.shippingTypeName
+        v_have_loaders.text = yesOrNo(offer.haveLoaders)
         v_comment2.text = offer.comment
 
         v_button.text = getString(R.string.done)

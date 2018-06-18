@@ -25,7 +25,7 @@ class CourierProfileActivity : BackPressCompatActivity() {
         v_about.text = user.about
         v_city.text = user.city?.getShortName() ?: ""
         v_phone.text = user.phone
-        v_experience.text = user.experience.toString()
+        v_experience.text = user.experienceStr()
         v_setting.visibility = View.GONE
 
     }

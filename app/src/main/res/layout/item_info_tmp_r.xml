@@ -14,7 +14,7 @@
         <TextView
             android:id="@+id/v_transport"
             style="@style/LargeTextViewStyle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/space"
             android:layout_weight="1"
@@ -23,7 +23,7 @@
 
         <ImageView
             android:id="@+id/v_remove"
-            android:layout_width="70dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:paddingEnd="@dimen/space"
             android:paddingStart="@dimen/space"

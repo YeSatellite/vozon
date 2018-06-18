@@ -2,7 +2,6 @@ package com.yesat.vozon.ui.courier.transport
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.yesat.vozon.R
@@ -17,6 +16,7 @@ class TransportDetailActivity : BackPressCompatActivity() {
     var transport: Transport? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(Shared.theme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport_detail)
 
@@ -34,7 +34,7 @@ class TransportDetailActivity : BackPressCompatActivity() {
         v_number.text = transport!!.number
         v_mark.text = transport!!.markName
         v_model.text = transport!!.modelName
-        v_shipping_type.text = transport!!.shippingTypeName
+        v_t_type.text = transport!!.type?.name
         v_load_type.text = transport!!.loadTypeName
         v_comment.text = transport!!.comment
 
@@ -42,23 +42,25 @@ class TransportDetailActivity : BackPressCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_remove, menu)
+        if(intent.getBooleanExtra("have",true))
+            menuInflater.inflate(R.menu.menu_remove, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.remove -> {
-                Api.courierService.transportDelete(transport!!.id!!).run2(this,{
-                },{ code, error ->
-                    if(code == 0){
-                        setResult(Activity.RESULT_OK)
-                        finish()
-                    }
-                    else{
-                        snack(error)
-                    }
-                })
+                ask {
+                    Api.courierService.transportDelete(transport!!.id!!).run2(this, {
+                    }, { code, error ->
+                        if (code == 0) {
+                            setResult(Activity.RESULT_OK)
+                            finish()
+                        } else {
+                            snack(error)
+                        }
+                    })
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)

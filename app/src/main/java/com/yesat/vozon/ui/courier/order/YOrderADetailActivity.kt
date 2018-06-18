@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.ImagePagerAdapter
@@ -27,8 +28,9 @@ class YOrderADetailActivity : AppCompatActivity() {
 
         supportActionBar!!.title = order!!.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order!!.image1,order!!.image2)
-                .filter { it != null })
+        val list = listOf(order!!.image1,order!!.image2).filter { it != null }
+        if(list.isNotEmpty()) v_images.adapter = ImagePagerAdapter(this,list)
+        else v_images.visibility = View.GONE
         
 
         v_avatar.src(order?.owner?.avatar,R.drawable.user_placeholder)
@@ -47,19 +49,19 @@ class YOrderADetailActivity : AppCompatActivity() {
         v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
-        v_category.text = order!!.categoryName
+        v_category.text = order!!.typeName
         v_payment_type.text = order!!.paymentTypeName
 
         v_comment.text = order!!.comment
 
         val offer = order!!.offer!!
-        v_image.src(offer.transport?.typeIcon,R.drawable.tmp_truck)
+        v_image.src(offer.transport?.type?.icon,R.drawable.tmp_truck)
         v_transport.text = offer.transport?.fullName
-        v_t_type.text = offer.transport?.typeName
-        v_price2.text = offer.price.toString()
+        v_t_type.text = offer.transport?.type?.name
+        v_price2.text = getString(R.string._s_, offer.price.toString(),offer.currency)
         v_payment_type2.text = offer.paymentTypeName
         v_other_service.text = offer.otherServiceName
-        v_shipping_type.text = offer.shippingTypeName
+        v_have_loaders.text = yesOrNo(offer.haveLoaders)
         v_comment2.text = offer.comment
 
         v_name2.text = order?.acceptPerson

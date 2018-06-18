@@ -24,7 +24,7 @@ class YProfileFragment : Fragment() {
         v.v_about.text = user.about
         v.v_city.text = user.city?.getShortName() ?: ""
         v.v_phone.text = user.phone
-        v.v_experience.text = user.experience.toString()
+        v.v_experience.text = user.experienceStr()
         v.v_setting.setOnClickListener{
             startActivityForResult(Intent(context, YSettingActivity::class.java),26)
         }

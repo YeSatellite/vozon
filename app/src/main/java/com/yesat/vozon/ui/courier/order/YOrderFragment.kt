@@ -28,6 +28,8 @@ class YOrderFragment : Fragment() {
         v.v_toolbar.setTitleTextColor(color)
         v.v_toolbar.setSubtitleTextColor(color)
 
+        v.v_toolbar.title = getString(R.string.orders)
+
         v.pager.adapter = OrderPagesAdapter(childFragmentManager)
         val tabs = v.tab_layout
         tabs.shouldExpand = true
@@ -51,14 +53,14 @@ class YOrderFragment : Fragment() {
 
     inner class OrderPagesAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
-        private var tabs = arrayOf("Posted", "Waiting", "Active")
+        private var tabs = arrayOf("Новые", "Ожидание", "Активные")
 
         override fun getPageTitle(position: Int) = tabs[position]
         override fun getCount() = tabs.size
 
         override fun getItem(position: Int): Fragment? {
             return when (position) {
-                0 -> YOrderPListFragment()
+                0 -> YOrderPList0Fragment()
                 1 -> YOrderWListFragment()
                 2 -> YOrderAListFragment()
                 else -> null

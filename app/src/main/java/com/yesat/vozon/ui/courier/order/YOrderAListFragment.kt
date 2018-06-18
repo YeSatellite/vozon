@@ -10,7 +10,6 @@ import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.utility.*
-import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_courier_order.view.*
 
 
@@ -35,11 +34,11 @@ class YOrderAListFragment : ListFragment<Order, YOrderAListFragment.ViewHolder>(
         val hTitle = v.v_title!!
         val hStartPoint = v.v_start_point!!
         val hEndPoint= v.v_end_point!!
-        val hPosition = v.v_t_type!!
-        val hImage= v.c_image!!
+        val hPosition = v.v_position!!
+        val hImage= v.v_image!!
         val hAvatar= v.v_avatar!!
         val hDate= v.v_date!!
-        val hName= v.v_transport!!
+        val hName= v.v_name!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Order) {

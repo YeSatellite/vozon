@@ -4,10 +4,8 @@ package com.yesat.vozon.utility
 
 import android.app.Activity
 import android.app.ProgressDialog
-import android.content.res.Resources
 import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
-import com.yesat.vozon.R
 import com.yesat.vozon.models.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -59,6 +57,9 @@ object Api {
 
         @POST("$path/sent-sms/")
         fun sentSms(@Body phone: Map<String, String>): Call<Any>
+
+        @DELETE("$path/remove-user/")
+        fun remove_user(): Call<Any>
     }
 
     var infoService = retrofit.create(InfoService::class.java)!!
@@ -83,18 +84,14 @@ object Api {
         @GET("$path/payment-type/")
         fun paymentType(): Call<List<InfoTmp>>
 
-        @GET("$path/category/")
-        fun category(): Call<List<Category>>
-
         @GET("$path/other-type/")
         fun otherType(): Call<List<InfoTmp>>
 
+        @GET("$path/$transport/type/")
+        fun tType(): Call<List<TType>>
 
         @GET("$path/$transport/type/")
-        fun tType(): Call<List<InfoTmp>>
-
-        @GET("$path/$transport/shipping-type/")
-        fun tShippingType(): Call<List<InfoTmp>>
+        fun tTypeTmp(): Call<List<InfoTmp>>
 
         @GET("$path/$transport/load-type/")
         fun tLoadType(): Call<List<InfoTmp>>

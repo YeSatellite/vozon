@@ -64,7 +64,7 @@ class RouteFilterActivity: BackPressCompatActivity() {
         v_type.setOnClickListener {
             val i = Intent(this@RouteFilterActivity, MultiInfoActivity::class.java)
             i.putExtra(Shared.title,getString(R.string.t_type))
-            Shared.call = Api.infoService.tType()
+            Shared.call = Api.infoService.tTypeTmp()
             startActivityForResult(i,TYPE_REQUEST_CODE)
         }
         fill()

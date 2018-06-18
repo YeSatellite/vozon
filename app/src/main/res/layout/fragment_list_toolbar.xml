@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             theme="@style/ToolBarStyle"
+            app:titleTextAppearance="@style/ToolBarStyle.TitleText"
             app:title="Contact" />
     </android.support.design.widget.AppBarLayout>
 

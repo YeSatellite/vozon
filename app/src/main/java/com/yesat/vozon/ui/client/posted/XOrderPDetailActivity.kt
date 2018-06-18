@@ -2,9 +2,9 @@ package com.yesat.vozon.ui.client.posted
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.BackPressCompatActivity
@@ -26,8 +26,9 @@ class XOrderPDetailActivity : BackPressCompatActivity() {
 
         supportActionBar!!.title = order.title
 
-        v_images.adapter = ImagePagerAdapter(this,listOf(order.image1, order.image2)
-                .filter { it != null })
+        val list = listOf(order.image1, order.image2).filter { it != null }
+        if(list.isNotEmpty()) v_images.adapter = ImagePagerAdapter(this,list)
+        else v_images.visibility = View.GONE
 
         v_date.text = order.shippingDate!!.dateFormat()
         v_start_point.text = order.startPoint!!.getShortName(order.startDetail!!)
@@ -41,8 +42,10 @@ class XOrderPDetailActivity : BackPressCompatActivity() {
         }
         v_price.text = getString(R.string._s_,order.price.toString(),order.currency)
 
-        v_t_type.text = order.startPoint!! - order.endPoint!!
-        v_category.text = order.categoryName
+        v_position.text = order.startPoint!! - order.endPoint!!
+        norm(order.type.toString())
+        norm(order.typeName)
+        v_t_type.text = order.typeName
         v_transport.text = order.paymentTypeName
 
         v_comment.text = order.comment
@@ -57,16 +60,17 @@ class XOrderPDetailActivity : BackPressCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.remove -> {
-                Api.clientService.orderDelete(order!!.id!!).run2(this,{
-                },{ code, error ->
-                    if(code == 0){
-                        setResult(Activity.RESULT_OK)
-                        finish()
-                    }
-                    else{
-                        snack(error)
-                    }
-                })
+                ask {
+                    Api.clientService.orderDelete(order!!.id!!).run2(this, {
+                    }, { code, error ->
+                        if (code == 0) {
+                            setResult(Activity.RESULT_OK)
+                            finish()
+                        } else {
+                            snack(error)
+                        }
+                    })
+                }
                 true
             }
             else -> super.onOptionsItemSelected(item)

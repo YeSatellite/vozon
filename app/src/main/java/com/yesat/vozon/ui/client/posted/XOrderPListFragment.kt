@@ -8,7 +8,7 @@ import android.view.*
 import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.R
 import com.yesat.vozon.models.Order
-import com.yesat.vozon.ui.client.CategoryActivity
+import com.yesat.vozon.ui.client.TTypeActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.include_route.view.*
 import kotlinx.android.synthetic.main.item_client_order.view.*
@@ -49,11 +49,11 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         holder.hEndPoint.text = item.endPoint!!.getShortName()
         holder.hPosition.text = item.startPoint!!.getShortName()
         holder.hImage.src(if(item.image1 != null) item.image1 else item.image2,R.drawable.tmp)
-        holder.hShowOffers.setOnClickListener({
+        holder.hShowOffers.setOnClickListener {
             val i = Intent(activity, XOfferListActivity::class.java)
             i.put(item)
             startActivityForResult(i,OFFER_LIST_ACTIVITY)
-        })
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +69,7 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.add -> {
-                val i = Intent(activity, CategoryActivity::class.java)
+                val i = Intent(activity, TTypeActivity::class.java)
                 startActivityForResult(i,32)
                 true
             }

@@ -14,7 +14,8 @@
             android:id="@+id/v_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            theme="@style/ToolBarStyle"/>
+            theme="@style/ToolBarStyle"
+            app:titleTextAppearance="@style/ToolBarStyle.TitleText"/>
 
         <com.astuetz.PagerSlidingTabStrip
             android:id="@+id/tab_layout"
@@ -26,7 +27,7 @@
             app:pstsUnderlineColor="?textColorLarge"
             app:pstsDividerColor="?textColorLarge"
             android:textColor="?textColorLarge"
-            android:textSize="17sp"
+            android:textSize="14sp"
             app:pstsIndicatorHeight="4dp"
             app:pstsTextAllCaps="false"
             />
