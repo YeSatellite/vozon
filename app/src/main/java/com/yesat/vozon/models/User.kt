@@ -60,6 +60,7 @@ class User() : Serializable{
     }
 
     fun experienceStr(): String{
+        if (experience == null)return ""
         return "$experience " + when {
             experience!! in 10..20 -> "лет"
             experience!!%10 in 1..4 -> "года"
@@ -96,7 +97,7 @@ class User() : Serializable{
         }
 
         private val df = run{
-            val d = DecimalFormat("#.##")
+            val d = DecimalFormat("#.#")
             d.roundingMode = RoundingMode.CEILING
             return@run d
         }

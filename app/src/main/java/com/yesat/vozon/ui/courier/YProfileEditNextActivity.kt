@@ -32,7 +32,7 @@ class YProfileEditNextActivity : BackPressCompatActivity() {
         }
 
 
-        v_experience.content = user!!.experienceStr()
+        v_experience.content = user!!.experience.toString()
 
     }
 
@@ -48,7 +48,7 @@ class YProfileEditNextActivity : BackPressCompatActivity() {
             val name =  user!!.name!!.toMultiPart()
             val city =  user!!.city!!.id.toString().toMultiPart()
             val about = user!!.about.toMultiPart()
-            val image = image!!.toMultiPartImage("avatar")
+            val image = image?.toMultiPartImage("avatar")
             val courierType =  user!!.courier_type!!.toString().toMultiPart()
             val experience =  user!!.experience!!.toString().toMultiPart()
             Api.courierService.profileUpdate(name,city,about,image,courierType,experience)

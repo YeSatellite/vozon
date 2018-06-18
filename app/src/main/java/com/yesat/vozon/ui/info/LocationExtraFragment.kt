@@ -3,6 +3,7 @@ package com.yesat.vozon.ui.info
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.*
 import com.yesat.vozon.R
 import com.yesat.vozon.utility.get
@@ -18,7 +19,7 @@ class LocationExtraFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
+        (activity as AppCompatActivity).supportActionBar!!.title = getString(R.string.enter_address)
         v =  inflater.inflate(R.layout.fragment_location_extra, container, false)
         return v
     }

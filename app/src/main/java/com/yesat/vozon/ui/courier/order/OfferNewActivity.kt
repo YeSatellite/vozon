@@ -39,20 +39,23 @@ class OfferNewActivity : BackPressCompatActivity() {
         setContentView(R.layout.activity_offer_new)
 
         order = intent.get(Order::class.java)
-        v_date.text = "Предложение актуально до ${order.shippingDate}"
+        v_date.text = "Предложение актуально до ${order.shippingDate?.dateFormat()}"
 
         v_transport.setOnClickListener{
             val i = Intent(this@OfferNewActivity, TransportListActivity::class.java)
+            i.putExtra("title",getString(R.string.list_of_your_transport))
             startActivityForResult(i, TRANSPORT_REQUEST_CODE)
         }
         v_payment_type.setOnClickListener {
             val i = Intent(this@OfferNewActivity,InfoTmpActivity::class.java)
             Shared.call = Api.infoService.paymentType()
+            i.putExtra("title",getString(R.string.payment_type))
             startActivityForResult(i, PAYMENT_TYPE_REQUEST_CODE)
         }
         v_other_service.setOnClickListener {
             val i = Intent(this@OfferNewActivity,InfoTmpActivity::class.java)
             Shared.call = Api.infoService.otherType()
+            i.putExtra("title",getString(R.string.other_service))
             startActivityForResult(i, OTHER_SERVICE_REQUEST_CODE)
         }
 

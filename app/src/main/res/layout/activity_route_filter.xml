@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/next_"
                 android:focusable="false"
-                android:hint="Город отъезда"
+                android:hint="@string/transport_position"
                 android:inputType="text" />
 
             <include
@@ -60,7 +60,7 @@
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/next_"
                 android:focusable="false"
-                android:hint="Город прибытия"
+                android:hint="@string/destination"
                 android:inputType="text" />
 
             <TextView

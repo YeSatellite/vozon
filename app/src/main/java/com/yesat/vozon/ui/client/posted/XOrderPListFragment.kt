@@ -47,7 +47,7 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         holder.hTitle.text = item.title
         holder.hStartPoint.text = item.startPoint!!.getShortName()
         holder.hEndPoint.text = item.endPoint!!.getShortName()
-        holder.hPosition.text = item.startPoint!!.getShortName()
+        holder.hPosition.text = item.startPoint!! - item.endPoint!!
         holder.hImage.src(if(item.image1 != null) item.image1 else item.image2,R.drawable.tmp)
         holder.hShowOffers.setOnClickListener {
             val i = Intent(activity, XOfferListActivity::class.java)

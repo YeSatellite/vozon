@@ -35,12 +35,11 @@ class XOrderPDetailActivity : BackPressCompatActivity() {
         v_end_point.text = order.endPoint!!.getShortName(order.endDetail!!)
 
         v_volume.text = getString(R.string.meter3,order.width!! * order.height!!*order.length!!)
-        v_mass.text = if(order.mass!!>1000){
-            getString(R.string.kg, order.mass!! / 1000)
+        v_mass.text = if(order.mass!!>1){
+            getString(R.string.kg, order.mass!!)
         }else{
-            getString(R.string.g, order.mass!!)
+            getString(R.string.g, order.mass!!*1000)
         }
-        v_price.text = getString(R.string._s_,order.price.toString(),order.currency)
 
         v_position.text = order.startPoint!! - order.endPoint!!
         norm(order.type.toString())

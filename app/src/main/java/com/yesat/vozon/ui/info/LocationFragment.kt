@@ -48,6 +48,7 @@ class LocationFragment(val call: Call<List<InfoTmp>>) : ListFragment<InfoTmp, Lo
     }
 
     override fun onItemClick(item: InfoTmp){
+        (activity as LocationActivity).supportActionBar!!.title = item.name
         (activity as LocationActivity).next(item.id!!)
     }
 

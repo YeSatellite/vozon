@@ -26,11 +26,11 @@ class Location : Serializable {
         return "$name, $startDetail"
     }
 
-    operator fun minus(other: Location): String{
-        if (this.countryName != other.countryName) return "kasha"
-        if (this.regionName != other.regionName) return "Same Country"
-        if (this.name != other.name) return "Same Region"
-        return "Same City"
+    operator fun minus(other: Location) = when {
+        this.countryName != other.countryName -> "Международный"
+        this.regionName != other.regionName -> "Междурегионный"
+        this.name != other.name -> "Междугородный"
+        else -> "Внутри Города"
     }
     override fun toString(): String {
         return """

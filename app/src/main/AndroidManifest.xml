@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.info.InfoTmpActivity" />
-        <activity android:name=".ui.info.LocationActivity" />
+        <activity android:name=".ui.info.LocationActivity"
+            android:label="Страна"/>
         <activity android:name=".ui.info.MultiInfoActivity" />
         <activity android:name=".ui.info.TermsActivity"
             android:label="@string/terms_of_service"/>
-
         <activity
             android:name=".ui.auth.LoginActivity"
             android:windowSoftInputMode="adjustResize"
@@ -55,7 +55,7 @@
         <activity android:name=".ui.client.OrderNewActivity"
             android:label="Добавить заявку"/>
         <activity android:name=".ui.client.TTypeActivity"
-            android:label="Выберите услугу"/>
+            android:label="@string/t_type"/>
         <activity android:name=".ui.client.active.XOrderADetailActivity" />
         <activity android:name=".ui.client.route.RouteFilterActivity"
             android:label="Найти"/>
@@ -71,7 +71,8 @@
             android:theme="@style/AppThemeDark.NoActionBar" />
         <activity
             android:name=".ui.courier.transport.TransportNewActivity"
-            android:theme="@style/AppThemeDark" />
+            android:theme="@style/AppThemeDark"
+            android:label="@string/add_transport"/>
         <activity
             android:name=".ui.courier.transport.TransportDetailActivity"
             android:theme="@style/AppThemeDark" />
@@ -86,7 +87,7 @@
             android:theme="@style/AppThemeDark" />
         <activity
             android:name=".ui.courier.route.RouteNewActivity"
-            android:label="Добавить объявление"
+            android:label="Дать объявление"
             android:theme="@style/AppThemeDark" />
         <activity
             android:name=".ui.courier.route.YRouteDetailActivity"
@@ -103,11 +104,11 @@
         <activity android:name=".ui.courier.YProfileEditNextActivity"
             android:label="@string/profile_edit"/>
         <activity android:name=".ui.courier.YSettingActivity"
-            android:theme="@style/AppThemeDark"/>
+            android:theme="@style/AppThemeDark"
+            android:label="@string/settings"/>
         <activity android:name=".ui.courier.order.OrderFilterActivity"
             android:theme="@style/AppThemeDark"
             android:label="Ищу груз" />
-        <activity android:name=".ui.client.posted.YProfileOActivity" />
 
 
         <service

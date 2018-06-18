@@ -74,6 +74,13 @@
         android:text="Удалить аккаунт"
         android:textColor="@color/appRed" />
 
+    <include
+        layout="@layout/include_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/space"
+        android:layout_marginStart="@dimen/space" />
+
     <TextView
         android:id="@+id/v_logout"
         style="@style/LargeTextViewStyle.Icon"

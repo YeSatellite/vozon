@@ -19,13 +19,16 @@ abstract class ListActivity<T,V : ListFragment.ViewHolder>: BackPressCompatActiv
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_list)
 
+        val title = intent.getStringExtra("title")
+        if (title != null)supportActionBar?.title = title
+
         val adapter = ListAdapter()
         v_list.adapter = adapter
         val srRefresh = v_refresh
 
-        val refreshListener = SwipeRefreshLayout.OnRefreshListener({
+        val refreshListener = SwipeRefreshLayout.OnRefreshListener {
             refreshListener(adapter,srRefresh)
-        })
+        }
 
 
         srRefresh.setOnRefreshListener(refreshListener)

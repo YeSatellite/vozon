@@ -36,6 +36,7 @@ class TransportNewActivity : BackPressCompatActivity() {
         v_mark.setOnClickListener {
             val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
             Shared.call= Api.infoService.tMark()
+            i.putExtra("title",getString(R.string.mark))
             startActivityForResult(i, MARK_REQUEST_CODE)
         }
         v_model.setOnClickListener {
@@ -44,18 +45,21 @@ class TransportNewActivity : BackPressCompatActivity() {
                 snack("Choose mark")
                 return@setOnClickListener
             })
+            i.putExtra("title",getString(R.string.model))
             startActivityForResult(i, MODEL_REQUEST_CODE)
         }
 
         v_t_type.setOnClickListener {
             val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
             Shared.call= Api.infoService.tTypeTmp()
+            i.putExtra("title",getString(R.string.t_type))
             startActivityForResult(i, TYPE_TYPE_REQUEST_CODE)
         }
 
         v_load_type.setOnClickListener {
             val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
             Shared.call= Api.infoService.tLoadType()
+            i.putExtra("title",getString(R.string.load_type))
             startActivityForResult(i, LOAD_TYPE_REQUEST_CODE)
         }
 
@@ -76,6 +80,7 @@ class TransportNewActivity : BackPressCompatActivity() {
             checkNotNull(images[1]){getString(R.string.enter_photo)}
             transport.number = v_number.get("Введите номер авто")
             checkNotNull(transport.model){"Выберите марку"}
+            checkNotNull(transport.typeId){getString(R.string.enter_t_type)}
             transport.height = v_length.get(getString(R.string.enter_length)).toFloat()
             transport.width = v_width.get(getString(R.string.enter_width)).toFloat()
             transport.length = v_height.get(getString(R.string.enter_height)).toFloat()

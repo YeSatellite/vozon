@@ -12,13 +12,14 @@ import com.yesat.vozon.R
 import com.yesat.vozon.models.Location
 import com.yesat.vozon.models.Route
 import com.yesat.vozon.models.Transport
+import com.yesat.vozon.ui.BackPressCompatActivity
 import com.yesat.vozon.ui.courier.transport.TransportListActivity
 import com.yesat.vozon.ui.info.LocationActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.activity_route_new.*
 import java.util.*
 
-class RouteNewActivity : AppCompatActivity() {
+class RouteNewActivity : BackPressCompatActivity() {
 
     companion object {
         const val START_POINT_REQUEST_CODE = 54
@@ -31,20 +32,20 @@ class RouteNewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route_new)
-        addBackPress()
+        supportActionBar!!.subtitle = "о свободной машине"
 
         v_transport.setOnClickListener{
             val i = Intent(this, TransportListActivity::class.java)
             startActivityForResult(i, TRANSPORT_REQUEST_CODE)
         }
-        v_start_point.setOnClickListener({
+        v_start_point.setOnClickListener {
             val i = Intent(this@RouteNewActivity, LocationActivity::class.java)
             startActivityForResult(i, START_POINT_REQUEST_CODE)
-        })
-        v_end_point.setOnClickListener({
+        }
+        v_end_point.setOnClickListener {
             val i = Intent(this@RouteNewActivity,LocationActivity::class.java)
             startActivityForResult(i, END_POINT_REQUEST_CODE)
-        })
+        }
         v_shipping_date.setOnClickListener{
             val calendar = Calendar.getInstance()
             DatePickerDialog(this@RouteNewActivity,
@@ -66,12 +67,11 @@ class RouteNewActivity : AppCompatActivity() {
 
     private fun create(){
         try{
-            checkNotNull(route.transport){getString(R.string.is_empty,"transport")}
-            check(route.startPoint != null){getString(R.string.is_empty,"start point")}
-            check(route.endPoint != null){getString(R.string.is_empty,"end point")}
-            route.shippingDate = v_shipping_date.get(getString(R.string.is_empty,"shipping date"))
-            route.shippingTime = v_shipping_time.get(getString(R.string.is_empty,"shipping time"))
-            route.comment = v_comment.get(getString(R.string.is_empty,"comment"))
+            checkNotNull(route.transport){getString(R.string.enter_transport)}
+            check(route.startPoint != null){"Укажите местонахождение транспорта"}
+            route.shippingDate = v_shipping_date.get(getString(R.string.enter_date))
+            route.shippingTime = v_shipping_time.get(getString(R.string.enter_time))
+            route.comment = v_comment.get()
 
             Api.courierService.routesAdd(route).run3(this){
                 setResult(Activity.RESULT_OK)
@@ -117,11 +117,6 @@ class RouteNewActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }
 

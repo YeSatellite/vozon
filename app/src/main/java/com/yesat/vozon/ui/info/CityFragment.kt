@@ -50,6 +50,7 @@ class CityFragment(val call: Call<List<Location>>) : ListFragment<Location, City
     }
 
     override fun onItemClick(item: Location){
+        (activity as LocationActivity).supportActionBar!!.title = item.name
         (activity as LocationActivity).i.put(item)
         (activity as LocationActivity).next(item.id!!)
     }

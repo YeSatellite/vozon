@@ -11,7 +11,7 @@ import com.yesat.vozon.R
 import com.yesat.vozon.models.TType
 import com.yesat.vozon.ui.ListActivity
 import com.yesat.vozon.utility.*
-import kotlinx.android.synthetic.main.item_category.view.*
+import kotlinx.android.synthetic.main.item_t_type.view.*
 
 
 class TTypeActivity: ListActivity<TType, TTypeActivity.ViewHolder>() {
@@ -31,7 +31,7 @@ class TTypeActivity: ListActivity<TType, TTypeActivity.ViewHolder>() {
 
     override fun onCreateViewHolder2(parent: ViewGroup): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_category, parent, false)
+                .inflate(R.layout.item_t_type, parent, false)
         return ViewHolder(v)
     }
 

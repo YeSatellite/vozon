@@ -6,6 +6,7 @@ import android.app.Activity
 import android.app.ProgressDialog
 import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
+import com.google.gson.GsonBuilder
 import com.yesat.vozon.models.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -23,7 +24,7 @@ import java.io.File
 object Api {
     private val retrofit = Retrofit.Builder()
             .baseUrl("http://188.166.50.157:8000/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory((GsonConverterFactory.create(GsonBuilder().serializeNulls().create())))
             .client(OkHttpClient.Builder().addInterceptor { chain ->
                 var request = chain.request().newBuilder()
                 if (getToken().length>10)

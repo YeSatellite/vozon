@@ -75,7 +75,7 @@
             android:paddingEnd="@dimen/space"
             android:paddingStart="@dimen/space"
             android:paddingTop="@dimen/space"
-            android:text="Дата и время"
+            android:text="@string/transport_position"
             android:textSize="12sp" />
 
         <TextView
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/space"
             android:paddingStart="@dimen/space"
-            android:text="Отгрузка"
+            android:text="@string/destination"
             android:textSize="12sp" />
 
         <TextView

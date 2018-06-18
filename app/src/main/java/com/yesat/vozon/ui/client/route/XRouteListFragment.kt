@@ -67,7 +67,7 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
         holder.hTransport.text = item.transport?.fullName
         holder.hTType.text = getString(R.string._o_,item .transport?.type?.name, item.transport?.loadTypeName)
         holder.hStartPoint.text = item.startPoint?.getShortName()
-        holder.hEndPoint.text = item.endPoint?.getShortName()
+        holder.hEndPoint.textIf = item.endPoint?.getShortName()
         holder.hName.text =item.owner?.name
         holder.hAvatar.src(item.owner?.avatar,R.drawable.user_placeholder)
         holder.hRating.text =item.owner?.rating

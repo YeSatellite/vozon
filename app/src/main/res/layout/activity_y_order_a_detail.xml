@@ -171,7 +171,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Обьем"
+                        android:text="@string/volume"
                         android:textSize="17sp" />
 
                     <TextView
@@ -285,13 +285,6 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/v_price2"
-                        style="@style/LargeTextViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        tools:text="2000 tg" />
                 </LinearLayout>
 
                 <LinearLayout                    android:layout_width="match_parent"                    android:layout_height="match_parent"                    android:layout_marginBottom="10dp"                    android:orientation="horizontal">
@@ -318,7 +311,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Обьем"
+                        android:text="@string/other_service"
                         android:textSize="17sp" />
 
                     <TextView
@@ -335,16 +328,40 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="loader barma"
+                        android:text="@string/have_loaders"
                         android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/v_have_loaders"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textSize="17sp"
+                        android:theme="@style/LargeTextViewStyle"
+                        tools:text="Yes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/v_price2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -406,7 +423,7 @@
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/space"
-                    android:src="@drawable/call_green" />
+                    android:src="@drawable/call_dark" />
 
             </LinearLayout>
 

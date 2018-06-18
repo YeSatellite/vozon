@@ -13,6 +13,7 @@ import com.yesat.vozon.ui.ListFragment
 import com.yesat.vozon.models.Offer
 import com.yesat.vozon.models.Order
 import com.yesat.vozon.ui.BackPressCompatActivity
+import com.yesat.vozon.ui.client.active.CourierProfileActivity
 import com.yesat.vozon.ui.courier.transport.TransportDetailActivity
 import com.yesat.vozon.utility.*
 import kotlinx.android.synthetic.main.item_offer.view.*
@@ -93,7 +94,7 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
         }
 
         holder.hCourier.setOnClickListener {
-            val i =Intent(activity,YProfileOActivity::class.java)
+            val i =Intent(activity,CourierProfileActivity::class.java)
             i.put(item.transport!!.owner!!)
             startActivity(i)
         }

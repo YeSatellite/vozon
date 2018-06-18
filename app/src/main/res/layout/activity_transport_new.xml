@@ -72,7 +72,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Марка" />
+                android:hint="@string/mark" />
 
             <EditText
                 android:id="@+id/v_mark"
@@ -98,7 +98,7 @@
                 style="@style/ProfileEditTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Модель" />
+                android:hint="@string/model" />
 
             <EditText
                 android:id="@+id/v_model"

@@ -95,6 +95,14 @@ fun EditText.get(error: String = ""): String{
     return text
 }
 
+var TextView.textIf: String?
+    get() = text.toString()
+    set(value) {
+        if (value.isNullOrBlank().not()){
+            text = value
+        }
+    }
+
 var EditText.content : String?
     get() = text.toString()
     set(value) {

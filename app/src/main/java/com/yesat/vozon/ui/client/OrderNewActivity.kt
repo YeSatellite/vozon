@@ -67,6 +67,7 @@ class OrderNewActivity : BackPressCompatActivity() {
         v_transport.setOnClickListener {
             val i = Intent(this@OrderNewActivity, InfoTmpActivity::class.java)
             Shared.call = Api.infoService.paymentType()
+            i.putExtra(Shared.title,getString(R.string.payment_type))
             startActivityForResult(i,PAYMENT_TYPE_REQUEST_CODE)
         }
 

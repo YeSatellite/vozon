@@ -94,7 +94,7 @@
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/next_"
                 android:focusable="false"
-                android:hint="Выберите способ оплаты"/>
+                android:hint="@string/payment_type"/>
 
             <TextView
                 android:id="@+id/v_other_service"

@@ -28,17 +28,18 @@ class XOrderADetailActivity : BackPressCompatActivity() {
         if(list.isNotEmpty()) v_images.adapter = ImagePagerAdapter(this,list)
         else v_images.visibility = View.GONE
 
-        v_date.text = order!!.shippingDate!!.dateFormat()
+        v_date.text = getString(R.string._o_,
+                order!!.shippingDate!!.dateFormat(),
+                order!!.shippingTime!!.substring(0..4))
         v_start_point.text = order!!.startPoint!!.getShortName(order!!.startDetail!!)
         v_end_point.text = order!!.endPoint!!.getShortName(order!!.endDetail!!)
 
         v_volume.text = getString(R.string.meter3,order!!.width!! * order!!.height!!*order!!.length!!)
-        v_mass.text = if(order!!.mass!!>1000){
-            getString(R.string.kg,order!!.mass!! / 1000)
+        v_mass.text = if(order!!.mass!!>1){
+            getString(R.string.kg,order!!.mass!!)
         }else{
-            getString(R.string.g,order!!.mass!!)
+            getString(R.string.g,order!!.mass!!*1000)
         }
-        v_price.text = getString(R.string._s_,order!!.price.toString(),order!!.currency)
 
         v_position.text = order!!.startPoint!! - order!!.endPoint!!
         v_category.text = order!!.typeName
@@ -56,7 +57,7 @@ class XOrderADetailActivity : BackPressCompatActivity() {
         v_have_loaders.text = yesOrNo(offer.haveLoaders)
         v_comment2.text = offer.comment
 
-        v_button.text = getString(R.string.done)
+        v_button.text = getString(R.string.delivered)
         v_button.setOnClickListener{
             val v = View.inflate(this,R.layout.item_rating,null)
             val popDialog = AlertDialog.Builder(this)

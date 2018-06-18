@@ -54,7 +54,7 @@ class YRouteListFragment : ListToolbarFragment<Route, YRouteListFragment.ViewHol
         holder.hDate.text = item.shippingDate?.dateFormat()
         holder.hTType.text = getString(R.string._o_,item.transport?.type?.name,item.transport?.loadTypeName)
         holder.hStartPoint.text = item.startPoint?.getShortName()
-        if (item.endPoint != null) holder.hEndPoint.text = item.endPoint?.getShortName()
+        holder.hEndPoint.textIf = item.endPoint?.getShortName()
 
     }
 
