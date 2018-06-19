@@ -81,9 +81,9 @@ class TransportNewActivity : BackPressCompatActivity() {
             transport.number = v_number.get("Введите номер авто")
             checkNotNull(transport.model){"Выберите марку"}
             checkNotNull(transport.typeId){getString(R.string.enter_t_type)}
-            transport.height = v_length.get(getString(R.string.enter_length)).toFloat()
+            transport.length = v_length.get(getString(R.string.enter_length)).toFloat()
             transport.width = v_width.get(getString(R.string.enter_width)).toFloat()
-            transport.length = v_height.get(getString(R.string.enter_height)).toFloat()
+            transport.height = v_height.get(getString(R.string.enter_height)).toFloat()
             checkNotNull(transport.typeId){getString(R.string.enter_t_type)}
             checkNotNull(transport.loadType){"Выберите вид погрузки"}
             transport.comment = v_comment.get()
